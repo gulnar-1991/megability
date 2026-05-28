@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Select-Object FullName)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Read(//c/Users/gulna/my-website/**)",
+      "Read(//c/Users/gulna/**)",
+      "Bash(mkdir -p /c/Users/gulna/bright-horizons-pediatric-care/public && cp /c/Users/gulna/Desktop/grass.mp4 /c/Users/gulna/bright-horizons-pediatric-care/public/grass.mp4 && ls -la /c/Users/gulna/bright-horizons-pediatric-care/public/)",
+      "Bash(git init *)",
+      "Bash(gh auth *)",
+      "Bash(git add *)",
+      "Bash(git -c user.email=\"gulnar.rza.e@gmail.com\" -c user.name=\"Gulnar\" commit -m \"Initial commit: Bright Horizons Pediatric Care site\")"
+    ]
+  }
+}
