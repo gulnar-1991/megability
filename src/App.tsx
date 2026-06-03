@@ -39,27 +39,29 @@ export default function App() {
       slideupObserver.observe(el);
     });
 
-    // 2. Intersection Observer to detect if we are inside a dark section 
-    // to dynamically transition the floating Navbar's default text/arrow colors
+    // 2. Intersection Observer to detect if we are inside a dark section
+    // to dynamically transition the floating Navbar's default text/arrow colors.
+    // Track intersection PER section in a Set so the final "is any dark section
+    // visible" state is computed from all observed entries — fixes a bug where
+    // entries.forEach overwrote each other and the last non-intersecting one won.
     const darkSections = document.querySelectorAll("#hero, #testimonials, #portal, #footer");
-    
-    // We observe the top boundary of the viewport
+    const visibleDarkSections = new Set<Element>();
+
     const darkSectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // If any dark section intersects the top of the viewport
-            setIsHeroDarkSection(true);
+            visibleDarkSections.add(entry.target);
           } else {
-            // Otherwise default back to dark texts (on light cream backgrounds)
-            setIsHeroDarkSection(false);
+            visibleDarkSections.delete(entry.target);
           }
         });
+        setIsHeroDarkSection(visibleDarkSections.size > 0);
       },
       {
         root: null,
         rootMargin: "-80px 0px 0px 0px", // Offset by roughly Navbar height
-        threshold: 0.1
+        threshold: 0.01,
       }
     );
 
