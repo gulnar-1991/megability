@@ -77,7 +77,7 @@ export default function Hero() {
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to bottom, rgba(26,46,29,0.4) 0%, rgba(26,46,29,0.7) 100%)",
+            background: "linear-gradient(to bottom, rgba(26,46,29,0.3) 0%, rgba(26,46,29,0.6) 100%)",
             zIndex: 1
           }}
         />
