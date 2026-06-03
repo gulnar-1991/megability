@@ -17,7 +17,8 @@
       "PowerShell(gh --version)",
       "PowerShell(Get-ChildItem \"$env:ProgramFiles\\\\GitHub CLI\\\\gh.exe\", \"$env:LOCALAPPDATA\\\\Programs\\\\GitHub CLI\\\\gh.exe\", \"${env:ProgramFiles\\(x86\\)}\\\\GitHub CLI\\\\gh.exe\" -ErrorAction SilentlyContinue | Select-Object FullName)",
       "Bash(git remote *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git -c user.email=\"gulnar.rza.e@gmail.com\" -c user.name=\"Gulnar\" commit -m \"Fix video and mobile responsiveness\")"
     ]
   }
 }

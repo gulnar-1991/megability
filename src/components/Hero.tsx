@@ -118,11 +118,8 @@ export default function Hero() {
             zIndex: 0
           }}
         >
-          {/* Local high-performance streaming proxy with Safari Range Request support */}
-          <source src="/api/video" type="video/mp4" />
-          <source src="https://lh3.googleusercontent.com/d/1Nc45Hh7qXN_XbpXDIHcpDxmFTQR3pAX6=m22" type="video/mp4" />
-          <source src="https://lh3.googleusercontent.com/d/1Nc45Hh7qXN_XbpXDIHcpDxmFTQR3pAX6=m18" type="video/mp4" />
-          <source src="https://drive.google.com/uc?id=1Nc45Hh7qXN_XbpXDIHcpDxmFTQR3pAX6" type="video/mp4" />
+          {/* Static asset served from /public — works on Vite dev, Vercel, any static host */}
+          <source src="/hero-video.mp4" type="video/mp4" />
         </video>
       </div>
     </header>

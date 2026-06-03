@@ -604,3 +604,123 @@ html, body {
 .service-desc-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ---------------------------------------------------------------
+   Mobile responsiveness — global polish across all components
+   --------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Tighter section rhythm */
+  section {
+    scroll-margin-top: 80px;
+  }
+
+  /* Hero — keep readable at small heights, prevent overflow */
+  .home-hero .heading-style-h1-super {
+    font-size: clamp(36px, 11vw, 56px);
+  }
+  .home-hero p {
+    font-size: 0.95rem;
+  }
+
+  /* About — neutralize the desktop video crop offset on mobile */
+  .video-wrap-vertical {
+    max-width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+  .about-portrait-video {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Halfsplit layouts stack cleanly */
+  .flex-halfsplit-layout {
+    grid-template-columns: 1fr !important;
+    gap: 32px;
+  }
+
+  /* Navbar logo should not crowd the hamburger */
+  .navbar_logo-link {
+    max-width: 60vw;
+  }
+
+  /* Testimonial quote needs breathing room and smaller text */
+  #testimonials .font-serif.italic {
+    font-size: clamp(18px, 5.2vw, 28px) !important;
+    line-height: 1.4;
+  }
+
+  /* Contact form — full width on mobile, comfortable padding */
+  #contact .rounded-2xl {
+    padding: 24px !important;
+  }
+
+  /* Eligibility funding cards stack with reasonable padding */
+  #eligibility .p-6 {
+    padding: 20px !important;
+  }
+
+  /* Footer — collapse two-column grid, even spacing */
+  #footer .grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  #footer nav {
+    justify-content: flex-start !important;
+  }
+  #footer .min-h-\[260px\] {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 479px) {
+  /* Slightly smaller hero CTA */
+  #hero .custom-button {
+    padding: 9px 16px;
+    font-size: 10px;
+  }
+
+  /* Service rows — stack the title and short description so nothing truncates */
+  .service-row {
+    align-items: flex-start;
+  }
+  .service-row .service-arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Step cards (HowItWorks) — single column with proper spacing */
+  #programs .grid {
+    gap: 16px;
+  }
+
+  /* Portal feature cards — pad less, but text stays readable */
+  #portal .p-6 {
+    padding: 18px !important;
+  }
+
+  /* Locations row */
+  .location_address-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Footer copyright row should wrap on tiny screens */
+  #footer .flex.items-center {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+/* Hide custom cursor on touch devices completely (extra safety) */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  .cursor-none {
+    cursor: pointer !important;
+  }
+}

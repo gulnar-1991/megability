@@ -51,23 +51,21 @@ export default function About() {
               />
 
               {/* Autoplay Portrait Looping Video */}
-              <video 
-                autoPlay 
-                muted 
-                loop 
+              <video
+                autoPlay
+                muted
+                loop
                 playsInline
+                className="about-portrait-video"
                 style={{
                   objectFit: "cover",
                   backgroundPosition: "50%",
                   backgroundSize: "cover",
                   width: "100%",
                   height: "100%",
-                  margin: "auto",
                   position: "absolute",
-                  inset: "-100%",
+                  inset: 0,
                   zIndex: 1,
-                  marginLeft: "400px",
-                  paddingLeft: "2px"
                 }}
               >
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-mother-and-son-painting-together-at-home-43093-large.mp4" type="video/mp4" />
