@@ -43,7 +43,9 @@ export default function Navbar({ isHeroDarkSection }: NavbarProps) {
 
   // If scrolled, let's use the solid cream scrolled layout.
   // If not scrolled but we are over the dark hero, we should have white text. Otherwise, dark green.
-  const isNavDarkTheme = isHeroDarkSection && !scrolled;
+  // When the mobile menu is open, the drawer paints a cream backdrop behind the
+  // top bar — force dark text so the logo + X button remain visible.
+  const isNavDarkTheme = isHeroDarkSection && !scrolled && !mobileMenuOpen;
 
   const handleLinkClick = (href: string) => {
     setMobileMenuOpen(false);

@@ -735,10 +735,10 @@ html, body {
 /* Hero background — on mobile, re-anchor so the subject's face stays visible */
 @media (max-width: 768px) {
   .hero-bg-video {
-    object-position: center top !important;
+    object-position: 70% top !important;
   }
   .hero-fallback-bg {
-    background-position: center top !important;
+    background-position: 70% top !important;
   }
 }
 
