@@ -83,39 +83,37 @@ export default function Hero() {
         />
 
         {/* Failover static meadow background */}
-        <div 
+        <div
           id="video-fallback"
+          className="hero-fallback-bg"
           style={{
             backgroundImage: "url('https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&q=80&w=1920')",
             position: "absolute",
-            inset: "-100%",
-            objectFit: "cover",
+            inset: 0,
             backgroundSize: "cover",
-            backgroundPosition: "50%",
+            backgroundPosition: "center center",
             width: "100%",
             height: "100%",
-            margin: "auto",
-            zIndex: 0
+            zIndex: 0,
           }}
         />
 
         {/* Dual implementation video play */}
-        <video 
+        <video
           ref={videoRef}
-          autoPlay 
-          muted 
-          loop 
+          autoPlay
+          muted
+          loop
           playsInline
+          className="hero-bg-video"
           style={{
             objectFit: "cover",
-            backgroundPosition: "50%",
-            backgroundSize: "cover",
+            objectPosition: "center center",
             width: "100%",
             height: "100%",
-            margin: "auto",
             position: "absolute",
-            inset: "-100%",
-            zIndex: 0
+            inset: 0,
+            zIndex: 0,
           }}
         >
           {/* Static asset served from /public — works on Vite dev, Vercel, any static host */}

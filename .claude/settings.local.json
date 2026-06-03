@@ -20,7 +20,9 @@
       "Bash(git push *)",
       "Bash(git -c user.email=\"gulnar.rza.e@gmail.com\" -c user.name=\"Gulnar\" commit -m \"Fix video and mobile responsiveness\")",
       "Bash(git -c user.email=\"gulnar.rza.e@gmail.com\" -c user.name=\"Gulnar\" commit -m \"Reduce hero overlay opacity by 10%\")",
-      "Bash(npx vite *)"
+      "Bash(npx vite *)",
+      "Bash(git -c user.email=\"gulnar.rza.e@gmail.com\" -c user.name=\"Gulnar\" commit -m \"Update page title to Megability branding\")",
+      "Bash(git -c user.email=\"gulnar.rza.e@gmail.com\" -c user.name=\"Gulnar\" commit -m \"Fix mobile hero and video responsiveness\")"
     ]
   }
 }

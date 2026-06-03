@@ -16,12 +16,17 @@ export default function HowItWorks() {
         loop
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+        className="howitworks-bg-video absolute inset-0 z-0 pointer-events-none"
         style={{
+          width: "100%",
+          height: "100%",
+          minWidth: "100%",
+          minHeight: "100%",
+          objectFit: "cover",
+          objectPosition: "center center",
           filter: "saturate(1.15) contrast(1.05) brightness(1.02)",
           transform: "translateZ(0)",
           willChange: "transform",
-          imageRendering: "auto",
         }}
         aria-hidden="true"
       >

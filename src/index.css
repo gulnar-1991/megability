@@ -714,6 +714,34 @@ html, body {
   }
 }
 
+/* HowItWorks background video — guarantee full coverage on every viewport.
+   The element's intrinsic aspect ratio can leave gaps on tall mobile sections,
+   so we force it to fill both axes and crop with object-fit. */
+.howitworks-bg-video {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .howitworks-bg-video {
+    object-position: center center;
+  }
+}
+
+/* Hero background — on mobile, re-anchor so the subject's face stays visible */
+@media (max-width: 768px) {
+  .hero-bg-video {
+    object-position: center top !important;
+  }
+  .hero-fallback-bg {
+    background-position: center top !important;
+  }
+}
+
 /* Hide custom cursor on touch devices completely (extra safety) */
 @media (hover: none), (pointer: coarse) {
   .cursor-dot,
