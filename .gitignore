@@ -8,3 +8,5 @@ coverage/
 .env*
 !.env.example
 /hero-video.mp4
+.vercel
+bright-horizons-pediatric-care/
