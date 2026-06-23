@@ -1,6 +1,6 @@
 import { Service, LocationInfo, ProgramStep, Testimonial } from "./types";
 
-export const CLINIC_NAME = "Bright Horizons Pediatric Care";
+export const CLINIC_NAME = "Megability";
 export const TAGLINE = "Where every child's journey is celebrated.";
 export const FOCUS_TEXT = "Specialized support for Down syndrome, autism, and complex developmental needs.";
 export const PORTAL_URL = "https://mychart.kidshealthalliance.ca";
