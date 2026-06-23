@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { EMAIL_CONTACT, PHONE_CONTACT } from "../data";
-import { Mail, Phone, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, Send, CheckCircle, ChevronDown } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -98,7 +98,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
                 
                 <div>
-                  <label htmlFor="parentName" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-1.5">
+                  <label htmlFor="parentName" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-2 pl-4">
                     Parent / Guardian Name
                   </label>
                   <input
@@ -114,7 +114,7 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="phone" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-1.5">
+                    <label htmlFor="phone" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-2 pl-4">
                       Phone Coordinate
                     </label>
                     <input
@@ -128,7 +128,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="childAge" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-1.5">
+                    <label htmlFor="childAge" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-2 pl-4">
                       Child's Current Age
                     </label>
                     <input
@@ -144,7 +144,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-1.5">
+                  <label htmlFor="email" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-2 pl-4">
                     Secure Email Address
                   </label>
                   <input
@@ -159,26 +159,28 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="clinicalFocus" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-1.5">
+                  <label htmlFor="clinicalFocus" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-2 pl-4">
                     Primary Development Focus
                   </label>
-                  <select
-                    id="clinicalFocus"
-                    value={formData.clinicalFocus}
-                    onChange={(e) => setFormData({ ...formData, clinicalFocus: e.target.value })}
-                    className="w-full p-4 rounded-xl border border-[#1A2E1D]/15 bg-white text-xs focus:outline-none focus:border-[#4A7C59] focus:ring-1 focus:ring-[#4A7C59] transition-all default-appearance-none"
-                    style={{ WebkitAppearance: "menulist", appearance: "auto" }}
-                  >
-                    <option value="general">Undecided / Multiple Delays</option>
-                    <option value="down-syndrome">Down Syndrome Path</option>
-                    <option value="autism">Autism Affinity Support</option>
-                    <option value="speech">Speech-Language Therapy</option>
-                    <option value="occupational">Occupational Therapy</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      id="clinicalFocus"
+                      value={formData.clinicalFocus}
+                      onChange={(e) => setFormData({ ...formData, clinicalFocus: e.target.value })}
+                      className="w-full p-4 pr-10 rounded-xl border border-[#1A2E1D]/15 bg-white text-xs text-[#1A2E1D] focus:outline-none focus:border-[#4A7C59] focus:ring-1 focus:ring-[#4A7C59] transition-all appearance-none cursor-pointer"
+                    >
+                      <option value="general">Undecided / Multiple Delays</option>
+                      <option value="down-syndrome">Down Syndrome Path</option>
+                      <option value="autism">Autism Affinity Support</option>
+                      <option value="speech">Speech-Language Therapy</option>
+                      <option value="occupational">Occupational Therapy</option>
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-1.5">
+                  <label htmlFor="message" className="text-[10px] text-slate-500 uppercase tracking-widest font-medium font-sans block mb-2 pl-4">
                     Brief background (Optional)
                   </label>
                   <textarea
