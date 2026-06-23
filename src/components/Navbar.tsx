@@ -74,9 +74,7 @@ export default function Navbar({ isHeroDarkSection }: NavbarProps) {
             id="nav-logo"
           >
             <span className="font-medium">{CLINIC_NAME}</span>
-            <span className="text-[9px] uppercase tracking-widest opacity-60 font-sans mt-0.5 font-medium">
-              Pediatric care
-            </span>
+          
           </a>
 
           {/* Desktop Links (Center) */}
