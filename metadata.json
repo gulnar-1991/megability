@@ -1,6 +1,6 @@
 {
-  "name": "Bright Horizons Pediatric Care",
-  "description": "Specialized support and individualized care plans for children with Down syndrome, autism, and complex developmental needs in Ottawa, Ontario.",
+  "name": "Megability",
+  "description": "Specialized support and individualized care plans for children with Down syndrome, autism, and complex developmental needs in Hamilton, Ontario.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

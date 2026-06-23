@@ -74,7 +74,7 @@ export default function About() {
               
               {/* Absolute label overlay */}
               <div className="absolute bottom-6 left-6 z-10 text-white select-none">
-                <p className="font-serif italic text-2xl font-light">Ottawa Clinic</p>
+                <p className="font-serif italic text-2xl font-light">Hamilton Clinic</p>
                 <p className="text-[9px] uppercase tracking-widest opacity-70 font-sans mt-1">Sensory-Friendly Space</p>
               </div>
 
@@ -94,7 +94,7 @@ export default function About() {
               Coordinating multiple medical and cognitive appointments shouldn't be your second job. We replace fragmented consultations with a collaborative loop. Our pediatric therapists reside under one roof, analyzing daily outcomes as one minds-and-hands group to constantly iterate goals.
             </p>
             <p className="text-size-medium text-[#1A2E1D]/80 leading-relaxed font-light mt-1">
-              From secure documentation in Kids Health Alliance systems to direct partnerships with Ottawa Valley school districts, we construct unified, evidence-based environments where children feel validated and capable.
+              From secure documentation in Kids Health Alliance systems to direct partnerships with Hamilton-area school districts, we construct unified, evidence-based environments where children feel validated and capable.
             </p>
  
             <a

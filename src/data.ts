@@ -4,7 +4,7 @@ export const CLINIC_NAME = "Megability";
 export const TAGLINE = "Where every child's journey is celebrated.";
 export const FOCUS_TEXT = "Specialized support for Down syndrome, autism, and complex developmental needs.";
 export const PORTAL_URL = "https://mychart.kidshealthalliance.ca";
-export const EMAIL_CONTACT = "info@brighthorizonscare.ca";
+export const EMAIL_CONTACT = "info@megability.ca";
 export const PHONE_CONTACT = "613-737-7600";
 export const PHONE_FORMATTED = "613-737-7600";
 
@@ -112,14 +112,14 @@ export const PROGRAM_STEPS: ProgramStep[] = [
     id: "step-4",
     stepNumber: "04",
     title: "Guided Therapy & Parent Coaching",
-    description: "sessions begin in our inviting Ottawa facility. We pair physical progress with comprehensive home-strategy guides, making therapy a joyful and repetitive habit."
+    description: "sessions begin in our inviting Hamilton facility. We pair physical progress with comprehensive home-strategy guides, making therapy a joyful and repetitive habit."
   }
 ];
 
 export const GENERAL_ELIGIBILITY = {
   title: "Service Eligibility & Funding Options",
   subtitle: "We believe therapeutic support should be accessible. Here is a guide to how we work with Ontario funding streams and age parameters.",
-  content: "Bright Horizons welcomes all infants, children, and youth from birth through age 18 residing in the Ottawa Valley, Eastern Ontario, and Western Quebec regions.",
+  content: "Megability welcomes all infants, children, and youth from birth through age 18 residing in Hamilton and surrounding regions.",
   fundingOptions: [
     {
       title: "Ontario Autism Program (OAP)",
@@ -140,28 +140,7 @@ export const GENERAL_ELIGIBILITY = {
   ]
 };
 
-export const CLINIC_LOCATIONS: LocationInfo[] = [
-  {
-    id: "ottawa-central",
-    name: "Bright Horizons Ottawa Central",
-    address: "1355 Bank Street, Suite 208",
-    city: "Ottawa",
-    province: "ON",
-    postalCode: "K1H 8K7",
-    phone: "613-737-7600",
-    hours: "Monday - Friday: 8:00 AM - 6:00 PM | Saturday: 9:00 AM - 1:00 PM"
-  },
-  {
-    id: "kanata-west",
-    name: "Bright Horizons Ottawa West",
-    address: "300 Terry Fox Drive, Suite 104",
-    city: "Kanata",
-    province: "ON",
-    postalCode: "K2K 0E3",
-    phone: "613-737-7605",
-    hours: "Monday - Friday: 8:00 AM - 5:30 PM"
-  }
-];
+export const CLINIC_LOCATIONS: LocationInfo[] = [];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
@@ -169,14 +148,14 @@ export const TESTIMONIALS: Testimonial[] = [
     quote: "Finding one place where our speech therapist, occupational therapist, and school board navigator actually speak to each other has changed everything for our family. Our daughter feels safe and excited to walk through the doors.",
     author: "Nathalie Mercier",
     role: "Mother of Chloé (Age 5, Down Syndrome)",
-    relationship: "Ottawa, ON"
+    relationship: "Hamilton, ON"
   },
   {
     id: "test-2",
     quote: "The neurodiversity-affirming approach here is real. They never focused on making my son fit into a standard mold; they helped us build communication channels, identify sensory triggers, and advocate for his needs.",
     author: "David Vance",
     role: "Father of Elijah (Age 8, Autistic)",
-    relationship: "Kanata, ON"
+    relationship: "Hamilton, ON"
   },
   {
     id: "test-3",

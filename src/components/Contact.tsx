@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { CLINIC_LOCATIONS, EMAIL_CONTACT, PHONE_CONTACT } from "../data";
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import { EMAIL_CONTACT, PHONE_CONTACT } from "../data";
+import { Mail, Phone, Send, CheckCircle } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -51,7 +51,7 @@ export default function Contact() {
             </h2>
             
             <p className="text-size-medium text-[#1A2E1D]/80 leading-relaxed font-light mt-2">
-              Have questions about OAP core clinical funding, milestone evaluations, or active program waitlist lengths in Ottawa? Complete our secure discovery intake or access our office direct details.
+              Have questions about OAP core clinical funding, milestone evaluations, or active program waitlist lengths in Hamilton? Complete our secure discovery intake or access our office direct details.
             </p>
 
             <div className="flex flex-col gap-4 mt-4">
@@ -74,40 +74,6 @@ export default function Contact() {
                   <span className="text-sm font-medium">{EMAIL_CONTACT}</span>
                 </div>
               </a>
-            </div>
-
-            {/* Clinic Locations List (Location row pattern) */}
-            <div className="mt-8 border-t border-[#1A2E1D]/10 pt-8" id="locations-list">
-              <h3 className="section-label block mb-6">Our Ottawa Branches</h3>
-              
-              {CLINIC_LOCATIONS.map((loc) => (
-                <div key={loc.id} className="location-row text-left">
-                  <div className="flex justify-between items-start gap-4">
-                    <div>
-                      <h4 className="heading-style-h4-sans text-base font-medium text-[#1A2E1D]">
-                        {loc.name}
-                      </h4>
-                      <p className="text-xs text-slate-500 mt-1 font-sans flex items-center gap-1.5 min-h-[16px]">
-                        <MapPin className="w-3.5 h-3.5 text-[#E8734A] shrink-0" />
-                        <span>{loc.address}, {loc.city}, {loc.province} {loc.postalCode}</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="location_address-flex mt-4">
-                    <span className="text-[10px] text-slate-400 font-sans tracking-wide leading-relaxed">
-                      {loc.hours}
-                    </span>
-                    <a
-                      href={`https://maps.google.com/?q=${encodeURIComponent(loc.address + " " + loc.city)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs uppercase tracking-wider font-medium text-[#4A7C59] hover:underline flex items-center gap-1 shrink-0"
-                    >
-                      <span>Directions</span>
-                    </a>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
 

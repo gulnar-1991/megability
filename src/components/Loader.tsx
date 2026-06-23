@@ -30,10 +30,10 @@ export default function Loader() {
       aria-label="Loading page content"
     >
       <div className="text-center px-6 animate-pulse select-none">
-        <h1 className="font-serif italic text-3xl sm:text-4xl text-[#1A2E1D] tracking-tight mb-2">
+        <h1 className="font-serif italic text-6xl sm:text-7xl md:text-8xl text-[#1A2E1D] tracking-tight leading-none mb-4">
           {CLINIC_NAME}
         </h1>
-        <p className="font-sans text-xs uppercase tracking-widest text-slate-500 max-w-xs mx-auto">
+        <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.25em] text-slate-500 max-w-md mx-auto">
           {TAGLINE}
         </p>
       </div>
