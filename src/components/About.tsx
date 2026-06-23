@@ -34,18 +34,16 @@ export default function About() {
                 }}
               />
 
-              {/* Fallback image */}
-              <div 
+              {/* Fallback image — fills the clipped container so it shows
+                  whenever the remote video fails to load/autoplay (common on
+                  mobile). Previously inset:-100% pushed it outside the box. */}
+              <div
                 style={{
                   backgroundImage: "url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&q=80&w=900')",
                   position: "absolute",
-                  inset: "-100%",
-                  objectFit: "cover",
+                  inset: 0,
                   backgroundSize: "cover",
                   backgroundPosition: "50%",
-                  width: "100%",
-                  height: "100%",
-                  margin: "auto",
                   zIndex: 0
                 }}
               />
@@ -56,6 +54,8 @@ export default function About() {
                 muted
                 loop
                 playsInline
+                preload="auto"
+                poster="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&q=80&w=900"
                 className="about-portrait-video"
                 style={{
                   objectFit: "cover",

@@ -7,13 +7,11 @@
     <style>
 #voiceflow-chat {
   position: fixed !important;
-  bottom: 0 !important;
+  bottom: env(safe-area-inset-bottom, 0px) !important;
   right: 0 !important;
   left: auto !important;
   top: auto !important;
   z-index: 2147483647 !important;
-  will-change: transform !important;
-  transform: translate3d(0, 0, 0) !important;
 }
     </style>
   </head>
