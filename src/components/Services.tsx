@@ -51,7 +51,7 @@ export default function Services() {
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              className="service-row flex flex-col md:flex-row md:items-center justify-between py-8 border-b border-[#1A2E1D]/10 first:border-t hover-target cursor-none"
+              className="service-row flex-halfsplit-layout md:items-center py-8 border-b border-[#1A2E1D]/10 first:border-t hover-target cursor-none"
               onMouseEnter={() => setActiveService(service)}
               role="button"
               tabIndex={0}
@@ -77,8 +77,10 @@ export default function Services() {
                 </h3>
               </div>
 
-              {/* Right Segment: Short Description + Interactive Circle Indicator */}
-              <div className="flex items-center justify-between md:justify-end gap-6 mt-4 md:mt-0 text-left w-full md:w-auto">
+              {/* Right Segment: Short Description + Interactive Circle Indicator.
+                  Lives in the right grid cell so its left edge aligns with the
+                  section intro paragraph above; arrow is pushed to the far right. */}
+              <div className="flex items-center justify-between gap-6 mt-4 md:mt-0 text-left w-full">
                 <p className="text-xs md:text-sm opacity-70 font-light max-w-sm">
                   {service.shortDescription}
                 </p>

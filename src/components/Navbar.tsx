@@ -70,7 +70,7 @@ export default function Navbar({ isHeroDarkSection }: NavbarProps) {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="navbar_logo-link font-serif font-medium text-2xl md:text-3xl tracking-tight leading-none hover:opacity-80 transition-opacity flex flex-col justify-start"
+            className="navbar_logo-link font-serif font-medium text-4xl md:text-5xl tracking-tight leading-none hover:opacity-80 transition-opacity flex flex-col justify-start"
             id="nav-logo"
           >
             <span className="font-medium">{CLINIC_NAME}</span>

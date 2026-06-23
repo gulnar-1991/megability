@@ -61,7 +61,7 @@ export default function HowItWorks() {
               <span className="font-medium text-emerald-950 block mt-2">milestone therapy.</span>
             </h2>
           </div>
-          <div className="animation-slideup flex flex-col items-start gap-4 max-w-sm pt-4 md:pt-12">
+          <div className="animation-slideup flex flex-col items-start gap-4 max-w-md pt-4 md:pt-12">
             <p className="text-size-medium text-[#1A2E1D]/70 font-light leading-relaxed">
               We focus on building clarity and warmth from the initial matching consult onwards. This is how we support your child's milestones.
             </p>
