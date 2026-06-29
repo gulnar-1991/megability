@@ -12,11 +12,6 @@
   left: auto !important;
   top: auto !important;
   z-index: 2147483647 !important;
-  /* Establish a containing block so Voiceflow's inner `position:fixed` launcher
-     anchors to this host instead of independently tracking the viewport. This
-     stops the double-recalc "jump" when Android Chrome hides its address bar.
-     `contain: layout` does NOT promote a compositor layer, so no scroll jitter. */
-  contain: layout !important;
 }
     </style>
   </head>
