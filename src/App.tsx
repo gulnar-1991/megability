@@ -58,7 +58,7 @@ function ConvosSection() {
   }, []);
 
   return (
-    <section className="block convos">
+    <section className="block convos" id="action">
       <div className="wrap">
         <span className="eyebrow">Sunny in action</span>
         <div className="cv-main">
@@ -436,7 +436,7 @@ export default function App() {
               </div>
               <div className="hero-ctas">
                 <Link to="/demo" className="btn btn-white">Book a Demo</Link>
-                <a href="#phone" className="btn btn-watch">See Sunny in Action</a>
+                <a href="#action" className="btn btn-watch">See Sunny in Action</a>
               </div>
             </div>
             <div className="hero-mascot">
