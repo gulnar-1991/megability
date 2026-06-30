@@ -10,3 +10,7 @@ coverage/
 /hero-video.mp4
 .vercel
 bright-horizons-pediatric-care/
+
+# Local-only asset sources/backups (not needed at runtime — keep repo & deploy lean)
+.asset-backups/
+public/assets/mascot/frames/

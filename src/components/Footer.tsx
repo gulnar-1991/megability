@@ -1,87 +1,31 @@
-import React from "react";
-import { CLINIC_NAME, EMAIL_CONTACT } from "../data";
-import { ArrowUp, Instagram, Linkedin, Facebook } from "lucide-react";
+import Logo from "./Logo";
+import { Link } from "../router";
 
+// Shared site footer — used on both the landing page and the pricing page so
+// they stay identical. Styled by the global `footer{}` rules in index.css.
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const handleBackToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <footer
-      className="bg-[#1A2E1D] text-[#FAFAF7] px-8 md:px-16 py-20 md:py-24"
-      id="footer"
-    >
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8">
-        {/* Left column */}
-        <div className="flex flex-col justify-between gap-16 md:min-h-[260px]">
-          <h3 className="font-serif italic text-3xl md:text-4xl font-light text-[#7AB87A] leading-none">
-            {CLINIC_NAME}
-          </h3>
-
-          <p className="text-sm md:text-base text-[#FAFAF7] font-light max-w-md leading-relaxed -mt-6">
-            Where every child's journey is celebrated. Multidisciplinary
-            healthcare pathways built for pediatric developmental milestones in
-            Canada.
-          </p>
-
-          <div className="flex gap-7 text-[#FAFAF7] mt-auto">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="hover:opacity-70 transition-opacity"
-            >
-              <Instagram className="w-5 h-5" strokeWidth={1.5} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="hover:opacity-70 transition-opacity"
-            >
-              <Linkedin className="w-5 h-5" strokeWidth={1.5} />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="hover:opacity-70 transition-opacity"
-            >
-              <Facebook className="w-5 h-5" strokeWidth={1.5} />
-            </a>
+    <footer id="footer">
+      <div className="wrap">
+        <div className="foot-top">
+          <div className="foot-left">
+            <div className="foot-brand">
+              <span className="chip"><Logo gradId="fg" /></span>
+              <span>megability</span>
+            </div>
+            <p>Websites + AI Parent Navigator for pediatric and developmental clinics. Helping families find their way, day and night.</p>
+          </div>
+          <div className="foot-contact">
+            <div><span className="lbl">Email</span> <a href="mailto:info@megability.ca">info@megability.ca</a></div>
+            <div><span className="lbl">Phone</span> <a href="tel:+16476878024">+1 647 687 8024</a></div>
+            <div><span className="lbl">Web</span> <a href="https://www.megability.ca">megability.ca</a></div>
+            <div><span className="lbl">Based in</span> Stoney Creek, Ontario</div>
           </div>
         </div>
-
-        {/* Right column */}
-        <div className="flex flex-col justify-between gap-16 md:items-end md:min-h-[260px]">
-          <nav className="flex flex-wrap gap-x-8 gap-y-3 text-xs uppercase tracking-widest font-semibold text-white md:justify-end">
-            <a href="#about" className="hover:opacity-70 transition-opacity">About</a>
-            <a href="#programs" className="hover:opacity-70 transition-opacity">Programs</a>
-            <a href="#eligibility" className="hover:opacity-70 transition-opacity">Eligibility</a>
-            <a href="#contact" className="hover:opacity-70 transition-opacity">Contact</a>
-            <a href={`mailto:${EMAIL_CONTACT}`} className="hover:opacity-70 transition-opacity">Support</a>
-          </nav>
-
-          <div className="flex items-center justify-between md:justify-end gap-8 w-full md:w-auto mt-auto">
-            <p className="text-sm text-[#FAFAF7] font-light leading-none">
-              © {currentYear} {CLINIC_NAME}. All rights reserved.
-            </p>
-            <a
-              href="#"
-              onClick={handleBackToTop}
-              aria-label="Back to top"
-              className="text-[#FAFAF7] hover:opacity-70 transition-opacity"
-            >
-              <ArrowUp className="w-5 h-5" strokeWidth={1.5} />
-            </a>
-          </div>
+        <p className="disclaimer">Megability and Sunny provide general guidance and help families navigate publicly available Ontario programs and services. Sunny does not diagnose, screen, or provide medical advice, and does not store families' medical records. Always confirm details with the relevant program or a qualified professional. In an emergency, call 911.</p>
+        <div className="foot-bottom">
+          <span>© 2026 Megability</span>
+          <span><Link to="/pricing">Pricing</Link><a href="#">Privacy</a><a href="#">Terms</a><Link to="/demo">Book a Demo</Link></span>
         </div>
       </div>
     </footer>

@@ -3,38 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport"  content="width=device-width, initial-scale=1.0" />
-    <title>Megability — AI Receptionist for Special Needs Clinics</title>
-    <style>
-#voiceflow-chat {
-  position: fixed !important;
-  bottom: env(safe-area-inset-bottom, 0px) !important;
-  right: 0 !important;
-  left: auto !important;
-  top: auto !important;
-  z-index: 2147483647 !important;
-}
-    </style>
+    <title>Megability — Websites + AI Parent Navigator for Pediatric &amp; Developmental Clinics</title>
+    <meta name="description" content="Meet Sunny — your clinic's AI receptionist and parent navigator. Answer every call, guide special-needs families, and book your next patient. Built for pediatric, autism, speech, OT, and developmental clinics." />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script type="text/javascript">
-      (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '6a298d3ed4249ea2fd05dfce' },
-            url: 'https://general-runtime.voiceflow.com',
-            voice: {
-              url: "https://runtime-api.voiceflow.com"
-            },
-            userID: 'user_' + Date.now(),
-            showRestartButton: true,
-          });
-        }
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type =
-        "text/javascript"; s.parentNode.insertBefore(v, s);
-      })(document, 'script');
-    </script>
   </body>
 </html>
