@@ -86,7 +86,7 @@ function ConvosSection() {
               return (
                 <div
                   key={i}
-                  className="cv-stack-card"
+                  className={`cv-stack-card${pos === 0 ? " cv-current" : ""}`}
                   style={{
                     transform: `translateY(${pos === 0 ? 44 : pos === 1 ? 26 : 12}px) scale(${pos === 0 ? 1 : pos === 1 ? 0.95 : 0.9})`,
                     opacity: pos === 0 ? 1 : pos === 1 ? 0.72 : pos === 2 ? 0.44 : 0,
@@ -331,11 +331,11 @@ function DemoSection() {
         {/* Content panel */}
         {tab === 'chat' ? (
           <div className="el-chat-panel">
-            <div className="db-bubble db-sunny">Hi there! 👋 Is your child already enrolled in a program, or are you just starting to look?</div>
+            <div className="db-bubble db-sunny">Hi there! Is your child already enrolled in a program, or are you just starting to look?</div>
             <div className="db-bubble db-parent">We're trying to understand the OAP waitlist…</div>
             <div className="db-bubble db-sunny">The Ontario Autism Program has three streams — <strong>Core, Caregiver, and Skills</strong>. Based on your child's age, Core is likely the right fit. Want me to walk you through the first step?</div>
             <div className="db-bubble db-parent">Yes please!</div>
-            <div className="db-bubble db-sunny">Great. I'll send you the direct link — what's the best number to text you? 📱</div>
+            <div className="db-bubble db-sunny">Great. I'll send you the direct link — what's the best number to text you?</div>
             <div className="db-typing"><span/><span/><span/></div>
           </div>
         ) : (
@@ -436,7 +436,7 @@ export default function App() {
               </div>
               <div className="hero-ctas">
                 <Link to="/demo" className="btn btn-white">Book a Demo</Link>
-                <a href="#demo" className="btn btn-watch">▶ Watch Sunny in Action</a>
+                <a href="#phone" className="btn btn-watch">See Sunny in Action</a>
               </div>
             </div>
             <div className="hero-mascot">
@@ -479,7 +479,7 @@ export default function App() {
             <div className="db-orb db-orb-3"><div className="db-otitle">Warm first</div><span>Built for worried parents</span></div>
             <div className="db-orb db-orb-4"><div className="db-otitle">PHIPA compliant</div><span>Privacy you can trust</span></div>
             <div className="db-orb db-orb-5"><div className="db-onum">No diagnosis</div><span>Ever. Not once.</span></div>
-            <div className="db-orb db-orb-6"><div className="db-onum">🔔</div><span>Appointment reminders</span></div>
+            <div className="db-orb db-orb-6"><div className="db-otitle">Reminders</div><span>Email &amp; text, automatically</span></div>
             <div className="db-orb db-orb-7"><div className="db-otitle">Book appointment</div><span>Straight from the chat</span></div>
             <div className="db-orb db-orb-8"><div className="db-otitle">OAP · Passport · ODSP</div><span>Specialist program knowledge</span></div>
             <div className="db-orb db-orb-9"><div className="db-otitle">EN · FR + more</div><span>Handles French natively</span></div>
@@ -490,11 +490,11 @@ export default function App() {
               <img src="/assets/mascot/mascot_still.png" alt="Sunny" className="db-avatar" />
               <div><strong>Sunny</strong><span>Your clinic's AI navigator</span></div>
             </div>
-            <div className="db-bubble db-sunny">Hi there! 👋 Is your child already enrolled in a program, or are you just starting to look?</div>
+            <div className="db-bubble db-sunny">Hi there! Is your child already enrolled in a program, or are you just starting to look?</div>
             <div className="db-bubble db-parent">We're trying to understand the OAP waitlist…</div>
             <div className="db-bubble db-sunny">The Ontario Autism Program has three streams — <strong>Core, Caregiver, and Skills</strong>. Based on your child's age, Core is likely the right fit. Want me to walk you through the first step?</div>
             <div className="db-bubble db-parent">Yes please!</div>
-            <div className="db-bubble db-sunny">Great. I'll send you the direct link — what's the best number to text you? 📱</div>
+            <div className="db-bubble db-sunny">Great. I'll send you the direct link — what's the best number to text you?</div>
             <div className="db-typing"><span/><span/><span/></div>
           </div>
         </div>
@@ -556,14 +556,14 @@ export default function App() {
               <h2>Built for clinics<br/>like <em>yours</em>.</h2>
               <p>From autism and ABA to speech, occupational, and developmental care — Sunny is shaped around your specialty, your programs, and the families who walk through your doors.</p>
               <div className="fyw-pills">
-                <span className="fyw-pill">🧩 Autism clinics</span>
-                <span className="fyw-pill">🗣️ Speech therapy</span>
-                <span className="fyw-pill">✋ Occupational therapy</span>
-                <span className="fyw-pill">🧠 ABA clinics</span>
-                <span className="fyw-pill">👶 Developmental pediatrics</span>
-                <span className="fyw-pill">⚡ ADHD support</span>
-                <span className="fyw-pill">💛 Down syndrome services</span>
-                <span className="fyw-pill">🌱 Developmental services</span>
+                <span className="fyw-pill">Autism clinics</span>
+                <span className="fyw-pill">Speech therapy</span>
+                <span className="fyw-pill">Occupational therapy</span>
+                <span className="fyw-pill">ABA clinics</span>
+                <span className="fyw-pill">Developmental pediatrics</span>
+                <span className="fyw-pill">ADHD support</span>
+                <span className="fyw-pill">Down syndrome services</span>
+                <span className="fyw-pill">Developmental services</span>
               </div>
             </div>
             <div className="fyw-art anim anim-d2">

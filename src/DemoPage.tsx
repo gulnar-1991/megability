@@ -38,7 +38,7 @@ export default function DemoPage() {
             </ul>
             <div className="demo-aside">
               <p>Prefer to talk now? Call our live demo line</p>
-              <a href="tel:+13653641630" className="demo-phone">📞 365 364 1630</a>
+              <a href="tel:+13653641630" className="demo-phone">365 364 1630</a>
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 type Line = { from: "sunny" | "parent"; text: string; sms?: string };
-type Sample = { id: string; label: string; emoji: string; lines: Line[] };
+type Sample = { id: string; label: string; lines: Line[] };
 
 // Sample after-hours calls. Sunny stays warm, never diagnoses, and "books" by
 // texting links to the caller's phone. Spelled-out acronyms (A.D.H.D., I.E.P.)
@@ -10,45 +10,41 @@ const SAMPLES: Sample[] = [
   {
     id: "welcome",
     label: "Warm welcome & booking",
-    emoji: "👋",
     lines: [
       { from: "parent", text: "Hi, I'm honestly not sure where to start. My son was just referred to your clinic." },
       { from: "sunny", text: "You're in exactly the right place, and welcome. I can help you book a first visit and point you to a few programs while you wait. Would you like me to text the booking link to your phone right now?" },
       { from: "parent", text: "Yes please, that would be great." },
-      { from: "sunny", text: "Done — I've just sent a link to your phone. Pick any time that works and you're all set. Is there anything else I can help with today?", sms: "📅 Your booking link: book.megability.ca — pick any time" },
+      { from: "sunny", text: "Done — I've just sent a link to your phone. Pick any time that works and you're all set. Is there anything else I can help with today?", sms: "Your booking link: book.megability.ca — pick any time" },
     ],
   },
   {
     id: "adhd",
     label: "A.D.H.D. support",
-    emoji: "⚡",
     lines: [
       { from: "parent", text: "My daughter was just diagnosed with A.D.H.D. What support is out there for us?" },
       { from: "sunny", text: "Great question. In Ontario there are school supports like an I.E.P., plus community programs and funding you might qualify for. I won't diagnose anything, but I can text you a short guide and the right local contacts. Shall I send those over?" },
       { from: "parent", text: "That would be amazing, thank you." },
-      { from: "sunny", text: "Sent to your phone. And if you'd like, I can book a quick call with the clinic so we can walk through it together.", sms: "🔗 A.D.H.D. starter guide + local contacts sent to your phone" },
+      { from: "sunny", text: "Sent to your phone. And if you'd like, I can book a quick call with the clinic so we can walk through it together.", sms: "A.D.H.D. starter guide + local contacts sent to your phone" },
     ],
   },
   {
     id: "local",
     label: "Local programs",
-    emoji: "📍",
     lines: [
       { from: "parent", text: "We just moved to Hamilton. Are there local programs for special-needs kids?" },
       { from: "sunny", text: "Welcome to Hamilton! Locally, Contact Hamilton is a wonderful first door, and there's provincial funding like Passport and Special Services at Home. I'll text you the links and numbers so they're handy. Would you like me to book an intro call too?" },
       { from: "parent", text: "Yes, let's do that." },
-      { from: "sunny", text: "Perfect — the booking link is on its way to your phone now.", sms: "📍 Local programs + booking link sent to your phone" },
+      { from: "sunny", text: "Perfect — the booking link is on its way to your phone now.", sms: "Local programs + booking link sent to your phone" },
     ],
   },
   {
     id: "downsyndrome",
     label: "Down syndrome",
-    emoji: "💛",
     lines: [
       { from: "parent", text: "My baby has Down syndrome. I feel a little overwhelmed about what comes next." },
       { from: "sunny", text: "That's completely understandable, and you don't have to figure it all out alone. Early intervention, speech and occupational therapy, and family support programs can all help. I'll send a gentle starter guide to your phone, and I can set up a visit whenever you're ready." },
       { from: "parent", text: "Thank you, that really helps." },
-      { from: "sunny", text: "Anytime. I've texted you the link — book whenever it feels right for you.", sms: "💛 Down syndrome family guide + booking link sent" },
+      { from: "sunny", text: "Anytime. I've texted you the link — book whenever it feels right for you.", sms: "Down syndrome family guide + booking link sent" },
     ],
   },
 ];
@@ -153,13 +149,12 @@ export default function PhoneAgent() {
             <h2>Sunny answers<br/>the phone, too</h2>
             <p className="ph-lead">When a parent calls after hours, Sunny picks up — warm and patient — answers in plain language, then texts the links straight to their phone so nothing gets lost.</p>
             <div className="ph-samples">
-              <span className="ph-samples-label">▶ Hear a sample call</span>
+              <span className="ph-samples-label">Hear a sample call</span>
               {SAMPLES.map((s) => {
                 const isOn = s.id === activeId && playing;
                 return (
                   <button key={s.id} className={`ph-sample${s.id === activeId ? " active" : ""}`} onClick={() => onSampleClick(s)}>
                     <span className="ph-sample-ic">{isOn ? "❚❚" : "▶"}</span>
-                    <span className="ph-sample-em">{s.emoji}</span>
                     {s.label}
                   </button>
                 );
