@@ -610,6 +610,8 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .demo-consent input{width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--orange)}
 .demo-submit{background:var(--orange);color:#fff;border:none;justify-content:center;width:100%;margin-top:8px;font-size:1rem;cursor:pointer;box-shadow:0 10px 26px rgba(244,123,32,0.32)}
 .demo-submit:hover{background:#e06918;transform:translateY(-2px)}
+.demo-submit:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+.demo-error{color:#C0392B;font-size:.86rem;font-weight:500;background:#FBE9E7;border:1px solid #F3C4BC;border-radius:10px;padding:11px 14px;margin-top:2px}
 .demo-success{text-align:center;padding:36px 18px}
 .demo-check{width:62px;height:62px;border-radius:50%;background:var(--orange);color:#fff;font-size:1.9rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 12px 30px rgba(244,123,32,0.35)}
 .demo-success h2{color:var(--deep);font-size:1.6rem;font-weight:800;margin-bottom:10px}
