@@ -219,32 +219,14 @@ const WHY_RIGHT = [
 ];
 
 function WhySection() {
-  const [frame, setFrame] = useState(141);
   const [leftIdx, setLeftIdx] = useState(0);
   const [rightIdx, setRightIdx] = useState(0);
   const [leftVis, setLeftVis] = useState(true);
   const [rightVis, setRightVis] = useState(true);
-  const stageRef = useRef<HTMLDivElement>(null);
 
-  // Only run the 52-frame blink loop while the mascot is actually on-screen, and
-  // skip it entirely for reduced-motion users. Otherwise it re-decodes a PNG
-  // ~12×/sec for the whole session — the main source of the page feeling heavy.
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const el = stageRef.current;
-    if (!el) return;
-
-    let t: ReturnType<typeof setInterval> | null = null;
-    const start = () => { if (!t) t = setInterval(() => setFrame(f => f >= 192 ? 141 : f + 1), 80); };
-    const stop = () => { if (t) { clearInterval(t); t = null; } };
-
-    const obs = new IntersectionObserver(
-      ([e]) => { e.isIntersecting ? start() : stop(); },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => { stop(); obs.disconnect(); };
-  }, []);
+  // The blinking mascot is now a single self-looping transparent webp
+  // (sunny-blink.webp) — no JS frame timer, and ~38× smaller than the old
+  // 52-PNG sequence.
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -266,7 +248,7 @@ function WhySection() {
   const rc = WHY_RIGHT[rightIdx];
 
   return (
-    <div className="wrap why-stage" ref={stageRef}>
+    <div className="wrap why-stage">
         {/* Left rotating card */}
         <div className={`why-card${leftVis ? " wc-in" : ""}`}>
           <span className="wc-eyebrow">Parent asks</span>
@@ -278,10 +260,10 @@ function WhySection() {
           </div>
         </div>
 
-        {/* Center mascot */}
+        {/* Center mascot — self-looping blink webp */}
         <div className="why-mascot">
           <img
-            src={`/assets/mascot/blink/ezgif-frame-${frame}.png`}
+            src="/assets/mascot/sunny-blink.webp"
             alt="Sunny"
             draggable={false}
           />
