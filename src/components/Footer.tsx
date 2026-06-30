@@ -17,7 +17,6 @@ export default function Footer() {
           </div>
           <div className="foot-contact">
             <div><span className="lbl">Email</span> <a href="mailto:info@megability.ca">info@megability.ca</a></div>
-            <div><span className="lbl">Phone</span> <a href="tel:+16476878024">+1 647 687 8024</a></div>
             <div><span className="lbl">Web</span> <a href="https://www.megability.ca">megability.ca</a></div>
             <div><span className="lbl">Based in</span> Stoney Creek, Ontario</div>
           </div>
