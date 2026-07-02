@@ -665,10 +665,11 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .ph-play:hover{background:rgba(255,255,255,0.2)}
 .ph-play-ic{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--purple-1);display:flex;align-items:center;justify-content:center;font-size:.92rem;padding-left:3px}
 .ph-play .ph-wave{margin:0;height:30px}
-.ph-caption{min-height:72px}
+.ph-caption{min-height:60px}
 .ph-caption b{font-weight:700}
-.cap-sunny{color:#FFD29E}
-.cap-parent{color:#CDC6F7}
+.ph-time{display:block;margin-top:6px;font-size:.72rem;color:rgba(255,255,255,0.6);font-family:'Urbanist',sans-serif;font-weight:600;letter-spacing:.02em}
+.ph-progress{width:100%;height:3px;border-radius:999px;background:rgba(255,255,255,0.18);overflow:hidden;margin-bottom:14px}
+.ph-progress i{display:block;height:100%;background:linear-gradient(90deg,#FFC178,var(--orange));transition:width .15s linear}
 
 /* ============ FOR YOUR WORLD — DARK SPECIALTY SECTION ============ */
 .fyw-s{position:relative;overflow:hidden;background:var(--deep)}

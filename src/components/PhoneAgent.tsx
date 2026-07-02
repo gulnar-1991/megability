@@ -1,130 +1,115 @@
 import { useEffect, useRef, useState } from "react";
 
-type Line = { from: "sunny" | "parent"; text: string; sms?: string };
-type Sample = { id: string; label: string; lines: Line[] };
+type Sample = {
+  id: string;
+  label: string;
+  file: string;
+  description: string;
+  sms?: string;
+};
 
-// Sample after-hours calls. Sunny stays warm, never diagnoses, and "books" by
-// texting links to the caller's phone. Spelled-out acronyms (A.D.H.D., I.E.P.)
-// read more naturally through browser speech synthesis.
+// Real recorded sample calls (Sunny's actual voice), extracted to lightweight
+// mono MP3s from the user's source videos in
+// ".../megability website inspiration/phone agent/". Mapped 1:1 by filename:
+//   Warm Welcoming.mp4                -> warm-welcome.mp3
+//   Booking Link Send.mp4             -> booking-link.mp3
+//   Estimate waitlist for OAP...      -> oap-waitlist.mp3
+//   Local Support Options.mp4         -> local-support.mp3
+//   Down Syndrome Guiding.mp4         -> down-syndrome.mp3
 const SAMPLES: Sample[] = [
   {
     id: "welcome",
     label: "Warm welcome & booking",
-    lines: [
-      { from: "parent", text: "Hi, I'm honestly not sure where to start. My son was just referred to your clinic." },
-      { from: "sunny", text: "You're in exactly the right place, and welcome. I can help you book a first visit and point you to a few programs while you wait. Would you like me to text the booking link to your phone right now?" },
-      { from: "parent", text: "Yes please, that would be great." },
-      { from: "sunny", text: "Done — I've just sent a link to your phone. Pick any time that works and you're all set. Is there anything else I can help with today?", sms: "Your booking link: book.megability.ca — pick any time" },
-    ],
+    file: "/assets/voice/warm-welcome.mp3",
+    description: "Sunny greets a new parent, answers their first questions, and offers to text over the booking link.",
+    sms: "Your booking link sent to your phone",
   },
   {
-    id: "adhd",
-    label: "A.D.H.D. support",
-    lines: [
-      { from: "parent", text: "My daughter was just diagnosed with A.D.H.D. What support is out there for us?" },
-      { from: "sunny", text: "Great question. In Ontario there are school supports like an I.E.P., plus community programs and funding you might qualify for. I won't diagnose anything, but I can text you a short guide and the right local contacts. Shall I send those over?" },
-      { from: "parent", text: "That would be amazing, thank you." },
-      { from: "sunny", text: "Sent to your phone. And if you'd like, I can book a quick call with the clinic so we can walk through it together.", sms: "A.D.H.D. starter guide + local contacts sent to your phone" },
-    ],
+    id: "booking",
+    label: "Sending the booking link",
+    file: "/assets/voice/booking-link.mp3",
+    description: "Sunny confirms the details and sends the booking link straight to the parent's phone.",
+    sms: "Booking link sent to your phone",
+  },
+  {
+    id: "oap",
+    label: "OAP waitlist & programs",
+    file: "/assets/voice/oap-waitlist.mp3",
+    description: "Sunny estimates the OAP waitlist and guides the family to the right program for their child's age.",
+    sms: "OAP program info + links sent to your phone",
   },
   {
     id: "local",
-    label: "Local programs",
-    lines: [
-      { from: "parent", text: "We just moved to Hamilton. Are there local programs for special-needs kids?" },
-      { from: "sunny", text: "Welcome to Hamilton! Locally, Contact Hamilton is a wonderful first door, and there's provincial funding like Passport and Special Services at Home. I'll text you the links and numbers so they're handy. Would you like me to book an intro call too?" },
-      { from: "parent", text: "Yes, let's do that." },
-      { from: "sunny", text: "Perfect — the booking link is on its way to your phone now.", sms: "Local programs + booking link sent to your phone" },
-    ],
+    label: "Local support options",
+    file: "/assets/voice/local-support.mp3",
+    description: "Sunny shares local support programs and services available in the family's area.",
+    sms: "Local program links sent to your phone",
   },
   {
     id: "downsyndrome",
-    label: "Down syndrome",
-    lines: [
-      { from: "parent", text: "My baby has Down syndrome. I feel a little overwhelmed about what comes next." },
-      { from: "sunny", text: "That's completely understandable, and you don't have to figure it all out alone. Early intervention, speech and occupational therapy, and family support programs can all help. I'll send a gentle starter guide to your phone, and I can set up a visit whenever you're ready." },
-      { from: "parent", text: "Thank you, that really helps." },
-      { from: "sunny", text: "Anytime. I've texted you the link — book whenever it feels right for you.", sms: "Down syndrome family guide + booking link sent" },
-    ],
+    label: "Down syndrome guidance",
+    file: "/assets/voice/down-syndrome.mp3",
+    description: "Sunny gently guides a parent through next steps and family support options.",
+    sms: "Family guide + booking link sent to your phone",
   },
 ];
+
+function formatTime(sec: number) {
+  if (!isFinite(sec) || sec < 0) return "0:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
 
 export default function PhoneAgent() {
   const [activeId, setActiveId] = useState(SAMPLES[0].id);
   const [playing, setPlaying] = useState(false);
-  const [lineIdx, setLineIdx] = useState(-1);
   const [showSms, setShowSms] = useState(false);
-  const playingRef = useRef(false);
-  const sunnyVoice = useRef<SpeechSynthesisVoice | null>(null);
-  const parentVoice = useRef<SpeechSynthesisVoice | null>(null);
+  const [elapsed, setElapsed] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const active = SAMPLES.find((s) => s.id === activeId) ?? SAMPLES[0];
 
-  // Pick the warmest available English voices once they load.
+  // Create a single reusable <audio> element for the whole player.
   useEffect(() => {
-    const synth = window.speechSynthesis;
-    if (!synth) return;
-    const pick = () => {
-      const vs = synth.getVoices().filter((v) => v.lang.toLowerCase().startsWith("en"));
-      if (!vs.length) return;
-      const find = (names: string[]) => vs.find((v) => names.some((n) => v.name.toLowerCase().includes(n)));
-      sunnyVoice.current = find(["samantha", "aria", "jenny", "sonia", "zira", "google us english", "female"]) || vs[0];
-      parentVoice.current = find(["david", "mark", "daniel", "ryan", "google uk english male"]) || vs.find((v) => v !== sunnyVoice.current) || vs[0];
+    const audio = new Audio();
+    audio.preload = "none";
+    audioRef.current = audio;
+
+    const onTime = () => setElapsed(audio.currentTime);
+    const onLoaded = () => setDuration(audio.duration);
+    const onEnd = () => { setPlaying(false); setShowSms(true); };
+
+    audio.addEventListener("timeupdate", onTime);
+    audio.addEventListener("loadedmetadata", onLoaded);
+    audio.addEventListener("ended", onEnd);
+    return () => {
+      audio.pause();
+      audio.removeEventListener("timeupdate", onTime);
+      audio.removeEventListener("loadedmetadata", onLoaded);
+      audio.removeEventListener("ended", onEnd);
     };
-    pick();
-    synth.onvoiceschanged = pick;
-    return () => { synth.onvoiceschanged = null; };
   }, []);
 
-  // Stop any speech when the component unmounts (e.g. navigating away).
-  useEffect(() => () => { playingRef.current = false; window.speechSynthesis?.cancel(); }, []);
-
   const stop = () => {
-    playingRef.current = false;
-    window.speechSynthesis?.cancel();
+    audioRef.current?.pause();
     setPlaying(false);
   };
 
-  const playSample = (sample: Sample, fromLine = 0) => {
-    window.speechSynthesis?.cancel();
-    setActiveId(sample.id);
+  const playSample = (sample: Sample) => {
+    const audio = audioRef.current;
+    if (!audio) return;
     setShowSms(false);
-    setPlaying(true);
-    playingRef.current = true;
-    let i = fromLine;
-
-    const step = () => {
-      if (!playingRef.current) return;
-      if (i >= sample.lines.length) { playingRef.current = false; setPlaying(false); return; }
-      const line = sample.lines[i];
-      setLineIdx(i);
-      if (line.sms) setShowSms(true);
-
-      let advanced = false;
-      const advance = () => {
-        if (advanced || !playingRef.current) return;
-        advanced = true;
-        i += 1;
-        window.setTimeout(step, 330);
-      };
-
-      const synth = window.speechSynthesis;
-      if (synth) {
-        const u = new SpeechSynthesisUtterance(line.text);
-        const v = line.from === "sunny" ? sunnyVoice.current : parentVoice.current;
-        if (v) u.voice = v;
-        u.rate = 1;
-        u.pitch = line.from === "sunny" ? 1.08 : 0.95;
-        u.onend = advance;
-        u.onerror = advance;
-        synth.speak(u);
-        // Safety net in case onend never fires (some browsers).
-        window.setTimeout(advance, Math.max(3500, line.text.length * 75));
-      } else {
-        window.setTimeout(advance, Math.max(2600, line.text.length * 55));
-      }
-    };
-    step();
+    setElapsed(0);
+    setDuration(0);
+    if (activeId !== sample.id || audio.src.indexOf(sample.file) === -1) {
+      audio.src = sample.file;
+      setActiveId(sample.id);
+    } else {
+      audio.currentTime = 0;
+    }
+    audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
   };
 
   const onSampleClick = (s: Sample) => {
@@ -133,12 +118,17 @@ export default function PhoneAgent() {
   };
 
   const onPhoneToggle = () => {
-    if (playing) stop();
-    else playSample(active, lineIdx >= 0 && lineIdx < active.lines.length - 1 ? lineIdx : 0);
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) { stop(); return; }
+    if (audio.src && audio.src.indexOf(active.file) !== -1 && audio.currentTime > 0 && !audio.ended) {
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+    } else {
+      playSample(active);
+    }
   };
 
-  const caption = lineIdx >= 0 ? active.lines[lineIdx] : null;
-  const smsLines = active.lines.filter((l) => l.sms);
+  const progressPct = duration > 0 ? Math.min(100, (elapsed / duration) * 100) : 0;
 
   return (
     <section className="block phone-s" id="phone">
@@ -149,7 +139,7 @@ export default function PhoneAgent() {
             <h2>Sunny answers<br/>the phone, too</h2>
             <p className="ph-lead">When a parent calls after hours, Sunny picks up — warm and patient — answers in plain language, then texts the links straight to their phone so nothing gets lost.</p>
             <div className="ph-samples">
-              <span className="ph-samples-label">Hear a sample call</span>
+              <span className="ph-samples-label">Hear a real sample call</span>
               {SAMPLES.map((s) => {
                 const isOn = s.id === activeId && playing;
                 return (
@@ -160,7 +150,7 @@ export default function PhoneAgent() {
                 );
               })}
             </div>
-            <p className="ph-note">Plays in your browser. Sunny never diagnoses — she guides families and books visits.</p>
+            <p className="ph-note">Real recordings of Sunny's voice. She never diagnoses — she guides families and books visits.</p>
           </div>
 
           <div className="ph-stage">
@@ -181,17 +171,17 @@ export default function PhoneAgent() {
                     <span className="ph-play-ic">▶</span>
                   )}
                 </button>
+                {(playing || elapsed > 0) && (
+                  <div className="ph-progress"><i style={{ width: `${progressPct}%` }} /></div>
+                )}
                 <p className="ph-caption">
-                  {caption ? (
-                    <><b className={caption.from === "sunny" ? "cap-sunny" : "cap-parent"}>{caption.from === "sunny" ? "Sunny" : "Parent"}:</b> {caption.text}</>
-                  ) : (
-                    "Press play, or pick a topic, to hear Sunny take a call."
-                  )}
+                  {active.description}
+                  {duration > 0 && <span className="ph-time"> {formatTime(elapsed)} / {formatTime(duration)}</span>}
                 </p>
               </div>
-              {showSms && (
+              {showSms && active.sms && (
                 <div className="ph-sms">
-                  {smsLines.map((l, idx) => <div key={idx} className="ph-sms-bubble">{l.sms}</div>)}
+                  <div className="ph-sms-bubble">{active.sms}</div>
                 </div>
               )}
             </div>

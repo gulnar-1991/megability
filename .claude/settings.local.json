@@ -61,7 +61,9 @@
       "Bash(xxd -s 25 -l 1 /c/Users/gulna/bright-horizons-pediatric-care/public/assets/mascot/blink/ezgif-frame-141.png)",
       "Bash(xxd -s 25 -l 1 '/c/Users/gulna/OneDrive/Desktop/megability website/megability website inspiration/mascot movement/turning to side mascot/ezgif-frame-091.png')",
       "Bash(/c/Users/gulna/AppData/Local/Microsoft/WinGet/Packages/Google.Libwebp_Microsoft.Winget.Source_8wekyb3d8bbwe/libwebp-1.6.0-windows-x64/bin/cwebp.exe -q 92 -m 6 -sharp_yuv '/c/Users/gulna/Downloads/Firefly_Gemini Flash_make clinis visible, it does not look like pediatrci clinic right now, also the sun d 463464.png' -o /c/Users/gulna/bright-horizons-pediatric-care/public/assets/for-your-world-bg.webp)",
-      "Bash(awk '{print \"webp: ~\"int\\($5/1024\\)\" KB\"}')"
+      "Bash(awk '{print \"webp: ~\"int\\($5/1024\\)\" KB\"}')",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "mcp__Claude_in_Chrome__computer"
     ]
   }
 }

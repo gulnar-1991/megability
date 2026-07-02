@@ -400,6 +400,7 @@ export default function App() {
               <div className="navpill">
                 <a href="#websites">Websites</a>
                 <a href="#why">Why Sunny</a>
+                <a href="#phone">Phone</a>
                 <a href="#journey">How it works</a>
                 <Link to="/pricing">Pricing</Link>
               </div>
@@ -417,6 +418,7 @@ export default function App() {
           <div className={`nav-mobile${menuOpen ? " open" : ""}`}>
             <a href="#websites" onClick={() => setMenuOpen(false)}>Websites</a>
             <a href="#why" onClick={() => setMenuOpen(false)}>Why Sunny</a>
+            <a href="#phone" onClick={() => setMenuOpen(false)}>Phone</a>
             <a href="#journey" onClick={() => setMenuOpen(false)}>How it works</a>
             <Link to="/pricing" onClick={() => setMenuOpen(false)}>Pricing</Link>
             <Link to="/demo" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Book a Demo</Link>
