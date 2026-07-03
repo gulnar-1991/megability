@@ -48,6 +48,21 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* ── Sunny's Edge ── */}
+      <section className="pr-edge">
+        <div className="wrap">
+          <h2>What a generic receptionist can't do</h2>
+          <p className="pr-edge-intro">Most AI receptionists just take a message. Sunny actually helps families find their way.</p>
+          <ul className="pr-edge-list">
+            <li><Check /><span><strong>Knows Ontario's programs</strong> — OAP, Passport, ODSP, SmartStart and more, so families get real answers, not "someone will call you back."</span></li>
+            <li><Check /><span><strong>Knows your local supports</strong> — woven with your region's real front-door numbers, so parents feel Sunny knows their community.</span></li>
+            <li><Check /><span><strong>Texts links to the parent's phone</strong> — program info and booking links sent by text, so nothing gets lost.</span></li>
+            <li><Check /><span><strong>Age-aware routing</strong> — asks the child's age and points to the right program.</span></li>
+            <li><Check /><span><strong>Guides, never guesses</strong> — never diagnoses, never invents a number; built honestly for special-needs families.</span></li>
+          </ul>
+        </div>
+      </section>
+
       {/* ── Plan cards ── */}
       <section className="wrap pr-plans">
         {/* Sunny — AI Receptionist only */}

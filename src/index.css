@@ -540,6 +540,15 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .pr-hero p{max-width:660px;margin:0 auto;color:#4A4070;font-size:1.06rem}
 .pr-hero p strong{color:var(--purple-1)}
 
+/* Sunny's Edge — what makes it different */
+.pr-edge{padding:52px 0 54px;background:linear-gradient(to bottom,rgba(243,240,255,0.6) 0%,rgba(237,233,255,0.4) 100%);border-top:1px solid rgba(123,108,240,0.1);border-bottom:1px solid rgba(123,108,240,0.1)}
+.pr-edge h2{font-size:1.8rem;font-weight:800;color:var(--deep);text-align:center;margin-bottom:12px}
+.pr-edge-intro{text-align:center;font-size:1.02rem;color:#5B5286;margin-bottom:38px;max-width:660px;margin-left:auto;margin-right:auto}
+.pr-edge-list{list-style:none;max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.pr-edge-list li{display:flex;align-items:flex-start;gap:14px;font-size:.96rem;line-height:1.6;color:#4A4070}
+.pr-edge-list li strong{color:var(--deep);font-weight:700}
+.pr-edge-list .pr-check{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+
 /* Plan cards */
 .pr-plans{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;padding-top:18px}
 .pr-card{position:relative;background:#fff;border-radius:24px;padding:34px 32px 32px;border:1px solid rgba(123,108,240,0.14);box-shadow:0 18px 50px -28px rgba(50,30,140,0.3)}
