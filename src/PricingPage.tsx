@@ -64,7 +64,6 @@ export default function PricingPage() {
             <li><Check /><span><strong>Phone assistant</strong> for calls your front desk can't reach</span></li>
             <li><Check /><span><strong>Website chat assistant</strong> for common questions</span></li>
             <li><Check /><span><strong>Self-booking setup</strong> with email &amp; text reminders</span></li>
-            <li><Check /><span><strong>Monthly call report</strong> of patients helped and booked</span></li>
             <li><Check /><span>Includes <strong>500 minutes/month</strong>, then $0.50/min</span></li>
           </ul>
           <Link to="/demo" className="btn pr-cta">Book a Demo →</Link>
@@ -86,7 +85,6 @@ export default function PricingPage() {
             <li><Check /><span><strong>Ongoing maintenance</strong> — routine updates up to 2 hrs/month included</span></li>
             <li><Check /><span><strong>Phone + chat assistant</strong> answering calls and website chat</span></li>
             <li><Check /><span><strong>Self-booking setup</strong> with automatic email &amp; text reminders</span></li>
-            <li><Check /><span><strong>Monthly report</strong> of patients helped and booked</span></li>
             <li><Check /><span>Includes <strong>500 minutes/month</strong>, then $0.50/min</span></li>
             <li><Check /><span>Additional work quoted at <strong>$85/hr</strong>, always approved first</span></li>
           </ul>
