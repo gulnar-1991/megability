@@ -6,11 +6,9 @@ const EVERY_PLAN = [
   ["Personalized setup", "your services, hours, and voice"],
   ["Email & text reminders", "to reduce no-shows"],
   ["PHIPA-aware design", "assistant never stores health data"],
-  ["One local contact", "me, reachable directly"],
   ["Booking handoff", "patients book in your own system"],
   ["Encrypted", "in transit and at rest"],
   ["Works with TELUS PS Suite", "fits your existing setup"],
-  ["Helps families in English and French", ""],
 ];
 
 function Check() {
