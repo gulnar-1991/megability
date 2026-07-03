@@ -571,10 +571,10 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .pr-cta-primary:hover{background:#e06918;box-shadow:0 14px 34px rgba(244,123,32,0.45)}
 
 /* Included in every plan */
-.pr-every{padding-top:60px;padding-bottom:8px}
+.pr-every{padding-top:60px;padding-bottom:100px}
 .pr-every-label{margin-bottom:34px}
 .pr-every-text{font-family:'Urbanist';font-weight:700;color:var(--deep);font-size:1.02rem;letter-spacing:.01em;padding:0 18px;white-space:nowrap}
-.pr-every-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 26px}
+.pr-every-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px;max-width:800px;margin:0 auto}
 .pr-incl{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.45;color:#4A4070}
 .pr-incl strong{color:var(--deep);font-weight:700;display:block}
 
