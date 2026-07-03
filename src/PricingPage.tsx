@@ -124,16 +124,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── Good to know ── */}
-      <section className="wrap pr-know">
-        <h3>Good to know</h3>
-        <div className="pr-know-grid">
-          <p>Software subscriptions are billed directly by the provider (e.g. the booking tool, ~$10/mo) — no resale, no markup. You only ever pay providers what they charge.</p>
-          <p>If your clinic later moves booking deeper into PS Suite (e.g. TELUS Pomelo), I'll help confirm what your setup supports and configure the handoff — TELUS provides and prices that add-on directly.</p>
-          <p>Data runs on encrypted, US-based infrastructure, which is permitted under PHIPA when disclosed to patients — built into your privacy notice.</p>
-        </div>
-      </section>
-
       {/* ── Footer ── */}
       <Footer />
     </div>

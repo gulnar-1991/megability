@@ -578,13 +578,6 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .pr-incl{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.45;color:#4A4070}
 .pr-incl strong{color:var(--deep);font-weight:700;display:block}
 
-/* Good to know */
-.pr-know{padding-top:54px;padding-bottom:84px}
-.pr-know h3{font-family:'Urbanist';font-weight:800;color:var(--deep);font-size:1.3rem;margin-bottom:20px}
-.pr-know-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.pr-know-grid p{background:rgba(255,255,255,0.6);border:1px solid rgba(123,108,240,0.12);border-radius:16px;padding:20px 22px;font-size:.9rem;color:#5B5286;line-height:1.6}
-
-
 @media(max-width:860px){
   .pr-plans{grid-template-columns:1fr;gap:30px}
   .pr-featured{order:-1}
