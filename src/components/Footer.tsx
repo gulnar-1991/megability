@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="foot-top">
           <div className="foot-left">
             <div className="foot-brand">
-              <span className="chip"><Logo gradId="fg" /></span>
+              <span className="chip"><Logo variant="white" gradId="fg" /></span>
               <span>megability</span>
             </div>
             <p>Websites + AI Parent Navigator for pediatric and developmental clinics. Helping families find their way, day and night.</p>

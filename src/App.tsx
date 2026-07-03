@@ -386,7 +386,7 @@ export default function App() {
         <div className={`hero-nav${menuOpen ? " menu-open" : ""}`} ref={navRef}>
           <div className="wrap">
             <div className="brand">
-              <span className="chip"><Logo gradId="hg" /></span>
+              <span className="chip"><Logo variant="white" gradId="hg" /></span>
               <span className="name">megability</span>
             </div>
             <div className="hero-nav-right">

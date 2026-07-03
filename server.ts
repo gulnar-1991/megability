@@ -4,7 +4,7 @@ import fs from "fs";
 import https from "https";
 import { createServer as createViteServer } from "vite";
 
-const PORT = 3000;
+const PORT = parseInt(process.env.PORT || "3000", 10);
 const VIDEO_PATH = path.resolve("./hero-video.mp4");
 
 // Utility to recursively download video following redirects

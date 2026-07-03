@@ -63,7 +63,18 @@
       "Bash(/c/Users/gulna/AppData/Local/Microsoft/WinGet/Packages/Google.Libwebp_Microsoft.Winget.Source_8wekyb3d8bbwe/libwebp-1.6.0-windows-x64/bin/cwebp.exe -q 92 -m 6 -sharp_yuv '/c/Users/gulna/Downloads/Firefly_Gemini Flash_make clinis visible, it does not look like pediatrci clinic right now, also the sun d 463464.png' -o /c/Users/gulna/bright-horizons-pediatric-care/public/assets/for-your-world-bg.webp)",
       "Bash(awk '{print \"webp: ~\"int\\($5/1024\\)\" KB\"}')",
       "mcp__Claude_in_Chrome__browser_batch",
-      "mcp__Claude_in_Chrome__computer"
+      "mcp__Claude_in_Chrome__computer",
+      "Bash(xargs kill -9)",
+      "Bash(ffmpeg -i dreamina-hero.mp4 -vf \"crop=in_w:in_h*0.85:0:0\" -c:a copy dreamina-cropped.mp4 -y)",
+      "Bash(cp \"C:\\\\Users\\\\gulna\\\\OneDrive\\\\Desktop\\\\megability website\\\\megability website inspiration\\\\therapy hero video\\\\brighthorizon hero.mp4\" \"C:\\\\Users\\\\gulna\\\\megability-website\\\\public\\\\brighthorizon-hero.mp4\" && echo \"Video copied successfully\")",
+      "Bash(cp \"C:\\\\Users\\\\gulna\\\\OneDrive\\\\Desktop\\\\megability website\\\\megability website inspiration\\\\main bright hero.mp4\" \"C:\\\\Users\\\\gulna\\\\megability-website\\\\public\\\\brighthorizon-hero.mp4\")",
+      "Bash(netstat -ano)",
+      "Bash(pkill -f \"npm run dev\")",
+      "Bash(gh repo *)",
+      "PowerShell(Get-ChildItem C:\\\\Users\\\\gulna -Directory | Where-Object {$_.Name -match 'bright|megability|template|website'})",
+      "PowerShell(gh repo list --limit 20)",
+      "PowerShell(Stop-Process -Id 32836 -Force)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }

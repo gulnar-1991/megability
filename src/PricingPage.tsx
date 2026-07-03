@@ -27,7 +27,7 @@ export default function PricingPage() {
       <header className="pr-nav">
         <div className="wrap">
           <Link to="/" className="brand">
-            <span className="chip"><Logo gradId="pg" /></span>
+            <span className="chip"><Logo variant="colored" gradId="pg" /></span>
             <span className="name">megability</span>
           </Link>
           <div className="pr-nav-right">
