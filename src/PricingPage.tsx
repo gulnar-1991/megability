@@ -44,52 +44,53 @@ export default function PricingPage() {
         <div className="wrap">
           <span className="eyebrow">Pricing &amp; features</span>
           <h1>Two ways to<br/>work together</h1>
-          <p>Both plans include the phone &amp; chat assistant and booking setup. <strong>Complete</strong> adds the website most clinics also need — designed and maintained. No resale, no markup, one local contact.</p>
+          <p>Both plans include Sunny — your phone &amp; chat assistant with smart booking setup. <strong>Website + Sunny</strong> adds a custom, warm clinic website I design and maintain. No resale, no markup, one local contact.</p>
         </div>
       </section>
 
       {/* ── Plan cards ── */}
       <section className="wrap pr-plans">
-        {/* Complete — featured */}
-        <div className="pr-card pr-featured">
-          <span className="pr-badge">Most clinics choose this</span>
-          <h2>Complete</h2>
-          <p className="pr-tag">Assistant + booking + a website I design &amp; maintain</p>
+        {/* Sunny — AI Receptionist only */}
+        <div className="pr-card">
+          <h2>Sunny</h2>
+          <p className="pr-tag">Smart assistant + booking, using your existing website</p>
           <div className="pr-price">
-            <span className="pr-amt">$4,000</span><span className="pr-per">setup</span>
+            <span className="pr-amt">$300</span><span className="pr-per">onboarding</span>
             <span className="pr-plus">+</span>
             <span className="pr-amt">$300</span><span className="pr-per">/mo</span>
           </div>
-          <p className="pr-note">Everything in Receptionist, plus your full web presence.</p>
+          <p className="pr-note">For clinics whose website is already handled. Onboarding covers: custom-trained Sunny for your clinic, local Ontario program knowledge, booking + reminder setup, and full testing.</p>
+          <ul className="pr-list">
+            <li><Check /><span><strong>Phone assistant</strong> for calls your front desk can't reach</span></li>
+            <li><Check /><span><strong>Website chat assistant</strong> for common questions</span></li>
+            <li><Check /><span><strong>Self-booking setup</strong> with email &amp; text reminders</span></li>
+            <li><Check /><span><strong>Monthly call report</strong> of patients helped and booked</span></li>
+            <li><Check /><span>Includes <strong>500 minutes/month</strong>, then $0.50/min</span></li>
+          </ul>
+          <Link to="/demo" className="btn pr-cta">Book a Demo →</Link>
+        </div>
+
+        {/* Website + Sunny — featured */}
+        <div className="pr-card pr-featured">
+          <span className="pr-badge">Most clinics choose this</span>
+          <h2>Website + Sunny</h2>
+          <p className="pr-tag">Custom website + smart assistant + booking</p>
+          <div className="pr-price">
+            <span className="pr-amt">$2,000–4,000</span><span className="pr-per">website build</span>
+            <span className="pr-plus">+</span>
+            <span className="pr-amt">$300</span><span className="pr-per">/mo</span>
+          </div>
+          <p className="pr-note">Everything in Sunny, plus your full web presence designed and maintained by me.</p>
           <ul className="pr-list">
             <li><Check /><span><strong>Custom website</strong> — designed, built, and hosted for your clinic</span></li>
             <li><Check /><span><strong>Ongoing maintenance</strong> — routine updates up to 2 hrs/month included</span></li>
             <li><Check /><span><strong>Phone + chat assistant</strong> answering calls and website chat</span></li>
             <li><Check /><span><strong>Self-booking setup</strong> with automatic email &amp; text reminders</span></li>
             <li><Check /><span><strong>Monthly report</strong> of patients helped and booked</span></li>
+            <li><Check /><span>Includes <strong>500 minutes/month</strong>, then $0.50/min</span></li>
             <li><Check /><span>Additional work quoted at <strong>$85/hr</strong>, always approved first</span></li>
           </ul>
           <Link to="/demo" className="btn pr-cta pr-cta-primary">Book a Demo →</Link>
-        </div>
-
-        {/* AI Receptionist */}
-        <div className="pr-card">
-          <h2>AI Receptionist</h2>
-          <p className="pr-tag">Assistant + booking, using your existing website</p>
-          <div className="pr-price">
-            <span className="pr-amt">$2,000</span><span className="pr-per">setup</span>
-            <span className="pr-plus">+</span>
-            <span className="pr-amt">$200</span><span className="pr-per">/mo</span>
-          </div>
-          <p className="pr-note">For clinics whose website is already handled.</p>
-          <ul className="pr-list">
-            <li><Check /><span><strong>Phone assistant</strong> for calls your front desk can't reach</span></li>
-            <li><Check /><span><strong>Website chat assistant</strong> for common questions</span></li>
-            <li><Check /><span><strong>Self-booking setup</strong> with email &amp; text reminders</span></li>
-            <li><Check /><span><strong>Monthly call report</strong></span></li>
-            <li><Check /><span>Includes <strong>500 minutes/month</strong>, then $0.50/min</span></li>
-          </ul>
-          <Link to="/demo" className="btn pr-cta">Book a Demo →</Link>
         </div>
       </section>
 
