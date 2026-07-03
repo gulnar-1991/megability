@@ -74,7 +74,8 @@
       "PowerShell(Get-ChildItem C:\\\\Users\\\\gulna -Directory | Where-Object {$_.Name -match 'bright|megability|template|website'})",
       "PowerShell(gh repo list --limit 20)",
       "PowerShell(Stop-Process -Id 32836 -Force)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git commit -m 'Use official full-wordmark Megability logos; remove chip box and duplicate brand text *)"
     ]
   }
 }

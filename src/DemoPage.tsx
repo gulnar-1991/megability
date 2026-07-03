@@ -48,8 +48,7 @@ export default function DemoPage() {
       <header className="demo-nav">
         <div className="wrap">
           <Link to="/" className="brand">
-            <span className="chip"><Logo gradId="dg" /></span>
-            <span className="name">megability</span>
+            <Logo variant="colored" />
           </Link>
           <Link to="/" className="demo-back">← Back to site</Link>
         </div>

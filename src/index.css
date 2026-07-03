@@ -78,9 +78,7 @@ h1,h2,h3,.display{font-family:'Urbanist',sans-serif;letter-spacing:-0.02em}
 .hero-nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:26px 0}
 .hero-nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
 .brand{display:flex;align-items:center;gap:10px}
-.brand .chip{background:#fff;border-radius:13px;padding:8px 10px;display:flex;align-items:center;box-shadow:0 4px 14px rgba(40,20,80,0.18)}
-.brand .chip svg{height:26px;width:auto;display:block}
-.brand .name{color:#fff;font-family:'Urbanist';font-weight:600;font-size:1.2rem;letter-spacing:-0.01em}
+.brand .logo-svg{height:30px;width:auto;display:block}
 .hero-nav-right{display:flex;align-items:center;gap:14px}
 .navpill{background:rgba(255,255,255,0.16);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);border-radius:999px;display:flex;align-items:center;gap:4px;padding:7px 8px}
 .navpill a{color:#fff;font-size:.92rem;font-weight:500;padding:8px 16px;border-radius:999px;transition:background .2s}
@@ -509,9 +507,8 @@ h2{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.12;font-weight:700;letter-
 /* ============ FOOTER ============ */
 footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px}
-.foot-brand{display:flex;align-items:center;gap:11px;font-family:'Urbanist';font-weight:600;font-size:1.2rem;color:#fff;margin-bottom:12px}
-.foot-brand .chip{background:#fff;border-radius:10px;padding:6px 8px;display:flex}
-.foot-brand .chip svg{height:22px;width:auto;display:block}
+.foot-brand{display:flex;align-items:center;margin-bottom:12px}
+.foot-brand .logo-svg{height:26px;width:auto;display:block}
 .foot-left p{max-width:340px;color:#9b97aa;font-size:.94rem}
 .foot-contact{font-size:.94rem;line-height:2}
 .foot-contact a:hover{color:#fff}
