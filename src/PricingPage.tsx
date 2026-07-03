@@ -10,7 +10,7 @@ const EVERY_PLAN = [
   ["Booking handoff", "patients book in your own system"],
   ["Encrypted", "in transit and at rest"],
   ["Works with TELUS PS Suite", "fits your existing setup"],
-  ["Monthly performance report", "patients helped and booked"],
+  ["Helps families in English and French", ""],
 ];
 
 function Check() {
