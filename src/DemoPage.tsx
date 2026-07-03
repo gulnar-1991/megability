@@ -66,10 +66,6 @@ export default function DemoPage() {
               <li>Compare the Receptionist and Complete plans</li>
               <li>Talk pricing, timeline, and go-live</li>
             </ul>
-            <div className="demo-aside">
-              <p>Prefer to talk now? Call our live demo line</p>
-              <a href="tel:+13653641630" className="demo-phone">365 364 1630</a>
-            </div>
           </div>
 
           {/* Right — form */}
