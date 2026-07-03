@@ -111,12 +111,13 @@ function ConvosSection() {
 }
 
 const TEMPLATES = [
-  { name: "Lumina",   type: "Autism & ABA Clinics",      accent: "#7B6CF0", bg: "#EDE9FF", url: "luminaclinic.ca" },
-  { name: "Lavender", type: "Developmental Pediatrics",  accent: "#9B8FF5", bg: "#F3F0FF", url: "lavendercare.ca" },
-  { name: "Iris",     type: "Speech Therapy",            accent: "#5A4AD1", bg: "#ECEAFF", url: "irisspeech.ca" },
+  { name: "Lumina",   type: "Autism & ABA Clinics",      accent: "#7B6CF0", bg: "#EDE9FF", url: "luminaclinic.ca", gif: "/template-gifs/template1.gif" },
+  { name: "Lavender", type: "Developmental Pediatrics",  accent: "#9B8FF5", bg: "#F3F0FF", url: "lavendercare.ca", gif: "/template-gifs/template2.gif" },
+  { name: "Iris",     type: "Speech Therapy",            accent: "#5A4AD1", bg: "#ECEAFF", url: "irisspeech.ca", gif: "/template-gifs/template3.gif" },
 ];
 
 function TemplateCard({ t, pos, onActivate }: { t: typeof TEMPLATES[0]; pos: number; onActivate: () => void }) {
+  const [expandedGif, setExpandedGif] = useState<string | null>(null);
   const abs = Math.abs(pos);
   const visible = abs <= 2;
   const isCenter = pos === 0;
@@ -126,47 +127,39 @@ function TemplateCard({ t, pos, onActivate }: { t: typeof TEMPLATES[0]; pos: num
     zIndex: 10 - abs,
     pointerEvents: abs > 1 ? "none" : "auto",
     cursor: isCenter ? "default" : "pointer",
-    transition: "transform 0.4s cubic-bezier(.22,.61,.36,1), opacity 0.4s ease",
+    transition: "transform 0.8s ease-out, opacity 0.8s ease-out",
   };
 
   return (
-    <div
-      className="tpl-card"
-      style={style}
-      onClick={() => { if (!isCenter) onActivate(); }}
-      onMouseEnter={() => { if (!isCenter) onActivate(); }}
-    >
-      <div className="tpl-bar">
-        <i /><i /><i />
-        <span className="tpl-url">{t.url}</span>
-      </div>
-      <div className="tpl-preview" style={{ background: t.bg }}>
-        <div className="tpl-header" style={{ background: t.accent }}>
-          <div className="tpl-nav-fake">
-            <span className="tpl-logo-fake" />
-            <span className="tpl-links-fake"><span /><span /><span /></span>
-            <span className="tpl-btn-fake" />
-          </div>
-          <div className="tpl-hero-fake">
-            <div className="tpl-h1-fake" />
-            <div className="tpl-h2-fake" />
-            <div className="tpl-cta-fake" />
+    <>
+      <div
+        className="tpl-card"
+        style={style}
+        onClick={() => { if (!isCenter) onActivate(); }}
+      >
+        <div className="tpl-preview" style={{ background: t.bg }}>
+          <div
+            className="tpl-gif-container"
+            onClick={(e) => { e.stopPropagation(); setExpandedGif(t.gif); }}
+          >
+            <img src={t.gif} alt={`${t.name} template preview`} className="tpl-gif" />
           </div>
         </div>
-        <div className="tpl-body-fake">
-          <div className="tpl-cards-row">
-            <span style={{ background: t.accent + "30" }} /><span style={{ background: t.accent + "30" }} /><span style={{ background: t.accent + "30" }} />
-          </div>
-          <div className="tpl-text-rows">
-            <span /><span style={{ width: "80%" }} /><span style={{ width: "60%" }} />
-          </div>
+        <div className="tpl-label">
+          <span className="tpl-name" style={{ color: t.accent }}>{t.name}</span>
+          <span className="tpl-type">{t.type}</span>
         </div>
       </div>
-      <div className="tpl-label">
-        <span className="tpl-name" style={{ color: t.accent }}>{t.name}</span>
-        <span className="tpl-type">{t.type}</span>
-      </div>
-    </div>
+
+      {expandedGif && (
+        <div className="tpl-gif-modal" onClick={() => setExpandedGif(null)}>
+          <div className="tpl-gif-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="tpl-gif-close" onClick={() => setExpandedGif(null)}>✕</button>
+            <img src={expandedGif} alt={`${t.name} template expanded`} className="tpl-gif-expanded" />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
