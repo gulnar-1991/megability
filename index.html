@@ -5,25 +5,38 @@
     <meta name="viewport"  content="width=device-width, initial-scale=1.0" />
     <title>Megability — Websites + AI Parent Navigator for Pediatric &amp; Developmental Clinics</title>
     <meta name="description" content="Meet Sunny — your clinic's AI receptionist and parent navigator. Answer every call, guide special-needs families, and book your next patient. Built for pediatric, autism, speech, OT, and developmental clinics." />
+    <style>
+      /* Keep Voiceflow launcher/widget stable on mobile scroll */
+      #voiceflow-chat-frame,
+      #voiceflow-chat {
+        position: fixed !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        z-index: 2147483647 !important;
+      }
+      html, body {
+        overscroll-behavior: none;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <style>
     <script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '6a4bb5d2fd97e64a5f54d9c2' },
-          url: 'https://general-runtime.voiceflow.com',
-          voice: {
-            url: "https://runtime-api.voiceflow.com"
-          }
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
+      (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '6a4bb5d2fd97e64a5f54d9c2' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+      })(document, 'script');
+    </script>
   </body>
 </html>
