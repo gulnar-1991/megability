@@ -3,10 +3,11 @@ import Logo from "./components/Logo";
 import Footer from "./components/Footer";
 import { Link } from "./router";
 
-// Submissions are emailed to info@megability.ca via FormSubmit (no backend/key).
-// NOTE: the first submission triggers a one-time confirmation email to that
-// address — click "Activate Form" in it once, then all submissions are delivered.
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/info@megability.ca";
+// Submissions are emailed to info@megability.ca via Web3Forms (key is tied to
+// that address; safe to ship in client code — their spam protection is
+// server-side). Switched from FormSubmit after its 2026-07 outage.
+const FORM_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_KEY = "aa58f336-2e31-48a2-987a-9e1212c25da1";
 
 // Mailto fallback so a lead is never lost when the form service is down:
 // opens the visitor's mail app with everything they typed already filled in.
@@ -39,13 +40,13 @@ export default function DemoPage() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           ...data,
-          _subject: "New demo request — Megability",
-          _template: "table",
-          _captcha: "false",
+          access_key: WEB3FORMS_KEY,
+          subject: "New demo request — Megability",
+          from_name: "Megability website",
         }),
       });
       const json = await res.json().catch(() => ({}));
-      return res.ok && (json.success === "true" || json.success === true);
+      return res.ok && json.success === true;
     };
 
     try {
@@ -103,8 +104,8 @@ export default function DemoPage() {
               </div>
             ) : (
               <form className="demo-form" onSubmit={onSubmit}>
-                {/* Honeypot — bots fill this, humans don't */}
-                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" style={{ display: "none" }} />
+                {/* Honeypot — bots tick this, humans never see it (Web3Forms convention) */}
+                <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" style={{ display: "none" }} />
                 <div className="demo-row">
                   <label>First name*<input type="text" name="First name" required placeholder="First name" /></label>
                   <label>Last name*<input type="text" name="Last name" required placeholder="Last name" /></label>
