@@ -25,6 +25,8 @@ export default function DemoPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [mailtoHref, setMailtoHref] = useState("");
+  const [specialty, setSpecialty] = useState("");
+  const [source, setSource] = useState("");
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -115,7 +117,7 @@ export default function DemoPage() {
                 <label>Phone number*<input type="tel" name="Phone" required placeholder="(000) 000-0000" /></label>
                 <label>Your role<input type="text" name="Role" placeholder="e.g. Clinic owner, office manager" /></label>
                 <label>Clinic specialty
-                  <select name="Specialty" defaultValue="">
+                  <select name="Specialty" value={specialty} onChange={(e) => setSpecialty(e.target.value)}>
                     <option value="" disabled>Select…</option>
                     <option>Autism / ABA</option>
                     <option>Speech therapy</option>
@@ -124,9 +126,12 @@ export default function DemoPage() {
                     <option>ADHD support</option>
                     <option>Other</option>
                   </select>
+                  {specialty === "Other" && (
+                    <input type="text" name="Specialty (other)" required placeholder="Please tell us your specialty" style={{ marginTop: 8 }} />
+                  )}
                 </label>
                 <label>Where did you find us?
-                  <select name="Where did you find us" defaultValue="">
+                  <select name="Where did you find us" value={source} onChange={(e) => setSource(e.target.value)}>
                     <option value="" disabled>Select…</option>
                     <option>Google search</option>
                     <option>LinkedIn</option>
@@ -136,6 +141,9 @@ export default function DemoPage() {
                     <option>Referral from another business</option>
                     <option>Other</option>
                   </select>
+                  {source === "Other" && (
+                    <input type="text" name="Where did you find us (other)" required placeholder="Please tell us where" style={{ marginTop: 8 }} />
+                  )}
                 </label>
                 <label>What can we help with?
                   <textarea name="Message" rows={3} placeholder="Tell us a little about your clinic and what you're hoping Sunny can do." />
