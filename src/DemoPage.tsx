@@ -125,6 +125,18 @@ export default function DemoPage() {
                     <option>Other</option>
                   </select>
                 </label>
+                <label>Where did you find us?
+                  <select name="Where did you find us" defaultValue="">
+                    <option value="" disabled>Select…</option>
+                    <option>Google search</option>
+                    <option>LinkedIn</option>
+                    <option>Instagram</option>
+                    <option>Facebook</option>
+                    <option>Reddit</option>
+                    <option>Referral from another business</option>
+                    <option>Other</option>
+                  </select>
+                </label>
                 <label>What can we help with?
                   <textarea name="Message" rows={3} placeholder="Tell us a little about your clinic and what you're hoping Sunny can do." />
                 </label>
