@@ -8,19 +8,34 @@ import { Link } from "./router";
 // address — click "Activate Form" in it once, then all submissions are delivered.
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/info@megability.ca";
 
+// Mailto fallback so a lead is never lost when the form service is down:
+// opens the visitor's mail app with everything they typed already filled in.
+const buildMailtoHref = (data: Record<string, string>) => {
+  const body = Object.entries(data)
+    .filter(([key, value]) => !key.startsWith("_") && value)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join("\n");
+  const subject = "Demo request — Megability";
+  return `mailto:info@megability.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
+
 export default function DemoPage() {
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [mailtoHref, setMailtoHref] = useState("");
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    const data = Object.fromEntries(new FormData(e.currentTarget).entries()) as Record<string, string>;
     setSubmitting(true);
     setError("");
-    try {
+    setMailtoHref("");
+
+    const send = async () => {
       const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
+        signal: AbortSignal.timeout(6000),
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           ...data,
@@ -30,14 +45,23 @@ export default function DemoPage() {
         }),
       });
       const json = await res.json().catch(() => ({}));
-      if (res.ok && (json.success === "true" || json.success === true)) {
+      return res.ok && (json.success === "true" || json.success === true);
+    };
+
+    try {
+      let ok = await send().catch(() => false);
+      if (!ok) {
+        // one retry — transient hiccups are common with the free form service
+        await new Promise((r) => setTimeout(r, 800));
+        ok = await send().catch(() => false);
+      }
+      if (ok) {
         setSent(true);
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
-        setError(json.message || "Couldn't send right now — please email info@megability.ca directly.");
+        setError("Our form service is temporarily unavailable — send your request by email instead, it's already written for you:");
+        setMailtoHref(buildMailtoHref(data));
       }
-    } catch {
-      setError("Couldn't send right now — please email info@megability.ca directly.");
     } finally {
       setSubmitting(false);
     }
@@ -108,6 +132,11 @@ export default function DemoPage() {
                   <span>I agree to be contacted about my demo. Your details are handled per our privacy notice and never sold.</span>
                 </label>
                 {error && <p className="demo-error">{error}</p>}
+                {mailtoHref && (
+                  <a className="btn demo-submit demo-mailto" href={mailtoHref}>
+                    Send by email instead
+                  </a>
+                )}
                 <button type="submit" className="btn demo-submit" disabled={submitting}>
                   {submitting ? "Sending…" : "Request my demo"}
                 </button>
