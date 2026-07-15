@@ -5,6 +5,21 @@
     <meta name="viewport"  content="width=device-width, initial-scale=1.0" />
     <title>Megability — Websites + AI Parent Navigator for Pediatric &amp; Developmental Clinics</title>
     <meta name="description" content="Meet Sunny — your clinic's AI receptionist and parent navigator. Answer every call, guide special-needs families, and book your next patient. Built for pediatric, autism, speech, OT, and developmental clinics." />
+    <style>
+/* Pin the Voiceflow host to the viewport bottom-right so it never scrolls with content.
+   NOTE: do NOT add `contain: layout` here — it turns the host into a containing block
+   for the widget's inner position:fixed elements and breaks the chat panel opening
+   (see commits 6201ff8 / 95a7efe). Inner-element anchoring is done instead via the
+   assistant.stylesheet injected into the widget's shadow DOM below. */
+#voiceflow-chat {
+  position: fixed !important;
+  bottom: env(safe-area-inset-bottom, 0px) !important;
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  z-index: 2147483647 !important;
+}
+    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -13,11 +28,28 @@
       (function(d, t) {
         var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
         v.onload = function() {
+          /* Injected into the widget's shadow DOM. The floating launcher bubble
+             re-tracks the viewport on every scroll frame, which reads as a vertical
+             "jump" (worst on mobile when the URL bar hides). Promoting ONLY the
+             launcher to its own compositor layer (translateZ + will-change) keeps it
+             pinned during scroll without recomputing layout each frame.
+             We deliberately do NOT apply a transform to .vfrc-widget / the chat
+             panel wrapper: a transform makes an element the containing block for its
+             descendants, which previously broke the chat panel from opening
+             (see contain:layout revert, commit 95a7efe). */
+          var stableCss =
+            '.vfrc-launcher,.vfrc-launcher__container{' +
+            'transform:translateZ(0)!important;' +
+            'will-change:transform!important;' +
+            'backface-visibility:hidden!important;}';
           window.voiceflow.chat.load({
             verify: { projectID: '6a4bb5d2fd97e64a5f54d9c2' },
             url: 'https://general-runtime.voiceflow.com',
             voice: {
               url: "https://runtime-api.voiceflow.com"
+            },
+            assistant: {
+              stylesheet: 'data:text/css,' + encodeURIComponent(stableCss)
             }
           });
         }

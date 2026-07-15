@@ -1,7 +1,23 @@
 // Official Megability logo — full wordmark.
 // variant="white": for dark/purple backgrounds (icon in white rounded box + white text)
 // variant="colored": for light/white backgrounds (icon + dark text, no box)
-export default function Logo({ variant = "colored" }: { variant?: "colored" | "white" }) {
+// iconOnly: just the "m" mark + orange dot (no wordmark)
+export default function Logo({ variant = "colored", iconOnly = false }: { variant?: "colored" | "white"; iconOnly?: boolean }) {
+  if (iconOnly) {
+    return (
+      <svg className="logo-svg" viewBox="0 32.825 169.121 123.724" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Megability">
+        <path d="M63.3586 142.662V84.8755C63.3586 80.1541 61.4838 75.6259 58.1463 72.2874C54.8089 68.949 50.2822 67.0735 45.5624 67.0735C40.8425 67.0735 36.3158 68.9489 32.9784 72.2874C29.6409 75.626 27.7661 80.1541 27.7661 84.8755V142.662C27.7661 150.332 21.5504 156.549 13.883 156.549C6.21565 156.549 0 150.332 0 142.662V84.8755C2.80516e-05 72.7877 4.79984 61.1945 13.3444 52.6472C21.889 44.0998 33.4785 39.2985 45.5624 39.2985C57.6462 39.2985 69.2357 44.0999 77.7803 52.6472C86.3249 61.1945 91.1247 72.7877 91.1247 84.8755V142.662C91.1247 150.332 84.9091 156.549 77.2417 156.549C69.5744 156.549 63.3586 150.332 63.3586 142.662Z" fill="url(#paint0_linear_icon)"/>
+        <path d="M126.718 142.662V84.8755C126.717 80.1541 124.843 75.626 121.505 72.2874C118.168 68.949 113.641 67.0735 108.921 67.0735C104.201 67.0735 99.6747 68.9489 96.3373 72.2874C92.9998 75.6259 91.125 80.1541 91.125 84.8755V142.662C91.125 150.332 84.9093 156.549 77.2419 156.549C69.5745 156.549 63.3589 150.332 63.3589 142.662V84.8755C63.3589 72.7877 68.1587 61.1945 76.7033 52.6472C85.2479 44.0998 96.8374 39.2985 108.921 39.2985C121.005 39.2985 132.595 44.0999 141.139 52.6472C149.684 61.1945 154.484 72.7877 154.484 84.8755V142.662C154.484 150.332 148.268 156.549 140.601 156.549C132.933 156.549 126.718 150.332 126.718 142.662Z" fill="#6757C4"/>
+        <path d="M148.927 73.2249C160.08 73.2249 169.121 64.1811 169.121 53.025C169.121 41.8688 160.08 32.825 148.927 32.825C137.775 32.825 128.734 41.8688 128.734 53.025C128.734 64.1811 137.775 73.2249 148.927 73.2249Z" fill="#F3AC5E"/>
+        <defs>
+          <linearGradient id="paint0_linear_icon" x1="13.883" y1="53.186" x2="98.2819" y2="112.949" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#7C6CE8"/>
+            <stop offset="1" stopColor="#9B6FE0"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    );
+  }
   if (variant === "white") {
     return (
       <svg className="logo-svg" viewBox="0 0 1056 202" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Megability">

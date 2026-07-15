@@ -28,9 +28,8 @@ export default function Loader() {
     <div className={`loader${hide ? " loader-out" : ""}`} role="status" aria-label="Loading">
       <div className="loader-mark">
         <span className="loader-ring" aria-hidden="true" />
-        <span className="loader-chip"><Logo gradId="ld" /></span>
+        <span className="loader-chip"><Logo iconOnly /></span>
       </div>
-      <span className="loader-name">megability</span>
     </div>
   );
 }
