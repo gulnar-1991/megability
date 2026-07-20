@@ -30,6 +30,14 @@ const CONVOS = [
     ],
   },
   {
+    label: "Honest ADHD guidance",
+    desc: "Sunny is upfront when a diagnosis doesn't qualify for provincial funding — and always points families to trusted, free resources instead of leaving them stuck.",
+    msgs: [
+      { from: "parent", text: "My son was just diagnosed with ADHD. Does that qualify for OAP or Passport?" },
+      { from: "sunny", text: "I want to be honest with you: ADHD on its own doesn't qualify for OAP, SSAH, ACSD, DSO or Passport — those need an autism or developmental-disability diagnosis. But you're not on your own. CADDAC, ConnexOntario's free 24/7 helpline, and AboutKidsHealth from SickKids are all trusted, no-cost places to start." },
+    ],
+  },
+  {
     label: "Safety-first, always",
     desc: "When a family is in crisis, Sunny steps back immediately and directs them to emergency services — no hesitation, no delay.",
     msgs: [
@@ -203,12 +211,14 @@ const WHY_LEFT = [
   { q: "How do I get my child assessed for autism in Ontario?", a: "You can start with a referral from your family doctor or pediatrician to a developmental pediatrician or psychologist. I can also point you to publicly funded assessment options near you — want me to check your area?" },
   { q: "What's the difference between OAP Core and Caregiver streams?", a: "Core funding supports services like therapy and respite based on your child's needs. Caregiver-Mediated is shorter, group-based coaching for caregivers. Based on your child's age and goals, I can suggest which fits best." },
   { q: "We just moved to Ontario — where do we even begin?", a: "Welcome! First, register your child with the Ontario Autism Program and connect with your local AccessOAP care coordinator. I'll walk you through each step and share the exact links you need." },
+  { q: "What are ABA and IBI — can you provide them?", a: "ABA (Applied Behaviour Analysis) and IBI (Intensive Behavioural Intervention) are autism therapies accessed through OAP funding. I can explain clearly what each one involves and how families reach them — but I never deliver or supervise the therapy myself." },
 ];
 
 const WHY_RIGHT = [
   { q: "Is there help while we wait on the OAP list?", a: "Yes — interim one-time funding may be available, plus Passport, Special Services at Home, and free local programs. Let me show you what you can access right now while you wait." },
   { q: "My daughter is turning 18. What changes?", a: "At 18 she transitions to adult services — DSO registration and Passport funding become key. It's worth starting 6–12 months early. I can map out the timeline for you." },
   { q: "Can you help me prepare for an IEP meeting?", a: "Absolutely. I'll explain your rights, give you a checklist of questions to ask, and even draft an email to the school requesting the meeting. You won't walk in unprepared." },
+  { q: "My child has ADHD, not autism — is there help for us?", a: "Yes, and I'll be honest with you: ADHD doesn't qualify for OAP, SSAH, ACSD, DSO or Passport, since those need an autism or developmental-disability diagnosis. So I point families to three trusted, free resources instead — CADDAC for parent support, ConnexOntario's 24/7 helpline, and AboutKidsHealth from SickKids. I'll never send you to a private paid clinic from an ad." },
 ];
 
 function WhySection() {
