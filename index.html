@@ -49,6 +49,10 @@
               url: "https://runtime-api.voiceflow.com"
             },
             assistant: {
+              // 'memory' = conversation resets on every page reload / new tab
+              // (start fresh each load). Not 'localStorage' (keeps forever) or
+              // 'sessionStorage' (keeps until all tabs close).
+              persistence: 'memory',
               stylesheet: 'data:text/css,' + encodeURIComponent(stableCss)
             }
           });
