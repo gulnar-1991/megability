@@ -118,6 +118,67 @@ function ConvosSection() {
   );
 }
 
+/* "Who is Sunny" explainer video.
+   Performance: nothing but the poster image (~60KB, lazy) is on the page until
+   the user clicks — the <video> element is only mounted inside the modal, so
+   the 17MB file is never fetched on load. The MP4 is faststart-encoded, so it
+   streams rather than downloading in full. */
+function SunnyVideo() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <>
+      <button className="sv-card" onClick={() => setOpen(true)} aria-label="Play the Who is Sunny video">
+        <img
+          src="/video/who-is-sunny-poster.jpg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width={1920}
+          height={1080}
+          className="sv-poster"
+        />
+        <span className="sv-overlay">
+          <span className="sv-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg></span>
+          <span className="sv-copy">
+            <strong>Watch: Who is Sunny?</strong>
+            <em>2 min 27 sec — meet the founder &amp; see Sunny in action</em>
+          </span>
+        </span>
+      </button>
+
+      {open && (
+        <div className="sv-modal" onClick={() => setOpen(false)} role="dialog" aria-modal="true" aria-label="Who is Sunny video">
+          <button className="sv-close" onClick={() => setOpen(false)} aria-label="Close video">✕</button>
+          <div className="sv-frame" onClick={(e) => e.stopPropagation()}>
+            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+            <video
+              src="/video/who-is-sunny.mp4"
+              poster="/video/who-is-sunny-poster.jpg"
+              controls
+              autoPlay
+              playsInline
+              preload="auto"
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 // Names/types match the clinic actually shown in each template recording.
 const TEMPLATES = [
   { name: "Bright Horizons Pediatric Care", type: "Down Syndrome, Autism & Developmental Care", accent: "#7B6CF0", bg: "#EDE9FF", url: "brighthorizonspediatric.ca", gif: "/template-gifs/template1.gif" },
@@ -464,6 +525,7 @@ export default function App() {
             <span>Works on phone & chat — simultaneously</span>
             <span>Asks child ages and sends useful links for specific programs</span>
           </div>
+          <SunnyVideo />
         </div>
         <WhySection />
       </section>
