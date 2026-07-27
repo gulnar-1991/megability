@@ -210,9 +210,10 @@ h2{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.12;font-weight:700;letter-
 .tpl-text-rows span{height:7px;border-radius:3px;background:#dcd9ea;display:block;width:100%}
 
 /* Label */
-.tpl-label{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(123,108,240,0.09)}
-.tpl-name{font-family:'Urbanist';font-weight:700;font-size:.92rem}
-.tpl-type{font-size:.74rem;color:var(--muted)}
+/* Stacked so real clinic names (longer than the old codenames) fit the card */
+.tpl-label{padding:14px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;border-top:1px solid rgba(123,108,240,0.09)}
+.tpl-name{font-family:'Urbanist';font-weight:700;font-size:.92rem;line-height:1.2}
+.tpl-type{font-size:.74rem;color:var(--muted);line-height:1.25}
 
 /* Controls */
 .tpl-controls{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:32px}

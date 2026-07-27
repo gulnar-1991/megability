@@ -118,10 +118,11 @@ function ConvosSection() {
   );
 }
 
+// Names/types match the clinic actually shown in each template recording.
 const TEMPLATES = [
-  { name: "Lumina",   type: "Autism & ABA Clinics",      accent: "#7B6CF0", bg: "#EDE9FF", url: "luminaclinic.ca", gif: "/template-gifs/template1.gif" },
-  { name: "Lavender", type: "Developmental Pediatrics",  accent: "#9B8FF5", bg: "#F3F0FF", url: "lavendercare.ca", gif: "/template-gifs/template2.gif" },
-  { name: "Iris",     type: "Speech Therapy",            accent: "#5A4AD1", bg: "#ECEAFF", url: "irisspeech.ca", gif: "/template-gifs/template3.gif" },
+  { name: "Bright Horizons Pediatric Care", type: "Down Syndrome, Autism & Developmental Care", accent: "#7B6CF0", bg: "#EDE9FF", url: "brighthorizonspediatric.ca", gif: "/template-gifs/template1.gif" },
+  { name: "Star Therapy",                   type: "Occupational, Speech & Developmental Therapy", accent: "#9B8FF5", bg: "#F3F0FF", url: "startherapy.ca", gif: "/template-gifs/template2.gif" },
+  { name: "Hellocare",                      type: "Pediatric Speech, Sensory & Physical Therapy", accent: "#5A4AD1", bg: "#ECEAFF", url: "hellocare.ca", gif: "/template-gifs/template3.gif" },
 ];
 
 function TemplateCard({ t, pos, onActivate }: { t: typeof TEMPLATES[0]; pos: number; onActivate: () => void }) {
