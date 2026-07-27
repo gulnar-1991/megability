@@ -1,6 +1,7 @@
 import Logo from "./components/Logo";
 import Footer from "./components/Footer";
 import { Link } from "./router";
+import { useSeo, SEO } from "./seo";
 
 const DEMO_URL = "https://calendly.com/gulnar-rza-e/30min";
 
@@ -55,6 +56,7 @@ function DemoCTA({ primary = false }: { primary?: boolean }) {
 }
 
 export default function PricingPage() {
+  useSeo(SEO.pricing);
   return (
     <div className="pricing-page">
       {/* ── Header ── */}

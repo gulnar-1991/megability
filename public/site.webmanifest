@@ -1,0 +1,13 @@
+{
+  "name": "Megability — AI Parent Navigator for Clinics",
+  "short_name": "Megability",
+  "description": "Sunny answers your clinic's phone and web chat 24/7, guides families through Ontario's programs, and books appointments.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F0EEFF",
+  "theme_color": "#3A1D96",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

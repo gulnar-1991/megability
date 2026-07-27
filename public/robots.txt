@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Large media — fine to skip, nothing to index there
+Disallow: /video/who-is-sunny.mp4
+
+Sitemap: https://www.megability.ca/sitemap.xml

@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import Logo from "./components/Logo";
 import Footer from "./components/Footer";
+import { useSeo, SEO } from "./seo";
 import { Link } from "./router";
 
 // Submissions are emailed to info@megability.ca via Web3Forms (key is tied to
@@ -21,6 +22,7 @@ const buildMailtoHref = (data: Record<string, string>) => {
 };
 
 export default function DemoPage() {
+  useSeo(SEO.demo);
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");

@@ -3,6 +3,7 @@ import Logo from "./components/Logo";
 import Footer from "./components/Footer";
 import PhoneAgent from "./components/PhoneAgent";
 import { Link } from "./router";
+import { useSeo, SEO } from "./seo";
 
 const CONVOS = [
   {
@@ -413,6 +414,7 @@ function DemoSection() {
 }
 
 export default function App() {
+  useSeo(SEO.home);
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
