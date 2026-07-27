@@ -213,14 +213,15 @@ h2{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.12;font-weight:700;letter-
 .sv-card{display:block;position:relative;width:100%;max-width:760px;margin:40px auto 0;padding:0;border:none;border-radius:20px;overflow:hidden;cursor:pointer;background:var(--ink);box-shadow:0 26px 60px -28px rgba(75,60,160,.45);transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease}
 .sv-card:hover{transform:translateY(-4px);box-shadow:0 34px 74px -26px rgba(75,60,160,.6)}
 .sv-card:focus-visible{outline:3px solid var(--purple-1);outline-offset:3px}
-.sv-poster{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-.sv-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;gap:16px;padding:22px;text-align:left;background:linear-gradient(to top,rgba(22,14,53,.86) 0%,rgba(22,14,53,.35) 45%,rgba(22,14,53,0) 75%)}
-.sv-play{flex:0 0 auto;width:60px;height:60px;border-radius:50%;background:var(--purple-1);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px rgba(123,92,245,.9);transition:transform .3s ease}
-.sv-play svg{width:30px;height:30px;fill:#fff;margin-left:3px}
-.sv-card:hover .sv-play{transform:scale(1.08)}
-.sv-copy{display:flex;flex-direction:column;gap:3px;color:#fff;padding-bottom:4px}
-.sv-copy strong{font-family:'Urbanist';font-size:1.15rem;font-weight:700;line-height:1.2}
-.sv-copy em{font-style:normal;font-size:.85rem;opacity:.82}
+/* Minimal CSS cover — centred stack, no poster image to download */
+.sv-cover{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;width:100%;aspect-ratio:16/9;padding:24px;text-align:center;background:radial-gradient(120% 120% at 50% 0%,#4A2AAE 0%,#3A1D96 42%,#231462 100%)}
+.sv-cover::after{content:"";position:absolute;left:50%;top:44%;width:420px;height:420px;transform:translate(-50%,-50%);border-radius:50%;background:var(--purple-1);opacity:.28;filter:blur(90px);pointer-events:none}
+.sv-sun{position:relative;z-index:1;width:56px;height:56px;object-fit:contain}
+.sv-play{position:relative;z-index:1;width:78px;height:78px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px -10px rgba(0,0,0,.55);transition:transform .3s cubic-bezier(.22,.61,.36,1)}
+.sv-play svg{width:34px;height:34px;fill:var(--deep);margin-left:4px}
+.sv-card:hover .sv-play{transform:scale(1.09)}
+.sv-title{position:relative;z-index:1;font-family:'Urbanist';font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.1}
+.sv-sub{position:relative;z-index:1;font-size:.92rem;font-weight:600;color:rgba(255,255,255,.72)}
 
 /* Near-fullscreen player */
 .sv-modal{position:fixed;inset:0;z-index:10000;background:rgba(12,7,30,.93);display:flex;align-items:center;justify-content:center;padding:2vh 2vw;backdrop-filter:blur(4px);animation:fadeIn .22s ease}
@@ -228,7 +229,7 @@ h2{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.12;font-weight:700;letter-
 .sv-frame video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
 .sv-close{position:absolute;top:18px;right:22px;width:44px;height:44px;border:none;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s ease}
 .sv-close:hover{background:rgba(255,255,255,.28)}
-@media(max-width:640px){.sv-overlay{padding:16px;gap:12px}.sv-play{width:48px;height:48px}.sv-play svg{width:24px;height:24px}.sv-copy strong{font-size:1rem}.sv-copy em{font-size:.78rem}}
+@media(max-width:640px){.sv-cover{gap:10px;padding:18px}.sv-sun{width:40px;height:40px}.sv-play{width:58px;height:58px}.sv-play svg{width:26px;height:26px}.sv-sub{font-size:.78rem}.sv-cover::after{width:280px;height:280px}}
 @media(prefers-reduced-motion:reduce){.sv-card,.sv-play{transition:none}.sv-card:hover{transform:none}}
 
 /* Label */

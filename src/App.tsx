@@ -141,21 +141,13 @@ function SunnyVideo() {
   return (
     <>
       <button className="sv-card" onClick={() => setOpen(true)} aria-label="Play the Who is Sunny video">
-        <img
-          src="/video/who-is-sunny-poster.jpg"
-          alt=""
-          loading="lazy"
-          decoding="async"
-          width={1920}
-          height={1080}
-          className="sv-poster"
-        />
-        <span className="sv-overlay">
+        {/* Cover is drawn in CSS (no poster download) — the mascot is the same
+            already-cached asset used elsewhere on the page. */}
+        <span className="sv-cover">
+          <img src="/assets/mascot/mascot_still.png" alt="" aria-hidden="true" className="sv-sun" loading="lazy" decoding="async" />
           <span className="sv-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg></span>
-          <span className="sv-copy">
-            <strong>Watch: Who is Sunny?</strong>
-            <em>2 min 27 sec — meet the founder &amp; see Sunny in action</em>
-          </span>
+          <span className="sv-title">Who is Sunny?</span>
+          <span className="sv-sub">Watch the creator explain Sunny · 2 min 27 sec</span>
         </span>
       </button>
 
