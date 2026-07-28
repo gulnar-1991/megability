@@ -766,7 +766,7 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .fyw-pill:hover{transform:translateY(-3px);background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.44)}
 /* Framed clinic image */
 .fyw-art{display:flex;justify-content:center}
-.fyw-art img{width:100%;max-width:430px;border-radius:26px;display:block;transform:scaleX(-1);
+.fyw-art img{width:100%;max-width:430px;border-radius:26px;display:block;
   border:1px solid rgba(255,255,255,0.18);
   box-shadow:0 40px 90px -30px rgba(10,4,30,0.7),0 0 0 8px rgba(255,255,255,0.04);}
 @media(max-width:880px){
