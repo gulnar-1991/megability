@@ -1,9 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "vite build",
+  "buildCommand": "vite build && tsx prerender.tsx",
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
+    { "source": "/pricing", "destination": "/pricing/index.html" },
+    { "source": "/demo", "destination": "/demo/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

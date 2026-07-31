@@ -7,6 +7,27 @@
       "runtimeArgs": ["run", "dev"],
       "port": 3000,
       "autoPort": true
+    },
+    {
+      "name": "dist-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "preview", "--port", "4173"],
+      "port": 4173,
+      "autoPort": true
+    },
+    {
+      "name": "therapeuo",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:/Users/gulna/antigravity/therapeuo-massage-and-wellness", "run", "dev"],
+      "port": 3000,
+      "autoPort": true
+    },
+    {
+      "name": "down-syndrome-template",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:/Users/gulna/down-syndrome-website-template", "run", "dev"],
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }
