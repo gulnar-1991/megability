@@ -3,34 +3,98 @@ import Footer from "./components/Footer";
 import { Link } from "./router";
 import { useSeo, SEO } from "./seo";
 
-const DEMO_URL = "https://calendly.com/gulnar-rza-e/30min";
+// The site's own demo page — same target as the main nav and the chatbot, so
+// every "book" action across the site lands in one place.
+const DEMO_URL = "/demo";
 
-// Sunny routes families by their real situation. These are verified Ontario
-// programs — do not add rows or invent capabilities.
-const ROUTING: [string, string][] = [
-  ["Child under 18, autism diagnosis", "Ontario Autism Program (OAP)"],
-  ["Child under 18, developmental or physical disability", "Special Services at Home (SSAH)"],
-  ["Severe disability, lower-income family", "Assistance for Children with Severe Disabilities (ACSD)"],
-  ["Turning 18 / adult with a developmental disability", "Developmental Services Ontario (DSO) + Passport"],
-  ["Adult, low income, disability", "Ontario Disability Support Program (ODSP)"],
-  ["Young child, early concerns, no diagnosis", "SmartStart Hubs"],
+/* What the clinic gets back. Outcome first, mechanism second — a clinic owner
+   should recognise their own week in this list before any technology is named. */
+const OUTCOMES: [string, string][] = [
+  ["Save your receptionist hours each week", "the same questions stop reaching the front desk"],
+  ["Never miss a new inquiry", "every after-hours call and chat is captured, not lost to voicemail"],
+  ["Answer parent questions 24/7", "including funding questions — OAP, SSAH and ACSD"],
+  ["Reduce repetitive phone calls", "your team stops explaining the same thing twenty times a week"],
+  ["Capture leads automatically", "new family details collected and sent straight to you"],
+  ["Help families before and after hours", "nobody waits until Monday for an answer"],
 ];
 
-// Applies to the two monthly plans. Verified — exact wording.
+const TRUST: string[] = [
+  "Available 24/7",
+  "Customized to your clinic",
+  "No diagnoses made — ever",
+  "Monthly updates included",
+  "Secure conversations",
+  "Human handoff when needed",
+];
+
 const MONTHLY_INCLUDES: [string, string][] = [
-  ["500 phone minutes / month", "then $0.50/min"],
-  ["English and French", "every call and chat, both languages"],
+  ["500 phone minutes / month", "additional at $0.50/min"],
   ["2 hours / month of website maintenance", "additional at $85/hr"],
-  ["Phone number, hosting & platform costs", "all covered, no surprises"],
+  ["English and French", "every call and chat, both languages"],
 ];
 
-const NEVER = [
-  "diagnose",
-  "give clinical advice",
-  "decide eligibility",
-  "fill out applications",
-  "invent figures",
-  "store personal health information",
+type Plan = {
+  name: string;
+  tag: string;
+  price: { amt: string; per: string }[];
+  value?: string;
+  list: string[];
+  cta: string;
+  featured?: boolean;
+};
+
+const PLANS: Plan[] = [
+  {
+    name: "Professional Website",
+    tag: "A clinic website that earns trust from the first click.",
+    price: [{ amt: "$2,500–4,000", per: "one-time build" }],
+    value: "No monthly fee.",
+    list: [
+      "Build trust with new families from the first click",
+      "Mobile optimized",
+      "Fast loading",
+      "Professional healthcare design",
+      "Custom to your clinic — not a template",
+    ],
+    cta: "Schedule a 15-Minute Demo",
+  },
+  {
+    name: "Website + AI Receptionist",
+    tag: "Your website and Sunny answering every call and chat, around the clock.",
+    price: [
+      { amt: "$2,500–4,000", per: "build" },
+      { amt: "$400", per: "/month" },
+    ],
+    value: "Less than the cost of one day of receptionist wages.",
+    list: [
+      "Everything in Professional Website",
+      "24/7 parent conversations, on phone and web chat",
+      "Answers funding questions accurately — OAP, SSAH, ACSD",
+      "Books appointments automatically",
+      "Captures every new inquiry",
+      "Monthly improvements included",
+    ],
+    cta: "Book My Demo",
+    featured: true,
+  },
+  {
+    name: "AI Receptionist for Existing Websites",
+    tag: "For clinics that already have a website they're happy with.",
+    price: [
+      { amt: "$750", per: "setup" },
+      { amt: "$400", per: "/month" },
+    ],
+    value: "Less than the cost of one day of receptionist wages.",
+    list: [
+      "Works with your current website",
+      "Answers common questions 24/7",
+      "Answers funding questions — OAP, SSAH, ACSD",
+      "Captures inquiries automatically",
+      "Reduces receptionist interruptions",
+      "Monthly optimization included",
+    ],
+    cta: "See Sunny Live",
+  },
 ];
 
 function Check() {
@@ -42,16 +106,11 @@ function Check() {
   );
 }
 
-function DemoCTA({ primary = false }: { primary?: boolean }) {
+function DemoCTA({ label, primary = false }: { label: string; primary?: boolean }) {
   return (
-    <a
-      href={DEMO_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`btn pr-cta${primary ? " pr-cta-primary" : ""}`}
-    >
-      Book a 15-minute demo →
-    </a>
+    <Link to={DEMO_URL} className={`btn pr-cta${primary ? " pr-cta-primary" : ""}`}>
+      {label} →
+    </Link>
   );
 }
 
@@ -67,179 +126,82 @@ export default function PricingPage() {
           </Link>
           <div className="pr-nav-right">
             <Link to="/" className="pr-navlink">Home</Link>
-            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="hero-book">
-              Book a demo
-            </a>
+            <Link to={DEMO_URL} className="hero-book">Book a demo</Link>
           </div>
         </div>
       </header>
 
-      {/* ── Hero — the core argument, in the owner's language ── */}
+      {/* ── Hero — the result, not the technology ── */}
       <section className="pr-hero">
         <div className="wrap">
-          <span className="eyebrow">Your clinic&rsquo;s AI Parent Navigator</span>
-          <h1>What happens<br/>instead of voicemail</h1>
+          <span className="eyebrow">Pricing</span>
+          <h1>Fewer missed calls.<br/>More time for your team.</h1>
           <p>
-            You&rsquo;re mid-session. The phone rings and goes to voicemail, and a
-            frightened parent is left alone with a question about their child&rsquo;s
-            funding all weekend. <strong>Sunny is what happens instead</strong> —
-            answering your phone line and website chat 24/7, in English and French.
+            Your phone rings all day with the same questions while your
+            receptionist is already stretched. Sunny answers them — on your phone
+            line and website chat, 24/7 — so{" "}
+            <strong>no family reaches a dead end and no inquiry gets lost</strong>.
           </p>
         </div>
       </section>
 
-      {/* ── What Sunny actually does ── */}
-      <section className="pr-does" aria-labelledby="does-h">
+      {/* ── Outcomes — one idea per line ── */}
+      <section className="pr-out" aria-labelledby="out-h">
         <div className="wrap">
-          <h2 id="does-h">What Sunny actually does</h2>
-          <p className="pr-does-intro">
-            Sunny is an AI Parent Navigator for Ontario pediatric and special-needs
-            clinics. It knows the system these families have to navigate — and it
-            meets them where they are.
-          </p>
-
-          {/* Program routing */}
-          <h3 className="pr-sub">
-            It knows eight Ontario programs &mdash; and routes by the family&rsquo;s real situation
-          </h3>
-          <div className="pr-table-wrap">
-            <table className="pr-table">
-              <thead>
-                <tr>
-                  <th scope="col">The family&rsquo;s situation</th>
-                  <th scope="col">Sunny points them to</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ROUTING.map(([sit, prog], i) => (
-                  <tr key={i}>
-                    <td>{sit}</td>
-                    <td><strong>{prog}</strong></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <h2 id="out-h">What your clinic gets back</h2>
+          <div className="pr-out-grid">
+            {OUTCOMES.map(([t, d], i) => (
+              <div key={i} className="pr-out-item">
+                <Check />
+                <span><strong>{t}</strong>{d}</span>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* The two hard conversations */}
-          <h3 className="pr-sub">The two conversations clinics dread most</h3>
-          <div className="pr-dread">
-            <article className="pr-dread-card">
-              <span className="pr-dread-tag">The waitlist conversation</span>
-              <p>
-                When a family is stuck waiting, Sunny doesn&rsquo;t just say
-                &ldquo;sorry.&rdquo; It surfaces what they can access <em>today</em> —
-                Foundational Family Services, interim funding, EarlyON, Preschool
-                Speech &amp; Language, and the regional Children&rsquo;s Treatment Centre.
-              </p>
-            </article>
-            <article className="pr-dread-card">
-              <span className="pr-dread-tag">School advocacy</span>
-              <p>
-                Sunny explains IEP and IPRC rights and shares a ready-to-send IEP
-                request letter the parent can email their principal tomorrow — no
-                diagnosis or funding required. It routes by setting: school-age gets
-                the IEP template; preschool and daycare get early intervention instead.
-              </p>
-            </article>
-          </div>
-
-          <p className="pr-also">
-            Sunny also shares local and provincial program information, and guides
-            families to booking with your clinic.
-          </p>
-
-          {/* Limits as a feature */}
-          <div className="pr-stops">
-            <div className="pr-stops-head">
-              <h3 className="pr-stops-h">It knows exactly where it stops</h3>
-              <p>
-                An AI that knows its limits is more trustworthy than one that claims
-                everything. Sunny will never:
-              </p>
-            </div>
-            <ul className="pr-stops-list">
-              {NEVER.map((n, i) => (
-                <li key={i}>{n}</li>
-              ))}
-            </ul>
-          </div>
+      {/* ── Trust ── */}
+      <section className="pr-trust" aria-labelledby="trust-h">
+        <div className="wrap">
+          <h2 id="trust-h">Designed for busy pediatric clinics</h2>
+          <ul className="pr-trust-list">
+            {TRUST.map((t, i) => <li key={i}>{t}</li>)}
+          </ul>
         </div>
       </section>
 
       {/* ── Pricing ── */}
       <section className="pr-pricing" aria-labelledby="pricing-h">
         <div className="wrap">
-          <span className="eyebrow">Pricing</span>
-          <h2 id="pricing-h">Priced to replace a voicemail box,<br/>not a salary</h2>
+          <h2 id="pricing-h">Simple pricing,<br/>no long-term contract</h2>
           <p className="pr-tax">All prices are exclusive of applicable taxes.</p>
 
           <div className="pr-plans">
-            {/* Website — one-time */}
-            <div className="pr-card">
-              <h3>Website</h3>
-              <p className="pr-tag">A custom-designed clinic website. Not a template.</p>
-              <div className="pr-price">
-                <span className="pr-amt">$2,500&ndash;4,000</span>
-                <span className="pr-per">one-time</span>
-              </div>
-              <p className="pr-note">
-                For clinics that need a warm, professional home online — designed
-                around your practice, not stamped from a theme.
-              </p>
-              <ul className="pr-list">
-                <li><Check /><span><strong>Custom design</strong> — built for your clinic, not a template</span></li>
-                <li><Check /><span><strong>Warm, accessible &amp; mobile-ready</strong> for the families you serve</span></li>
-                <li><Check /><span><strong>Built and hosted</strong> — one local contact, no resale</span></li>
-              </ul>
-              <DemoCTA />
-            </div>
+            {PLANS.map((p) => (
+              <div key={p.name} className={`pr-card${p.featured ? " pr-featured" : ""}`}>
+                {p.featured && <span className="pr-badge">Most popular</span>}
+                <h3>{p.name}</h3>
+                <p className="pr-tag">{p.tag}</p>
 
-            {/* Website + Sunny — the anchor */}
-            <div className="pr-card pr-featured">
-              <span className="pr-badge">Most popular</span>
-              <h3>Website + Sunny</h3>
-              <p className="pr-tag">The full thing — your website and your AI Parent Navigator, together.</p>
-              <div className="pr-price">
-                <span className="pr-amt">$4,500</span><span className="pr-per">build</span>
-                <span className="pr-plus">+</span>
-                <span className="pr-amt">$400</span><span className="pr-per">/month</span>
-              </div>
-              <p className="pr-note">
-                A custom website <em>and</em> Sunny answering every call and chat, so
-                no parent ever reaches a dead end while you&rsquo;re with a client.
-              </p>
-              <ul className="pr-list">
-                <li><Check /><span><strong>Everything in Website</strong>, designed and built for you</span></li>
-                <li><Check /><span><strong>Sunny on your phone &amp; website chat</strong> — 24/7, English &amp; French</span></li>
-                <li><Check /><span><strong>Routes families</strong> across Ontario&rsquo;s programs by their real situation</span></li>
-                <li><Check /><span><strong>Handles the waitlist &amp; school-advocacy</strong> conversations for you</span></li>
-                <li><Check /><span>Includes everything in <strong>every monthly plan</strong>, below</span></li>
-              </ul>
-              <DemoCTA primary />
-            </div>
+                <div className="pr-price">
+                  {p.price.map((x, i) => (
+                    <span key={i} className="pr-price-part">
+                      {i > 0 && <span className="pr-plus">+</span>}
+                      <span className="pr-amt">{x.amt}</span>
+                      <span className="pr-per">{x.per}</span>
+                    </span>
+                  ))}
+                </div>
+                {p.value && <p className="pr-value">{p.value}</p>}
 
-            {/* Sunny Only */}
-            <div className="pr-card">
-              <h3>Sunny Only</h3>
-              <p className="pr-tag">For clinics that already have a website they&rsquo;re happy with.</p>
-              <div className="pr-price">
-                <span className="pr-amt">$750</span><span className="pr-per">setup</span>
-                <span className="pr-plus">+</span>
-                <span className="pr-amt">$400</span><span className="pr-per">/month</span>
+                <ul className="pr-list">
+                  {p.list.map((item, i) => (
+                    <li key={i}><Check /><span>{item}</span></li>
+                  ))}
+                </ul>
+                <DemoCTA label={p.cta} primary={p.featured} />
               </div>
-              <p className="pr-note">
-                Add Sunny to the site and phone line you already have. Same Parent
-                Navigator, no rebuild.
-              </p>
-              <ul className="pr-list">
-                <li><Check /><span><strong>Sunny on your phone &amp; website chat</strong> — 24/7, English &amp; French</span></li>
-                <li><Check /><span><strong>Routes families</strong> across Ontario&rsquo;s programs</span></li>
-                <li><Check /><span><strong>Waitlist &amp; school-advocacy</strong> conversations, handled</span></li>
-                <li><Check /><span>Includes everything in <strong>every monthly plan</strong>, below</span></li>
-              </ul>
-              <DemoCTA />
-            </div>
+            ))}
           </div>
 
           {/* Every monthly plan includes */}
@@ -256,10 +218,16 @@ export default function PricingPage() {
               ))}
             </div>
           </div>
+
+          {/* Closing CTA */}
+          <div className="pr-close">
+            <h3>Hear Sunny answer your clinic&rsquo;s questions</h3>
+            <p>A relaxed 15-minute walkthrough — no pressure, no obligation.</p>
+            <DemoCTA label="Book My Demo" primary />
+          </div>
         </div>
       </section>
 
-      {/* ── Footer ── */}
       <Footer />
     </div>
   );
