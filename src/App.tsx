@@ -174,61 +174,22 @@ function SunnyVideo() {
 
 // Names/types match the clinic actually shown in each template recording.
 const TEMPLATES = [
-  { name: "Bright Horizons Pediatric Care", type: "Down Syndrome, Autism & Developmental Care", accent: "#7B6CF0", bg: "#EDE9FF", url: "brighthorizonspediatric.ca", gif: "/template-gifs/template1.gif" },
-  { name: "Star Therapy",                   type: "Occupational, Speech & Developmental Therapy", accent: "#9B8FF5", bg: "#F3F0FF", url: "startherapy.ca", gif: "/template-gifs/template2.gif" },
-  { name: "Hellocare",                      type: "Pediatric Speech, Sensory & Physical Therapy", accent: "#5A4AD1", bg: "#ECEAFF", url: "hellocare.ca", gif: "/template-gifs/template3.gif" },
+  { name: "Bright Horizons Pediatric Care", type: "Down Syndrome, Autism & Developmental Care", accent: "#7B6CF0", url: "brighthorizonspediatric.ca", video: "/template-videos/template1", poster: "/template-videos/template1.jpg", thumb: "/template-videos/thumb1.jpg" },
+  { name: "Star Therapy",                   type: "Occupational, Speech & Developmental Therapy", accent: "#9B8FF5", url: "startherapy.ca", video: "/template-videos/template2", poster: "/template-videos/template2.jpg", thumb: "/template-videos/thumb2.jpg" },
+  { name: "Hellocare",                      type: "Pediatric Speech, Sensory & Physical Therapy", accent: "#5A4AD1", url: "hellocare.ca", video: "/template-videos/template3", poster: "/template-videos/template3.jpg", thumb: "/template-videos/thumb3.jpg" },
 ];
-
-function TemplateCard({ t, pos, onActivate }: { t: typeof TEMPLATES[0]; pos: number; onActivate: () => void }) {
-  const [expandedGif, setExpandedGif] = useState<string | null>(null);
-  const abs = Math.abs(pos);
-  const visible = abs <= 2;
-  const isCenter = pos === 0;
-  const style: React.CSSProperties = {
-    transform: `translateX(${pos * 88}%) scale(${1 - abs * 0.1}) translateZ(${-abs * 60}px)`,
-    opacity: visible ? 1 - abs * 0.22 : 0,
-    zIndex: 10 - abs,
-    pointerEvents: abs > 1 ? "none" : "auto",
-    cursor: isCenter ? "default" : "pointer",
-    transition: "transform 0.8s ease-out, opacity 0.8s ease-out",
-  };
-
-  return (
-    <>
-      <div
-        className="tpl-card"
-        style={style}
-        onClick={() => { if (!isCenter) onActivate(); }}
-      >
-        <div className="tpl-preview" style={{ background: t.bg }}>
-          <div
-            className="tpl-gif-container"
-            onClick={(e) => { e.stopPropagation(); setExpandedGif(t.gif); }}
-          >
-            <img src={t.gif} alt={`${t.name} template preview`} className="tpl-gif" />
-          </div>
-        </div>
-        <div className="tpl-label">
-          <span className="tpl-name" style={{ color: t.accent }}>{t.name}</span>
-          <span className="tpl-type">{t.type}</span>
-        </div>
-      </div>
-
-      {expandedGif && (
-        <div className="tpl-gif-modal" onClick={() => setExpandedGif(null)}>
-          <div className="tpl-gif-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="tpl-gif-close" onClick={() => setExpandedGif(null)}>✕</button>
-            <img src={expandedGif} alt={`${t.name} template expanded`} className="tpl-gif-expanded" />
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
 
 function TemplatesSection() {
   const [idx, setIdx] = useState(0);
-  const n = TEMPLATES.length;
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const t = TEMPLATES[idx];
+
+  // Only the selected template is mounted, so one clip loads at a time. Browsers
+  // already defer and pause muted autoplay video that's off screen, so there's
+  // no observer here — one that failed to fire would leave a dead frame.
+  useEffect(() => {
+    videoRef.current?.play().catch(() => {});
+  }, [idx]);
 
   return (
     <section className="block tpl-section" id="websites">
@@ -242,19 +203,52 @@ function TemplatesSection() {
         <p className="tpl-sub">Designed to build trust with parents from the very first click. Clean layouts, warm colours, no walls of text.</p>
       </div>
 
-      <div className="tpl-stage">
-        {TEMPLATES.map((t, i) => {
-          let pos = i - idx;
-          if (pos > n / 2)  pos -= n;
-          if (pos < -n / 2) pos += n;
-          return <TemplateCard key={t.name} t={t} pos={pos} onActivate={() => setIdx(i)} />;
-        })}
-      </div>
+      <div className="wrap tpl-showcase">
+        <div className="tpl-stage">
+          <div className="tpl-window" style={{ ["--accent" as string]: t.accent }}>
+            <div className="tpl-chrome">
+              <span className="tpl-lights" aria-hidden="true"><i /><i /><i /></span>
+              <span className="tpl-addr">{t.url}</span>
+            </div>
+            <div className="tpl-screen">
+              {/* VP9 first — same quality as the H.264 at ~⅔ the bytes; the MP4
+                  is the fallback for browsers that can't take WebM. */}
+              <video
+                key={t.video}
+                ref={videoRef}
+                className="tpl-video"
+                poster={t.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={`${t.name} website preview`}
+              >
+                <source src={`${t.video}.webm`} type="video/webm" />
+                <source src={`${t.video}.mp4`} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
 
-      <div className="tpl-controls wrap">
-        <div className="tpl-dots">
-          {TEMPLATES.map((_, i) => (
-            <button key={i} className={`tpl-dot${i === idx ? " active" : ""}`} onClick={() => setIdx(i)} aria-label={`Template ${i + 1}`} />
+        <div className="tpl-picker" role="tablist" aria-label="Website templates">
+          {TEMPLATES.map((tp, i) => (
+            <button
+              key={tp.name}
+              type="button"
+              role="tab"
+              aria-selected={i === idx}
+              className={`tpl-pick${i === idx ? " is-active" : ""}`}
+              style={{ ["--accent" as string]: tp.accent }}
+              onClick={() => setIdx(i)}
+            >
+              <img className="tpl-pick-thumb" src={tp.thumb} alt="" loading="lazy" width={74} height={42} />
+              <span className="tpl-pick-text">
+                <span className="tpl-pick-name">{tp.name}</span>
+                <span className="tpl-pick-type">{tp.type}</span>
+              </span>
+            </button>
           ))}
         </div>
       </div>
