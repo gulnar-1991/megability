@@ -49,9 +49,9 @@ export function useSeo({
 
 export const SEO = {
   home: {
-    title: "AI Receptionist for Pediatric Clinics in Ontario | Megability",
+    title: "AI Receptionist for Ontario Pediatric Clinics | Megability",
     description:
-      "Sunny is an AI parent navigator that answers your clinic's phone and web chat 24/7, guides families through OAP and Ontario programs, and books appointments.",
+      "Sunny answers your clinic's phone and chat 24/7, guides Ontario families through OAP, SSAH and Passport, and books appointments. More provinces coming soon.",
     path: "/",
   },
   pricing: {

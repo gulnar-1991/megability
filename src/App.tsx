@@ -174,9 +174,9 @@ function SunnyVideo() {
 
 // Names/types match the clinic actually shown in each template recording.
 const TEMPLATES = [
-  { name: "Bright Horizons Pediatric Care", type: "Down Syndrome, Autism & Developmental Care", accent: "#7B6CF0", url: "brighthorizonspediatric.ca", video: "/template-videos/template1", poster: "/template-videos/template1.jpg", thumb: "/template-videos/thumb1.jpg" },
-  { name: "Star Therapy",                   type: "Occupational, Speech & Developmental Therapy", accent: "#9B8FF5", url: "startherapy.ca", video: "/template-videos/template2", poster: "/template-videos/template2.jpg", thumb: "/template-videos/thumb2.jpg" },
-  { name: "Hellocare",                      type: "Pediatric Speech, Sensory & Physical Therapy", accent: "#5A4AD1", url: "hellocare.ca", video: "/template-videos/template3", poster: "/template-videos/template3.jpg", thumb: "/template-videos/thumb3.jpg" },
+  { name: "Bright Horizons Pediatric Care", type: "Down Syndrome, Autism & Developmental Care", accent: "#7B6CF0", url: "brighthorizonspediatric.ca", video: "/template-videos/template1", poster: "/template-videos/template1.jpg", thumb: "/template-videos/thumb1.jpg", alt: "Bright Horizons Pediatric Care website template for Down syndrome, autism and developmental care clinics" },
+  { name: "Star Therapy",                   type: "Occupational, Speech & Developmental Therapy", accent: "#9B8FF5", url: "startherapy.ca", video: "/template-videos/template2", poster: "/template-videos/template2.jpg", thumb: "/template-videos/thumb2.jpg", alt: "Star Therapy website template for occupational, speech and developmental therapy clinics" },
+  { name: "Hellocare",                      type: "Pediatric Speech, Sensory & Physical Therapy", accent: "#5A4AD1", url: "hellocare.ca", video: "/template-videos/template3", poster: "/template-videos/template3.jpg", thumb: "/template-videos/thumb3.jpg", alt: "Hellocare website template for pediatric speech, sensory and physical therapy clinics" },
 ];
 
 function TemplatesSection() {
@@ -223,7 +223,7 @@ function TemplatesSection() {
                 loop
                 playsInline
                 preload="metadata"
-                aria-label={`${t.name} website preview`}
+                aria-label={t.alt}
               >
                 <source src={`${t.video}.webm`} type="video/webm" />
                 <source src={`${t.video}.mp4`} type="video/mp4" />
@@ -243,7 +243,7 @@ function TemplatesSection() {
               style={{ ["--accent" as string]: tp.accent }}
               onClick={() => setIdx(i)}
             >
-              <img className="tpl-pick-thumb" src={tp.thumb} alt="" loading="lazy" width={74} height={42} />
+              <img className="tpl-pick-thumb" src={tp.thumb} alt={tp.alt} loading="lazy" width={74} height={42} />
               <span className="tpl-pick-text">
                 <span className="tpl-pick-name">{tp.name}</span>
                 <span className="tpl-pick-type">{tp.type}</span>
@@ -316,7 +316,7 @@ function WhySection() {
         <div className="why-mascot">
           <img
             src="/assets/mascot/sunny-blink.webp"
-            alt="Sunny"
+            alt="Sunny, the AI parent navigator that answers parent questions 24/7"
             draggable={false}
           />
         </div>
@@ -370,7 +370,7 @@ function DemoSection() {
         {/* Bottom bar */}
         <div className="el-bottom-bar">
           <div className="el-agent-tag">
-            <img src="/assets/mascot/mascot_still.png" alt="Sunny" className="el-agent-avatar" />
+            <img src="/assets/mascot/mascot_still.png" alt="" className="el-agent-avatar" />
             <span>Sunny</span>
           </div>
           <div className="el-tabs">
@@ -480,8 +480,13 @@ export default function App() {
         <div className="wrap">
           <div className="hero-body">
             <div className="hero-copy">
-              <h1>Meet Sunny</h1>
-              <div className="sub-strong">The AI Parent Navigator for Ontario Pediatric Clinics</div>
+              {/* The descriptor lives inside the H1: on its own, "Meet Sunny"
+                  gives crawlers nothing, and this line carries every term the
+                  page should rank for. Styled identically, so nothing moves. */}
+              <h1>
+                Meet Sunny
+                <span className="sub-strong">The AI Parent Navigator for Ontario Pediatric Clinics</span>
+              </h1>
               <p className="builtfor">Built specifically for pediatric, autism, speech, occupational therapy, and developmental clinics. Helping parents find trusted local resources while reducing repetitive calls to your front desk.</p>
               <div className="hero-trust">
                 <span><svg className="trust-tick" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#F47B20"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>PIPEDA compliant</span>
@@ -494,7 +499,7 @@ export default function App() {
               </div>
             </div>
             <div className="hero-mascot">
-              <img src="/assets/mascot/mascot.webp" alt="Sunny, the Megability AI assistant" />
+              <img src="/assets/mascot/mascot.webp" alt="Sunny, the Megability AI parent navigator, wearing a headset" />
             </div>
           </div>
         </div>
@@ -542,7 +547,7 @@ export default function App() {
           </div>
           <div className="db-chat-card">
             <div className="db-chat-header">
-              <img src="/assets/mascot/mascot_still.png" alt="Sunny" className="db-avatar" />
+              <img src="/assets/mascot/mascot_still.png" alt="" className="db-avatar" />
               <div><strong>Sunny</strong><span>Your clinic's AI navigator</span></div>
             </div>
             <div className="db-bubble db-sunny">Hi there! Is your child already enrolled in a program, or are you just starting to look?</div>
@@ -620,6 +625,14 @@ export default function App() {
                 <span className="fyw-pill">Down syndrome services</span>
                 <span className="fyw-pill">Developmental services</span>
               </div>
+              {/* Positions the Ontario depth as a starting point rather than a
+                  limit — the receptionist itself works for any clinic; it's the
+                  funding-program knowledge that's province-specific. */}
+              <p className="fyw-reach">
+                <strong>Ontario first, not Ontario only.</strong> Sunny answers calls and
+                chat for any clinic — the deep funding-program knowledge starts with
+                Ontario, and more provinces are on the way.
+              </p>
             </div>
             <div className="fyw-art anim anim-d2">
               <img src="/assets/for-your-world-bg.webp" alt="Sunny beside a pediatric clinic on the clouds" draggable={false} />
@@ -632,7 +645,7 @@ export default function App() {
       <section className="finalcta" id="book">
         <div className="wrap">
           <div className="cta-panel">
-            <img src="/assets/mascot/mascot_still.png" alt="Sunny" />
+            <img src="/assets/mascot/mascot_still.png" alt="" />
             <div className="cta-text">
               <h2>Ready to meet Sunny?</h2>
               <p>See how Sunny greets your families and lightens the load on your team. A relaxed 30-minute walkthrough — no pressure.</p>

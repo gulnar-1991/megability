@@ -93,8 +93,10 @@ h1,h2,h3,.display{font-family:'Urbanist',sans-serif;letter-spacing:-0.02em}
 .hero-book{background:#fff;color:var(--deep);font-family:'Urbanist';font-weight:600;font-size:.94rem;padding:13px 26px;border-radius:999px;transition:transform .15s, box-shadow .2s;box-shadow:0 6px 20px rgba(40,20,80,0.22)}
 .hero-book:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(40,20,80,0.3)}
 .hero-body{position:relative;z-index:8;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:20px;padding:30px 0 130px;min-height:520px}
-.hero-copy h1{color:#fff;font-weight:700;font-size:clamp(3.2rem,6.4vw,5.8rem);line-height:0.95;letter-spacing:-0.035em;margin-bottom:18px}
-.hero-copy .sub-strong{color:#fff;font-family:'Urbanist';font-weight:600;font-size:clamp(1.15rem,2.1vw,1.6rem);margin-bottom:14px;opacity:.96}
+.hero-copy h1{color:#fff;font-weight:700;font-size:clamp(3.2rem,6.4vw,5.8rem);line-height:0.95;letter-spacing:-0.035em;margin-bottom:14px}
+/* Nested inside the H1 — reset the inherited display heading metrics so it
+   keeps rendering exactly as it did when it was a sibling <div>. */
+.hero-copy .sub-strong{display:block;color:#fff;font-family:'Urbanist';font-weight:600;font-size:clamp(1.15rem,2.1vw,1.6rem);line-height:1.25;letter-spacing:normal;margin-top:18px;margin-bottom:0;opacity:.96}
 .hero-copy .builtfor{color:rgba(255,255,255,0.8);font-size:1rem;margin-bottom:32px;max-width:440px}
 .hero-trust{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;justify-content:flex-start}
 .hero-trust span{display:flex;align-items:center;gap:7px;font-size:.78rem;font-weight:700;color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(6px);padding:5px 13px;border-radius:999px;letter-spacing:.02em}
@@ -778,6 +780,8 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .fyw-copy h2 em{font-style:italic;color:#FFB061}
 .fyw-copy p{color:rgba(255,255,255,0.8);font-size:1.06rem;line-height:1.65;max-width:480px;margin:0 0 30px}
 .fyw-pills{display:flex;flex-wrap:wrap;gap:10px;max-width:520px}
+.fyw-reach{max-width:520px;margin-top:22px;font-size:.94rem;line-height:1.55;color:rgba(255,255,255,0.78)}
+.fyw-reach strong{color:#fff;font-weight:700}
 .fyw-pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.22);color:#fff;font-size:.92rem;font-weight:500;padding:11px 18px;border-radius:999px;transition:transform .18s ease,background .2s,border-color .2s}
 .fyw-pill:hover{transform:translateY(-3px);background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.44)}
 /* Framed clinic image */
@@ -792,6 +796,7 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
   .fyw-eyebrow{text-align:center}
   .fyw-copy p{margin-left:auto;margin-right:auto}
   .fyw-pills{justify-content:center;margin:0 auto;max-width:560px}
+  .fyw-reach{margin-left:auto;margin-right:auto}
   .fyw-art{order:-1}
   .fyw-art img{max-width:340px}
 }

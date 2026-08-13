@@ -154,13 +154,13 @@ export default function PhoneAgent() {
           </div>
 
           <div className="ph-stage">
-            <img className="ph-sunny anim" src="/assets/mascot/sunny-turning.webp" alt="Sunny on a call" draggable={false} />
+            <img className="ph-sunny anim" src="/assets/mascot/sunny-turning.webp" alt="Sunny taking a phone call for a pediatric clinic" draggable={false} />
             <div className="ph-phone anim anim-d2">
               <div className="ph-notch" />
               <div className="ph-call">
                 <div className="ph-live">{playing ? "● On call" : "● Demo call"}</div>
                 <div className="ph-callee">
-                  <img src="/assets/mascot/mascot_still.png" alt="Sunny" />
+                  <img src="/assets/mascot/mascot_still.png" alt="" />
                   <strong>Sunny</strong>
                   <span>{playing ? `Talking · ${active.label}` : "After-hours line"}</span>
                 </div>
