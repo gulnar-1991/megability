@@ -90,7 +90,6 @@ const PRIVACY: Block[] = [
     h: "Your choices",
     p: [
       "You can ask us what information we hold about you, ask us to correct it, ask us to delete it, or withdraw a consent you have given. Email info@megability.ca and we will respond within a reasonable time.",
-      "If you are not satisfied with how we have handled a privacy question, you can contact the Office of the Privacy Commissioner of Canada, or Ontario's Information and Privacy Commissioner for matters involving health information.",
     ],
   },
   {
