@@ -6,6 +6,8 @@
   "rewrites": [
     { "source": "/pricing", "destination": "/pricing/index.html" },
     { "source": "/demo", "destination": "/demo/index.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/terms", "destination": "/terms/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

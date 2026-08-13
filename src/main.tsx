@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import PricingPage from './PricingPage.tsx';
 import DemoPage from './DemoPage.tsx';
+import LegalPage from './LegalPage.tsx';
 import Loader from './components/Loader';
 import {usePathname} from './router';
 import './index.css';
@@ -13,7 +14,11 @@ function Root() {
     ? <PricingPage />
     : path === '/demo'
       ? <DemoPage />
-      : <App />;
+      : path === '/privacy'
+        ? <LegalPage kind="privacy" />
+        : path === '/terms'
+          ? <LegalPage kind="terms" />
+          : <App />;
   return (
     <>
       <Loader />

@@ -60,6 +60,18 @@ export const SEO = {
       "Simple pricing for Sunny, the AI parent navigator, and a clinic website with Sunny built in. Answer every call, guide families, and book more appointments.",
     path: "/pricing",
   },
+  privacy: {
+    title: "Privacy Policy | Megability",
+    description:
+      "How Megability handles your information: what the demo form collects, why Sunny stores no personal health information, and how PHIPA and PIPEDA apply.",
+    path: "/privacy",
+  },
+  terms: {
+    title: "Terms of Service | Megability",
+    description:
+      "The terms for using megability.ca, what Sunny does and does not do, and your clinic's responsibilities as a health information custodian under PHIPA.",
+    path: "/terms",
+  },
   demo: {
     title: "Book a Demo — See Sunny in Action | Megability",
     description:

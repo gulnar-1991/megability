@@ -489,8 +489,8 @@ export default function App() {
               </h1>
               <p className="builtfor">Built specifically for pediatric, autism, speech, occupational therapy, and developmental clinics. Helping parents find trusted local resources while reducing repetitive calls to your front desk.</p>
               <div className="hero-trust">
-                <span><svg className="trust-tick" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#F47B20"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>PIPEDA compliant</span>
-                <span><svg className="trust-tick" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#F47B20"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>No data collected</span>
+                <span><svg className="trust-tick" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#F47B20"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>PHIPA-aligned</span>
+                <span><svg className="trust-tick" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#F47B20"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>No health data stored</span>
                 <span><svg className="trust-tick" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#F47B20"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>No diagnosis, ever</span>
               </div>
               <div className="hero-ctas">
@@ -537,7 +537,7 @@ export default function App() {
             <div className="db-orb db-orb-1"><div className="db-onum">24/7</div><span>Always on</span></div>
             <div className="db-orb db-orb-2"><div className="db-otitle">Age-aware</div><span>Routes by the child's age</span></div>
             <div className="db-orb db-orb-3"><div className="db-otitle">Warm first</div><span>Built for worried parents</span></div>
-            <div className="db-orb db-orb-4"><div className="db-otitle">PHIPA compliant</div><span>Privacy you can trust</span></div>
+            <div className="db-orb db-orb-4"><div className="db-otitle">PHIPA-aligned</div><span>Privacy you can trust</span></div>
             <div className="db-orb db-orb-5"><div className="db-onum">No diagnosis</div><span>Ever. Not once.</span></div>
             <div className="db-orb db-orb-6"><div className="db-otitle">Reminders</div><span>Email &amp; text, automatically</span></div>
             <div className="db-orb db-orb-7"><div className="db-otitle">Book appointment</div><span>Straight from the chat</span></div>
