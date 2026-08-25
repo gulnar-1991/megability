@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import PhoneAgent from "./components/PhoneAgent";
 import { FaqSection, FeaturesSection, CalculatorSection } from "./components/HomeSections";
 import { ProgramsGrid, ProgramNotes } from "./components/Programs";
+import HowItWorks from "./components/HowItWorks";
 import { Link } from "./router";
 import { useSeo, SEO } from "./seo";
 import { useScrollReveal } from "./useScrollReveal";
@@ -568,42 +569,8 @@ export default function App() {
       {/* ============ FOUNDER STORY (placeholder — see FOUNDER_STORY_READY) ============ */}
       {FOUNDER_STORY_READY && <FounderStorySection />}
 
-      {/* ============ JOURNEY — NUMBERED STEPS ============ */}
-      <section className="block journey" id="journey">
-        <div className="wrap">
-          <div className="jrn-header">
-            <span className="eyebrow">How it works</span>
-            <h2>From confused parent<br/>to booked appointment</h2>
-          </div>
-          <div className="jrn-steps">
-            <div className="jrn-step anim">
-              <div className="jrn-num">01</div>
-              <h3>Parent asks a question</h3>
-              <p>By chat or phone, any hour of the day or night.</p>
-            </div>
-            <div className="jrn-step anim anim-d1">
-              <div className="jrn-num">02</div>
-              <h3>Sunny listens & responds</h3>
-              <p>Warm, plain answers about programs and what to do next.</p>
-            </div>
-            <div className="jrn-step jrn-step-accent anim anim-d2">
-              <div className="jrn-num">03</div>
-              <h3>Sunny recommends a path</h3>
-              <p>The right program matched to the child's age and situation.</p>
-            </div>
-            <div className="jrn-step jrn-step-accent anim anim-d3">
-              <div className="jrn-num">04</div>
-              <h3>Sunny books the slot</h3>
-              <p>The family picks a time that works. No phone tag, no waiting.</p>
-            </div>
-            <div className="jrn-step jrn-step-dark anim anim-d4">
-              <div className="jrn-num">05</div>
-              <h3>Clinic gets a qualified lead</h3>
-              <p>Details land exactly where your team already works.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ============ HOW IT WORKS — TABBED PROCESS ============ */}
+      <HowItWorks />
 
       {/* ============ MISSED-CALL CALCULATOR ============ */}
       <CalculatorSection />

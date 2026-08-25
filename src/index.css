@@ -552,23 +552,8 @@ h2{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.12;font-weight:700;letter-
 }
 
 /* ============ JOURNEY — NUMBERED STEPS ============ */
-.journey{background:linear-gradient(180deg,var(--bg) 0%,var(--soft-lav) 100%)}
-.jrn-header{text-align:center;margin-bottom:52px}
-.jrn-header h2{font-size:clamp(2rem,3.8vw,3rem);font-weight:800;margin-top:10px}
-.jrn-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:stretch}
-.jrn-step{background:#fff;border-radius:20px;padding:28px 22px;border:1px solid rgba(123,108,240,0.1);display:flex;flex-direction:column;gap:8px;transition:transform .2s}
-.jrn-step:hover{transform:translateY(-4px)}
-.jrn-num{font-family:'Urbanist',sans-serif;font-size:2.6rem;font-weight:800;line-height:1;color:rgba(123,108,240,0.15);margin-bottom:4px}
-.jrn-step h3{font-size:.98rem;font-weight:700;line-height:1.3;color:var(--ink)}
-.jrn-step p{color:#5A5478;font-size:.85rem;line-height:1.5;margin:0}
-.jrn-step-accent{background:var(--soft-lav);border-color:rgba(123,108,240,0.2)}
-.jrn-step-accent .jrn-num{color:rgba(123,108,240,0.3)}
-.jrn-step-dark{background:var(--ink-2);color:#fff;border-color:transparent}
-.jrn-step-dark .jrn-num{color:rgba(255,255,255,0.15)}
-.jrn-step-dark h3{color:#fff}
-.jrn-step-dark p{color:rgba(255,255,255,0.65)}
-@media(max-width:900px){.jrn-steps{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.jrn-steps{grid-template-columns:1fr}}
+@media(max-width:900px){}
+@media(max-width:480px){}
 
 /* (Old "Built for" editorial + "Showcase" split styles removed — those
    sections were replaced by .fyw-s and .phone-s respectively.) */
@@ -1101,4 +1086,66 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
   .pg-item{padding:13px 15px}
   .pg-note{padding:17px 18px}
   .pr-prog{padding:42px 0 4px}
+}
+
+/* ============ HOW IT WORKS — TABBED PROCESS ============ */
+.hiw{background:linear-gradient(to bottom,#fff,var(--bg))}
+.hiw-intro{margin-bottom:34px}
+
+/* Tab row */
+.hiw-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:38px}
+.hiw-tab{font-family:'Urbanist',sans-serif;font-weight:700;font-size:.95rem;color:var(--deep);
+  background:#fff;border:1.5px solid rgba(123,108,240,0.2);border-radius:999px;padding:11px 22px;
+  cursor:pointer;transition:transform .2s cubic-bezier(.22,.61,.36,1),box-shadow .2s ease,
+  background .2s ease,border-color .2s ease,color .2s ease}
+.hiw-tab:hover{transform:translateY(-2px);box-shadow:0 12px 26px -18px rgba(60,40,150,.5)}
+.hiw-tab.is-active{background:var(--deep);border-color:var(--deep);color:#fff;
+  box-shadow:0 14px 30px -16px rgba(58,29,150,.6)}
+.hiw-tab:focus-visible{outline:3px solid var(--purple-1);outline-offset:3px}
+
+/* Panel */
+.hiw-panel{max-width:1000px;margin:0 auto;background:#fff;border:1px solid rgba(123,108,240,0.15);
+  border-radius:26px;padding:36px 38px 34px;box-shadow:0 30px 74px -40px rgba(60,40,150,.45);
+  animation:hiwFade .34s cubic-bezier(.22,.61,.36,1) both}
+@keyframes hiwFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hiw-panel-head{text-align:center;max-width:640px;margin:0 auto 34px}
+.hiw-panel-label{display:inline-block;font-family:'Urbanist',sans-serif;font-weight:800;font-size:.7rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--purple-1);background:#EDE9FF;
+  padding:5px 13px;border-radius:999px;margin-bottom:13px}
+.hiw-panel-head h3{font-family:'Urbanist',sans-serif;font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:800;
+  color:var(--deep);line-height:1.2;letter-spacing:-.02em;margin-bottom:11px}
+.hiw-panel-head p{font-size:.99rem;line-height:1.62;color:#5A5478;margin:0}
+
+/* Steps — a connected rail so the order reads as a process, not a list */
+.hiw-steps{list-style:none;counter-reset:none;display:grid;gap:0;position:relative}
+.hiw-step{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:20px 0;position:relative;
+  animation:hiwStep .38s cubic-bezier(.22,.61,.36,1) both;
+  animation-delay:calc(var(--i) * 70ms + 120ms)}
+@keyframes hiwStep{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.hiw-step + .hiw-step{border-top:1px solid rgba(123,108,240,0.12)}
+.hiw-num{display:flex;align-items:center;justify-content:center;width:42px;height:42px;flex-shrink:0;
+  border-radius:13px;background:linear-gradient(135deg,var(--purple-1),#5B3FD4);color:#fff;
+  font-family:'Urbanist',sans-serif;font-weight:800;font-size:.95rem;
+  box-shadow:0 10px 22px -12px rgba(91,63,212,.8)}
+.hiw-stage{display:block;font-family:'Urbanist',sans-serif;font-weight:800;font-size:.68rem;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+.hiw-body h4{font-family:'Urbanist',sans-serif;font-size:1.1rem;font-weight:800;color:var(--deep);
+  margin-bottom:5px;line-height:1.25}
+.hiw-body p{font-size:.95rem;line-height:1.6;color:#5A5478;margin:0}
+
+@media(max-width:760px){
+  .hiw-tabs{gap:8px;margin-bottom:28px}
+  .hiw-tab{font-size:.88rem;padding:12px 16px;min-height:44px}
+  .hiw-panel{padding:26px 22px 24px;border-radius:20px}
+  .hiw-panel-head{margin-bottom:24px}
+  .hiw-step{gap:15px;padding:17px 0}
+  .hiw-num{width:36px;height:36px;border-radius:11px;font-size:.86rem}
+  .hiw-body h4{font-size:1.03rem}
+}
+
+/* Motion off: panel and steps appear with no movement */
+@media(prefers-reduced-motion:reduce){
+  .hiw-panel,.hiw-step{animation:none!important;opacity:1!important;transform:none!important}
+  .hiw-tab{transition:none!important}
+  .hiw-tab:hover{transform:none!important}
 }
