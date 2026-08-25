@@ -2,6 +2,7 @@ import Logo from "./components/Logo";
 import Footer from "./components/Footer";
 import { Link } from "./router";
 import { useSeo, SEO } from "./seo";
+import { useScrollReveal } from "./useScrollReveal";
 import { ProgramsGrid, ProgramNotes } from "./components/Programs";
 
 // The site's own demo page — same target as the main nav and the chatbot, so
@@ -85,6 +86,7 @@ function DemoCTA({ label, primary = false }: { label: string; primary?: boolean 
 
 export default function PricingPage() {
   useSeo(SEO.pricing);
+  useScrollReveal();
   return (
     <div className="pricing-page">
       {/* ── Header ── */}

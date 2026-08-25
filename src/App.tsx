@@ -6,6 +6,7 @@ import { FaqSection, FeaturesSection, CalculatorSection } from "./components/Hom
 import { ProgramsGrid, ProgramNotes } from "./components/Programs";
 import { Link } from "./router";
 import { useSeo, SEO } from "./seo";
+import { useScrollReveal } from "./useScrollReveal";
 
 const CONVOS = [
   {
@@ -460,24 +461,7 @@ export default function App() {
     };
   }, [menuOpen]);
 
-  useEffect(() => {
-    const els = document.querySelectorAll('.anim, .reveal, .calc-card');
-    // No observer support means no way to reveal on scroll — show everything
-    // rather than leaving the page permanently blank.
-    if (typeof IntersectionObserver === 'undefined') {
-      els.forEach(el => el.setAttribute('data-in', ''));
-      return;
-    }
-    const obs = new IntersectionObserver(
-      // Marks with an attribute, not a class: className on these elements is
-      // React-controlled, so a re-render (opening an FAQ item, typing in the
-      // calculator) would wipe a class added here and fade the section out.
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-in', ''); obs.unobserve(e.target); } }),
-      { threshold: 0.12 }
-    );
-    els.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
+  useScrollReveal();
 
   return (
     <>
