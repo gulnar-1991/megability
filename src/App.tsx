@@ -145,6 +145,79 @@ function NavigationSection() {
   );
 }
 
+/* Audience segments. Deliberately wider than autism clinics — schools and
+   family support organizations field the same repeat questions with even less
+   admin capacity. No named clients or partnerships here; these are the kinds of
+   organization Sunny is built for, not a customer list. */
+const AUDIENCES: { title: string; desc: string }[] = [
+  {
+    title: "Autism & ABA clinics",
+    desc: "Families arrive mid-diagnosis with funding questions your front desk answers twenty times a week.",
+  },
+  {
+    title: "Pediatric OT, PT & speech practices",
+    desc: "Parents want wait times, what to expect, and whether they need a referral — usually at 9pm.",
+  },
+  {
+    title: "Schools & educators",
+    desc: "Staff field IEP and support questions they were never funded to answer. Sunny explains the process in plain language.",
+  },
+  {
+    title: "Family support organizations & charities",
+    desc: "Small teams, high volume. Sunny handles the repeat questions so your people can do the work only people can do.",
+  },
+];
+
+function WhoThisHelpsSection() {
+  return (
+    <section className="block wth" id="who">
+      <div className="wrap">
+        <span className="eyebrow">Who this helps</span>
+        <h2>Built for the people<br/>families call first</h2>
+        <p className="intro wth-intro">
+          If your team answers the same questions about diagnosis, funding and
+          waitlists every week, Sunny takes that load — whether you&rsquo;re a clinic,
+          a school, or a family support organization.
+        </p>
+
+        <ul className="wth-list">
+          {AUDIENCES.map((a, i) => (
+            <li key={a.title} className="wth-row">
+              <span className="wth-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <div className="wth-body">
+                <h3>{a.title}</h3>
+                <p>{a.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+{/* FOUNDER STORY - Gulnar to write this herself, do not fill in */}
+function FounderStorySection() {
+  return (
+    <section className="block founder" id="founder">
+      <div className="wrap">
+        <span className="eyebrow">Why I built Sunny</span>
+        {/* FOUNDER STORY - Gulnar to write this herself, do not fill in.
+            Replace everything inside .founder-body with your own words. The
+            section is hidden from the page until it has content — flip
+            FOUNDER_STORY_READY to true once you've written it. */}
+        <div className="founder-body">
+          <p className="founder-placeholder">[ Founder story goes here ]</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Keep the founder section out of the live page until Gulnar has written it —
+   an empty section with a placeholder in it is worse than no section. */
+const FOUNDER_STORY_READY = false;
+
 function ConvosSection() {
   const [active, setActive] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -209,143 +282,6 @@ function ConvosSection() {
           </div>
         </div>
         <p className="cv-disclaim">Example conversations. Sunny never diagnoses and always points families to verified programs.</p>
-      </div>
-    </section>
-  );
-}
-
-/* "Who is Sunny" explainer video.
-   Performance: nothing but the poster image (~60KB, lazy) is on the page until
-   the user clicks — the <video> element is only mounted inside the modal, so
-   the 17MB file is never fetched on load. The MP4 is faststart-encoded, so it
-   streams rather than downloading in full. */
-function SunnyVideo() {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  return (
-    <>
-      <button className="sv-card" onClick={() => setOpen(true)} aria-label="Play the Who is Sunny video">
-        {/* Cover is drawn in CSS (no poster download) — the mascot is the same
-            already-cached asset used elsewhere on the page. */}
-        <span className="sv-cover">
-          <img src="/assets/mascot/mascot_still.png" alt="" aria-hidden="true" className="sv-sun" loading="lazy" decoding="async" />
-          <span className="sv-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg></span>
-          <span className="sv-title">Who is Sunny?</span>
-          <span className="sv-sub">Watch the creator explain Sunny · 2 min 27 sec</span>
-        </span>
-      </button>
-
-      {open && (
-        <div className="sv-modal" onClick={() => setOpen(false)} role="dialog" aria-modal="true" aria-label="Who is Sunny video">
-          <button className="sv-close" onClick={() => setOpen(false)} aria-label="Close video">✕</button>
-          <div className="sv-frame" onClick={(e) => e.stopPropagation()}>
-            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-            <video
-              src="/video/who-is-sunny.mp4"
-              poster="/video/who-is-sunny-poster.jpg"
-              controls
-              autoPlay
-              playsInline
-              preload="auto"
-            />
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
-// Names/types match the clinic actually shown in each template recording.
-const TEMPLATES = [
-  { name: "Bright Horizons Pediatric Care", type: "Down Syndrome, Autism & Developmental Care", accent: "#7B6CF0", url: "brighthorizonspediatric.ca", video: "/template-videos/template1", poster: "/template-videos/template1.jpg", thumb: "/template-videos/thumb1.jpg", alt: "Bright Horizons Pediatric Care website template for Down syndrome, autism and developmental care clinics" },
-  { name: "Star Therapy",                   type: "Occupational, Speech & Developmental Therapy", accent: "#9B8FF5", url: "startherapy.ca", video: "/template-videos/template2", poster: "/template-videos/template2.jpg", thumb: "/template-videos/thumb2.jpg", alt: "Star Therapy website template for occupational, speech and developmental therapy clinics" },
-  { name: "Hellocare",                      type: "Pediatric Speech, Sensory & Physical Therapy", accent: "#5A4AD1", url: "hellocare.ca", video: "/template-videos/template3", poster: "/template-videos/template3.jpg", thumb: "/template-videos/thumb3.jpg", alt: "Hellocare website template for pediatric speech, sensory and physical therapy clinics" },
-];
-
-function TemplatesSection() {
-  const [idx, setIdx] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const t = TEMPLATES[idx];
-
-  // Only the selected template is mounted, so one clip loads at a time. Browsers
-  // already defer and pause muted autoplay video that's off screen, so there's
-  // no observer here — one that failed to fire would leave a dead frame.
-  useEffect(() => {
-    videoRef.current?.play().catch(() => {});
-  }, [idx]);
-
-  return (
-    <section className="block tpl-section" id="websites">
-      <div className="wrap">
-        <span className="eyebrow">What sets us apart</span>
-        <h2>Beautiful website templates, built for pediatric clinics</h2>
-        <p className="intro tpl-intro">
-          Every Megability website comes with Sunny built right in — not bolted on. Pick one of our clinic-ready templates and go live fast,{" "}
-          <strong>or request a fully custom design</strong> tailored to your brand.
-        </p>
-        <p className="tpl-sub">Designed to build trust with parents from the very first click. Clean layouts, warm colours, no walls of text.</p>
-      </div>
-
-      <div className="wrap tpl-showcase">
-        <div className="tpl-stage">
-          <div className="tpl-window" style={{ ["--accent" as string]: t.accent }}>
-            <div className="tpl-chrome">
-              <span className="tpl-lights" aria-hidden="true"><i /><i /><i /></span>
-              <span className="tpl-addr">{t.url}</span>
-            </div>
-            <div className="tpl-screen">
-              {/* VP9 first — same quality as the H.264 at ~⅔ the bytes; the MP4
-                  is the fallback for browsers that can't take WebM. */}
-              <video
-                key={t.video}
-                ref={videoRef}
-                className="tpl-video"
-                poster={t.poster}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label={t.alt}
-              >
-                <source src={`${t.video}.webm`} type="video/webm" />
-                <source src={`${t.video}.mp4`} type="video/mp4" />
-              </video>
-            </div>
-          </div>
-        </div>
-
-        <div className="tpl-picker" role="tablist" aria-label="Website templates">
-          {TEMPLATES.map((tp, i) => (
-            <button
-              key={tp.name}
-              type="button"
-              role="tab"
-              aria-selected={i === idx}
-              className={`tpl-pick${i === idx ? " is-active" : ""}`}
-              style={{ ["--accent" as string]: tp.accent }}
-              onClick={() => setIdx(i)}
-            >
-              <img className="tpl-pick-thumb" src={tp.thumb} alt={tp.alt} loading="lazy" width={74} height={42} />
-              <span className="tpl-pick-text">
-                <span className="tpl-pick-name">{tp.name}</span>
-                <span className="tpl-pick-type">{tp.type}</span>
-              </span>
-            </button>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -545,7 +481,6 @@ export default function App() {
             </div>
             <div className="hero-nav-right">
               <div className="navpill">
-                <a href="#websites">Websites</a>
                 <a href="#why">Why Sunny</a>
                 <a href="#phone">Phone</a>
                 <a href="#journey">How it works</a>
@@ -563,7 +498,6 @@ export default function App() {
             </div>
           </div>
           <div className={`nav-mobile${menuOpen ? " open" : ""}`}>
-            <a href="#websites" onClick={() => setMenuOpen(false)}>Websites</a>
             <a href="#why" onClick={() => setMenuOpen(false)}>Why Sunny</a>
             <a href="#phone" onClick={() => setMenuOpen(false)}>Phone</a>
             <a href="#journey" onClick={() => setMenuOpen(false)}>How it works</a>
@@ -575,14 +509,14 @@ export default function App() {
         <div className="wrap">
           <div className="hero-body">
             <div className="hero-copy">
-              {/* The descriptor lives inside the H1: on its own, "Meet Sunny"
-                  gives crawlers nothing, and this line carries every term the
-                  page should rank for. Styled identically, so nothing moves. */}
-              <h1>
-                Meet Sunny
+              {/* Problem first, product second. The positioning line stays
+                  inside the H1 because it carries the terms the page ranks
+                  for — the headline alone names the pain, not the category. */}
+              <h1 className="hero-problem">
+                Parents wait years for a pediatric autism diagnosis. Sunny helps them use that time, not lose it.
                 <span className="sub-strong">The AI Parent Navigator for Ontario Pediatric Clinics</span>
               </h1>
-              <p className="builtfor">Built specifically for pediatric, autism, speech, occupational therapy, and developmental clinics. Helping parents find trusted local resources while reducing repetitive calls to your front desk.</p>
+              <p className="builtfor">While families wait, Sunny answers the phone and the questions clinics don&rsquo;t have time for — funding programs, next steps, real guidance — so nobody&rsquo;s stuck waiting in silence.</p>
               <div className="hero-trust">
                 <span><svg className="trust-tick" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#F47B20"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>PHIPA-aligned</span>
                 <span><svg className="trust-tick" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#F47B20"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>No health data stored</span>
@@ -616,7 +550,6 @@ export default function App() {
             <span>Works on phone & chat — simultaneously</span>
             <span>Asks child ages and sends useful links for specific programs</span>
           </div>
-          <SunnyVideo />
         </div>
         <WhySection />
       </section>
@@ -664,8 +597,11 @@ export default function App() {
       {/* ============ PHONE AGENT — SUNNY ON THE LINE (interactive) ============ */}
       <PhoneAgent />
 
-      {/* ============ WEBSITES / TEMPLATES: BEAUTIFUL WEBSITE ============ */}
-      <TemplatesSection />
+      {/* ============ WHO THIS HELPS ============ */}
+      <WhoThisHelpsSection />
+
+      {/* ============ FOUNDER STORY (placeholder — see FOUNDER_STORY_READY) ============ */}
+      {FOUNDER_STORY_READY && <FounderStorySection />}
 
       {/* ============ JOURNEY — NUMBERED STEPS ============ */}
       <section className="block journey" id="journey">
@@ -721,7 +657,8 @@ export default function App() {
                 <span className="fyw-pill">Developmental pediatrics</span>
                 <span className="fyw-pill">ADHD support</span>
                 <span className="fyw-pill">Down syndrome services</span>
-                <span className="fyw-pill">Developmental services</span>
+                <span className="fyw-pill">Schools &amp; educators</span>
+                <span className="fyw-pill">Family support organizations</span>
               </div>
               {/* Positions the Ontario depth as a starting point rather than a
                   limit — the receptionist itself works for any clinic; it's the

@@ -33,69 +33,28 @@ const MONTHLY_INCLUDES: [string, string][] = [
   ["English and French", "every call and chat, both languages"],
 ];
 
-type Plan = {
-  name: string;
-  tag: string;
-  price: { amt: string; per: string }[];
-  value?: string;
-  list: string[];
-  cta: string;
-  featured?: boolean;
+/* One plan, one price. The website tiers are gone — website design is no
+   longer sold publicly — and there is deliberately no founding rate or
+   per-client discount shown anywhere. */
+const PLAN = {
+  name: "AI Receptionist",
+  tag: "Sunny on your phone line and website chat, answering families around the clock.",
+  setup: { amt: "$750", per: "setup, due at signing" },
+  monthly: { amt: "$400", per: "/month from month two" },
+  freeMonth: "First month of service free",
+  value: "Less than the cost of one day of receptionist wages.",
+  guarantee:
+    "30-day guarantee — if it's not working for your clinic in the first 30 days, we refund your setup fee.",
+  list: [
+    "Answers your phone line and website chat, 24/7",
+    "Explains funding programs — OAP, SSAH, ACSD, Passport, DSO",
+    "Books appointments automatically",
+    "Captures every new inquiry, including after hours",
+    "Customized to your clinic and your region",
+    "Monthly improvements included",
+  ],
+  cta: "Book My Demo",
 };
-
-const PLANS: Plan[] = [
-  {
-    name: "Professional Website",
-    tag: "A clinic website that earns trust from the first click.",
-    price: [{ amt: "$2,500–4,000", per: "one-time build" }],
-    value: "No monthly fee.",
-    list: [
-      "Build trust with new families from the first click",
-      "Mobile optimized",
-      "Fast loading",
-      "Professional healthcare design",
-      "Custom to your clinic — not a template",
-    ],
-    cta: "Schedule a 15-Minute Demo",
-  },
-  {
-    name: "Website + AI Receptionist",
-    tag: "Your website and Sunny answering every call and chat, around the clock.",
-    price: [
-      { amt: "$2,500–4,000", per: "build" },
-      { amt: "$400", per: "/month" },
-    ],
-    value: "Less than the cost of one day of receptionist wages.",
-    list: [
-      "Everything in Professional Website",
-      "24/7 parent conversations, on phone and web chat",
-      "Answers funding questions accurately — OAP, SSAH, ACSD",
-      "Books appointments automatically",
-      "Captures every new inquiry",
-      "Monthly improvements included",
-    ],
-    cta: "Book My Demo",
-    featured: true,
-  },
-  {
-    name: "AI Receptionist for Existing Websites",
-    tag: "For clinics that already have a website they're happy with.",
-    price: [
-      { amt: "$750", per: "setup" },
-      { amt: "$400", per: "/month" },
-    ],
-    value: "Less than the cost of one day of receptionist wages.",
-    list: [
-      "Works with your current website",
-      "Answers common questions 24/7",
-      "Answers funding questions — OAP, SSAH, ACSD",
-      "Captures inquiries automatically",
-      "Reduces receptionist interruptions",
-      "Monthly optimization included",
-    ],
-    cta: "See Sunny Live",
-  },
-];
 
 function Check() {
   return (
@@ -176,32 +135,35 @@ export default function PricingPage() {
           <h2 id="pricing-h">Simple pricing,<br/>no long-term contract</h2>
           <p className="pr-tax">All prices are exclusive of applicable taxes.</p>
 
-          <div className="pr-plans">
-            {PLANS.map((p) => (
-              <div key={p.name} className={`pr-card${p.featured ? " pr-featured" : ""}`}>
-                {p.featured && <span className="pr-badge">Most popular</span>}
-                <h3>{p.name}</h3>
-                <p className="pr-tag">{p.tag}</p>
+          <div className="pr-plans pr-plans-single">
+            <div className="pr-card pr-featured pr-solo">
+              <h3>{PLAN.name}</h3>
+              <p className="pr-tag">{PLAN.tag}</p>
 
-                <div className="pr-price">
-                  {p.price.map((x, i) => (
-                    <span key={i} className="pr-price-part">
-                      {i > 0 && <span className="pr-plus">+</span>}
-                      <span className="pr-amt">{x.amt}</span>
-                      <span className="pr-per">{x.per}</span>
-                    </span>
-                  ))}
-                </div>
-                {p.value && <p className="pr-value">{p.value}</p>}
-
-                <ul className="pr-list">
-                  {p.list.map((item, i) => (
-                    <li key={i}><Check /><span>{item}</span></li>
-                  ))}
-                </ul>
-                <DemoCTA label={p.cta} primary={p.featured} />
+              <div className="pr-price">
+                <span className="pr-price-part">
+                  <span className="pr-amt">{PLAN.setup.amt}</span>
+                  <span className="pr-per">{PLAN.setup.per}</span>
+                </span>
+                <span className="pr-price-part">
+                  <span className="pr-plus">+</span>
+                  <span className="pr-amt">{PLAN.monthly.amt}</span>
+                  <span className="pr-per">{PLAN.monthly.per}</span>
+                </span>
               </div>
-            ))}
+
+              <p className="pr-freemonth">★ {PLAN.freeMonth}</p>
+              <p className="pr-value">{PLAN.value}</p>
+
+              <ul className="pr-list">
+                {PLAN.list.map((item, i) => (
+                  <li key={i}><Check /><span>{item}</span></li>
+                ))}
+              </ul>
+
+              <p className="pr-guarantee">{PLAN.guarantee}</p>
+              <DemoCTA label={PLAN.cta} primary />
+            </div>
           </div>
 
           {/* Every monthly plan includes */}

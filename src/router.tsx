@@ -27,6 +27,16 @@ export function navigate(to: string) {
   if (to !== window.location.pathname) {
     window.history.pushState({}, "", to);
     window.dispatchEvent(new Event("megnav"));
+    // GA4 only auto-counts the first load; this is a SPA, so every in-app route
+    // change has to be reported or /pricing and /demo look like dead pages.
+    const gtag = (window as any).gtag;
+    if (typeof gtag === "function") {
+      gtag("event", "page_view", {
+        page_path: to,
+        page_location: window.location.origin + to,
+        page_title: document.title,
+      });
+    }
   }
   window.scrollTo(0, 0);
 }

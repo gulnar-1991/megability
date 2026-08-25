@@ -41,6 +41,28 @@
     <meta name="twitter:description" content="Sunny answers your clinic's phone and chat 24/7, guides Ontario families through OAP, SSAH and Passport, and books appointments. More provinces coming soon." />
     <meta name="twitter:image" content="https://www.megability.ca/og-image.jpg" />
 
+    <!-- Google Analytics 4.
+         Paste your Measurement ID (looks like G-XXXXXXXXXX) into GA_ID below.
+         While it still reads "G-XXXXXXXXXX" the script never loads, so nothing
+         is sent and no analytics cookies are set. -->
+    <script>
+      window.GA_ID = 'G-XXXXXXXXXX';
+      (function () {
+        var id = window.GA_ID;
+        if (!id || id.indexOf('X') !== -1) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        // The site is a single-page app, so page_view is sent manually on route
+        // change (see src/router.tsx) instead of only on first load.
+        window.gtag('config', id, { send_page_view: true });
+      })();
+    </script>
+
     <!-- Speed up the third-party chat widget's connection -->
     <link rel="preconnect" href="https://cdn.voiceflow.com" />
     <link rel="preconnect" href="https://general-runtime.voiceflow.com" />
@@ -58,7 +80,7 @@
           "logo": "https://www.megability.ca/icon-512.png",
           "image": "https://www.megability.ca/og-image.jpg",
           "email": "info@megability.ca",
-          "description": "Megability builds websites and Sunny, an AI parent navigator that answers the phone and web chat for pediatric, autism, speech, occupational therapy and developmental clinics in Ontario.",
+          "description": "Megability builds Sunny, an AI parent navigator that answers the phone and web chat for pediatric, autism, speech, occupational therapy and developmental clinics, schools and family support organizations in Ontario.",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Stoney Creek",
@@ -99,16 +121,6 @@
             "url": "https://www.megability.ca/pricing",
             "availability": "https://schema.org/InStock"
           }
-        },
-        {
-          "@type": "VideoObject",
-          "name": "Who is Sunny? — the AI Parent Navigator for Ontario clinics",
-          "description": "Megability founder Gulnar Rza introduces Sunny, an AI parent navigator that answers your clinic's phone and chat 24/7, guides families through Ontario's special-needs programs, and books appointments.",
-          "thumbnailUrl": "https://www.megability.ca/video/who-is-sunny-poster.jpg",
-          "uploadDate": "2026-07-26",
-          "duration": "PT2M27S",
-          "contentUrl": "https://www.megability.ca/video/who-is-sunny.mp4",
-          "publisher": { "@id": "https://www.megability.ca/#org" }
         },
         {
           "@type": "FAQPage",

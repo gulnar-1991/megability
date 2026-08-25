@@ -26,7 +26,7 @@ const PRIVACY: Block[] = [
   {
     h: "Who we are",
     p: [
-      "Megability builds websites and Sunny, an AI parent navigator, for pediatric and developmental clinics in Ontario. We are based in Stoney Creek, Ontario, Canada. You can reach us at info@megability.ca about anything on this page, including a request to see, correct or delete your information.",
+      "Megability builds Sunny, an AI parent navigator, for pediatric clinics, therapy practices, schools and family support organizations in Ontario. We are based in Stoney Creek, Ontario, Canada. You can reach us at info@megability.ca about anything on this page, including a request to see, correct or delete your information.",
     ],
   },
   {
@@ -104,13 +104,13 @@ const TERMS: Block[] = [
   {
     h: "These terms",
     p: [
-      "These terms apply to your use of megability.ca. By using the site you accept them. Services we deliver under a separate written agreement — a website build, or a Sunny subscription — are governed by that agreement, which takes precedence over anything here.",
+      "These terms apply to your use of megability.ca. By using the site you accept them. Services we deliver under a separate written agreement are governed by that agreement, which takes precedence over anything here.",
     ],
   },
   {
     h: "What Megability provides",
     p: [
-      "We build websites for pediatric and developmental clinics, and we provide Sunny, an AI parent navigator that answers a clinic's website chat and phone line. Pricing shown on this site is indicative and excludes applicable taxes; the figures that bind us are the ones in your written quote or agreement.",
+      "We provide Sunny, an AI parent navigator that answers an organization's website chat and phone line. Pricing shown on this site is indicative and excludes applicable taxes; the figures that bind us are the ones in your written quote or agreement.",
     ],
   },
   {
@@ -134,7 +134,7 @@ const TERMS: Block[] = [
   {
     h: "Example content on this site",
     p: [
-      "Conversations shown on this website are illustrative examples of how Sunny responds. They are not transcripts of real families' conversations. The clinic websites shown in our template showcase are demonstration designs.",
+      "Conversations shown on this website are examples of how Sunny responds. Where a section is labelled a real conversation, it reproduces an actual exchange; elsewhere the wording is illustrative.",
     ],
   },
   {

@@ -55,9 +55,9 @@ export const SEO = {
     path: "/",
   },
   pricing: {
-    title: "Pricing — AI Receptionist & Clinic Websites | Megability",
+    title: "Pricing — AI Receptionist for Clinics | Megability",
     description:
-      "Simple pricing for Sunny, the AI parent navigator, and a clinic website with Sunny built in. Answer every call, guide families, and book more appointments.",
+      "$750 setup, $400/month, first month free, 30-day guarantee. Sunny answers your clinic's phone and chat 24/7 and guides families through Ontario funding.",
     path: "/pricing",
   },
   privacy: {

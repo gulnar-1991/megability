@@ -94,6 +94,9 @@ h1,h2,h3,.display{font-family:'Urbanist',sans-serif;letter-spacing:-0.02em}
 .hero-book:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(40,20,80,0.3)}
 .hero-body{position:relative;z-index:8;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:20px;padding:30px 0 130px;min-height:520px}
 .hero-copy h1{color:#fff;font-weight:700;font-size:clamp(3.2rem,6.4vw,5.8rem);line-height:0.95;letter-spacing:-0.035em;margin-bottom:14px}
+/* A problem-led headline is a sentence, not two words — it needs a smaller
+   size and looser leading to stay above the fold. */
+.hero-copy h1.hero-problem{font-size:clamp(2.05rem,3.9vw,3.15rem);line-height:1.1;letter-spacing:-0.025em}
 /* Nested inside the H1 — reset the inherited display heading metrics so it
    keeps rendering exactly as it did when it was a sibling <div>. */
 .hero-copy .sub-strong{display:block;color:#fff;font-family:'Urbanist';font-weight:600;font-size:clamp(1.15rem,2.1vw,1.6rem);line-height:1.25;letter-spacing:normal;margin-top:18px;margin-bottom:0;opacity:.96}
@@ -145,6 +148,22 @@ section.block{padding:78px 0}
 h2{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.12;font-weight:700;letter-spacing:-0.02em;text-align:center;margin-bottom:16px}
 .intro{text-align:center;max-width:640px;margin:0 auto;color:#5A5478;font-size:1.06rem}
 .sunny-ic{display:inline-block;vertical-align:middle}
+
+/* ============ WHO THIS HELPS ============ */
+.wth{background:#fff}
+.wth-intro{margin-bottom:48px}
+.wth-list{list-style:none;max-width:860px;margin:0 auto;display:flex;flex-direction:column}
+.wth-row{display:flex;gap:26px;align-items:flex-start;padding:26px 4px;border-top:1px solid rgba(123,108,240,0.14)}
+.wth-row:last-child{border-bottom:1px solid rgba(123,108,240,0.14)}
+.wth-num{font-family:'Urbanist',sans-serif;font-weight:800;font-size:1.02rem;color:var(--purple-2);
+  letter-spacing:.04em;padding-top:3px;flex-shrink:0;min-width:30px}
+.wth-body h3{font-family:'Urbanist',sans-serif;font-size:1.24rem;font-weight:800;color:var(--deep);margin-bottom:7px}
+.wth-body p{font-size:1rem;line-height:1.62;color:#5A5478;margin:0}
+
+/* ============ FOUNDER STORY ============ */
+.founder{background:var(--bg)}
+.founder-body{max-width:720px;margin:0 auto;text-align:center}
+.founder-placeholder{color:var(--muted);font-size:1rem;padding:40px 0}
 
 /* ============ REAL NAVIGATION, NOT JUST ANSWERS ============ */
 .navproof{background:var(--bg)}
@@ -696,6 +715,14 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
 .pr-every-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 36px;max-width:940px;margin:0 auto}
 .pr-incl{display:flex;align-items:flex-start;gap:11px;font-size:.94rem;line-height:1.45;color:#4A4070}
 .pr-incl strong{color:var(--deep);font-weight:700;display:block}
+
+/* Single-plan layout — one centred card instead of a three-up grid */
+.pr-plans-single{grid-template-columns:minmax(0,520px);justify-content:center}
+.pr-solo{transform:none;padding-top:34px}
+.pr-freemonth{font-size:.9rem;line-height:1.4;font-weight:800;color:#B4550F;background:#FFF4EA;
+  border:1px solid rgba(244,123,32,0.3);border-radius:10px;padding:9px 13px;margin-bottom:14px}
+.pr-guarantee{font-size:.88rem;line-height:1.5;color:#4A4070;background:#F2EFFF;
+  border:1px solid rgba(123,108,240,0.2);border-radius:12px;padding:12px 14px;margin-bottom:20px}
 
 /* Closing CTA */
 .pr-close{max-width:680px;margin:64px auto 0;text-align:center;background:#fff;border:1px solid rgba(123,108,240,0.16);

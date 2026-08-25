@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="foot-brand">
               <Logo variant="white" />
             </div>
-            <p>Websites + AI Parent Navigator for pediatric and developmental clinics. Helping families find their way, day and night.</p>
+            <p>An AI Parent Navigator for pediatric clinics, therapy practices, schools and family support organizations. Helping families find their way, day and night.</p>
           </div>
           <div className="foot-contact">
             <div><span className="lbl">Email</span> <a href="mailto:info@megability.ca">info@megability.ca</a></div>
