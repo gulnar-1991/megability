@@ -1,0 +1,19 @@
+# Megability
+
+> An AI Parent Navigator and intelligent automated system for Ontario pediatric, speech, occupational therapy, and autism clinics.
+
+## Core Product
+
+- **Sunny by Megability**: A specialized AI assistant that helps special-needs healthcare clinics automate intake, front-desk workflows, and waitlist fatigue.
+- **Key Functionality**: Instantly navigates complex Ontario funding rules (OAP, SSAH, ACSD) to assist clinic staff and client families in real time.
+
+## Target Audience & Niche
+
+- **Primary Market**: B2B Pediatric Therapy Clinics, Speech-Language Pathologists (SLPs), Occupational Therapists (OTs), and Autism Service Providers.
+- **Geographic Area Served**: Ontario, Canada.
+
+## Essential Marketing URLs
+
+- [Homepage](https://www.megability.ca/) - Overview of the Megability and Sunny platform.
+- [Pricing](https://www.megability.ca/pricing) - SaaS tiers and platform access options.
+- [Book a Demo](https://www.megability.ca/demo) - Schedule an onboarding call and platform run-through.
