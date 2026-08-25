@@ -50,6 +50,101 @@ const CONVOS = [
   },
 ];
 
+/* The clarify-before-answering exchange, verbatim. The point of the section is
+   that Sunny asks a qualifying question before naming a program, so the order
+   of these four turns is the content — don't reorder or trim them. */
+const NAV_THREAD: { role: "parent" | "ask" | "guide"; label: string; text: string }[] = [
+  { role: "parent", label: "Parent asks", text: "Is there any programs I should apply for autism?" },
+  { role: "ask", label: "Sunny asks first", text: "Does he already have an autism diagnosis, or are you still working on getting one?" },
+  { role: "parent", label: "Parent", text: "He's 3, not diagnosed yet." },
+  { role: "guide", label: "Sunny guides, correctly", text: "Since he's not diagnosed yet, the best first step is a SmartStart Hub for early screening. Want me to text you the link?" },
+];
+
+function HeartIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 20.5C12 20.5 3.5 15.6 3.5 9.9A4.9 4.9 0 0 1 12 6.6a4.9 4.9 0 0 1 8.5 3.3c0 5.7-8.5 10.6-8.5 10.6Z"
+        stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ClinicIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 20.5h16M6 20.5V6.2a1.2 1.2 0 0 1 1.2-1.2h9.6A1.2 1.2 0 0 1 18 6.2v14.3"
+        stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 8.4v4.2M9.9 10.5h4.2M10 20.5v-3.2h4v3.2"
+        stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function NavigationSection() {
+  return (
+    <section className="block navproof" id="navigation">
+      <div className="wrap">
+        <span className="eyebrow">Real navigation, not just answers</span>
+        <h2>She doesn&rsquo;t just answer questions.<br/>She guides families to the right next step.</h2>
+        <p className="intro np-intro">
+          A generic chatbot names a program and moves on. Sunny checks the one
+          thing that actually matters first — and still keeps every family
+          moving forward.
+        </p>
+
+        <div className="np-split">
+          <div className="np-aside">
+            <img src="/assets/mascot/mascot_still.png" alt="" className="np-mascot" loading="lazy" decoding="async" />
+            <h3>Watch her check before she guesses.</h3>
+            <p>
+              This is a real conversation, unedited. Notice she doesn&rsquo;t name a
+              program until she actually knows if it applies — then she still gives
+              a clear next step, even when the answer isn&rsquo;t the one people expect.
+            </p>
+          </div>
+
+          <div className="np-card">
+            <span className="np-card-label">Real conversation</span>
+            <div className="np-thread">
+              {NAV_THREAD.map((m, i) => (
+                <div key={i} className={`np-turn np-${m.role}`}>
+                  <span className="np-role">{m.label}</span>
+                  <p className="np-text">{m.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="np-benefits">
+          <article className="np-benefit">
+            <span className="np-ic np-ic-parent"><HeartIcon /></span>
+            <h3>For parents</h3>
+            <p>
+              She won&rsquo;t tell you what you want to hear just to end the call faster.
+              If something doesn&rsquo;t apply yet, she says so — and tells you exactly what
+              to do instead, so you&rsquo;re never left with nothing.
+            </p>
+            <span className="np-pill">Never misleads</span>
+          </article>
+
+          <article className="np-benefit">
+            <span className="np-ic np-ic-clinic"><ClinicIcon /></span>
+            <h3>For clinics</h3>
+            <p>
+              Every call ends in a next step your team can act on — even the ones
+              where a family doesn&rsquo;t qualify yet. That means fewer dead-end
+              conversations, and a receptionist that protects your clinic&rsquo;s
+              credibility, not just answers the phone.
+            </p>
+            <span className="np-pill np-pill-warm">Never loses the lead</span>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ConvosSection() {
   const [active, setActive] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -504,6 +599,9 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* ============ REAL NAVIGATION, NOT JUST ANSWERS ============ */}
+      <NavigationSection />
 
       {/* ============ WHO IS SUNNY ============ */}
       <section className="block who-sunny" id="why">

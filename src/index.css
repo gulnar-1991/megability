@@ -146,6 +146,73 @@ h2{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.12;font-weight:700;letter-
 .intro{text-align:center;max-width:640px;margin:0 auto;color:#5A5478;font-size:1.06rem}
 .sunny-ic{display:inline-block;vertical-align:middle}
 
+/* ============ REAL NAVIGATION, NOT JUST ANSWERS ============ */
+.navproof{background:var(--bg)}
+.np-intro{margin-bottom:56px}
+
+/* Aside + transcript */
+.np-split{display:grid;grid-template-columns:minmax(0,0.82fr) minmax(0,1.18fr);gap:56px;align-items:center;margin-bottom:64px}
+.np-mascot{width:64px;height:64px;object-fit:contain;display:block;margin-bottom:20px;
+  filter:drop-shadow(0 12px 26px rgba(244,123,32,0.32))}
+.np-aside h3{font-family:'Urbanist',sans-serif;font-size:clamp(1.3rem,2.4vw,1.62rem);font-weight:800;
+  color:var(--deep);line-height:1.22;letter-spacing:-0.02em;margin-bottom:14px}
+.np-aside p{font-size:1rem;line-height:1.7;color:#5A5478}
+
+.np-card{background:#fff;border:1px solid rgba(123,108,240,0.14);border-radius:26px;padding:30px 30px 32px;
+  box-shadow:0 30px 70px -34px rgba(60,40,150,0.42)}
+.np-card-label{display:block;font-family:'Urbanist',sans-serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--purple-2);margin-bottom:20px}
+.np-thread{display:flex;flex-direction:column;gap:14px}
+
+.np-turn{max-width:86%;border-radius:18px;padding:14px 18px 16px}
+.np-role{display:block;font-family:'Urbanist',sans-serif;font-weight:700;font-size:.66rem;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.np-text{font-size:.98rem;line-height:1.5;font-weight:600;margin:0}
+
+/* Parent turns sit left and quiet; Sunny answers right and coloured, so the
+   clarifying question reads as the turn that changes the outcome. */
+.np-parent{align-self:flex-start;background:#EFECFF;border:1px solid rgba(123,108,240,0.16)}
+.np-parent .np-role{color:#8B82B8}
+.np-parent .np-text{color:var(--ink)}
+
+.np-ask{align-self:flex-end;background:linear-gradient(135deg,var(--purple-1),#5B3FD4);
+  box-shadow:0 16px 34px -18px rgba(91,63,212,0.7)}
+.np-ask .np-role{color:rgba(255,255,255,0.72)}
+.np-ask .np-text{color:#fff}
+
+.np-guide{align-self:flex-end;background:linear-gradient(135deg,#F79A45,var(--orange));
+  box-shadow:0 16px 34px -18px rgba(244,123,32,0.65)}
+.np-guide .np-role{color:rgba(70,32,4,0.6)}
+.np-guide .np-text{color:#3B2004}
+
+/* Outcome cards */
+.np-benefits{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.np-benefit{background:#fff;border:1px solid rgba(123,108,240,0.14);border-radius:24px;padding:30px 30px 28px;
+  box-shadow:0 22px 56px -34px rgba(60,40,150,0.36)}
+.np-ic{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;margin-bottom:18px}
+.np-ic svg{width:24px;height:24px}
+.np-ic-parent{background:#EDE9FF;color:var(--purple-1)}
+.np-ic-clinic{background:#FFF1E3;color:var(--orange)}
+.np-benefit h3{font-family:'Urbanist',sans-serif;font-size:1.24rem;font-weight:800;color:var(--deep);margin-bottom:11px}
+.np-benefit p{font-size:.97rem;line-height:1.65;color:#5A5478;margin-bottom:20px}
+.np-pill{display:inline-block;font-family:'Urbanist',sans-serif;font-weight:700;font-size:.8rem;
+  padding:7px 15px;border-radius:999px;background:#EDE9FF;color:var(--purple-1)}
+.np-pill-warm{background:#FFF1E3;color:#C25E12}
+
+@media(max-width:900px){
+  .np-split{grid-template-columns:1fr;gap:34px;margin-bottom:48px}
+  .np-aside{text-align:center;max-width:560px;margin:0 auto}
+  .np-mascot{margin-left:auto;margin-right:auto}
+  .np-benefits{grid-template-columns:1fr;gap:18px}
+}
+@media(max-width:560px){
+  .np-intro{margin-bottom:40px}
+  .np-card{padding:22px 20px 24px;border-radius:20px}
+  .np-turn{max-width:96%;padding:12px 15px 14px}
+  .np-text{font-size:.94rem}
+  .np-benefit{padding:24px 22px 22px;border-radius:20px}
+}
+
 /* ============ WHO IS SUNNY ============ */
 .who-sunny{background:var(--bg);padding-bottom:60px}
 .ws-para{text-align:center;max-width:660px;margin:0 auto 32px;color:#5A5478;font-size:1.06rem;line-height:1.72}
