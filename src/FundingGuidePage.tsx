@@ -192,10 +192,43 @@ export default function FundingGuidePage() {
             points to what a family can access today, and books appointments — without
             diagnosing, assessing eligibility, or making a funding decision.
           </p>
-          <div className="fg-cta">
-            <Link to="/demo" className="btn pr-cta pr-cta-primary">Book My Demo →</Link>
-          </div>
         </section>
+
+        {/* Single closing CTA. The short button that used to sit in the section
+            above was removed rather than stacking two demo asks a screen apart. */}
+        <aside className="fg-offer" aria-labelledby="fg-offer-h">
+          <span className="fg-offer-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 20.5h16M6 20.5V6.2a1.2 1.2 0 0 1 1.2-1.2h9.6A1.2 1.2 0 0 1 18 6.2v14.3"
+                stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M9.6 9h1.6M12.8 9h1.6M9.6 12.4h1.6M12.8 12.4h1.6M10 20.5v-3.4h4v3.4"
+                stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+
+          <h2 id="fg-offer-h">Empower your front desk: let AI navigate these funding rules for you</h2>
+
+          <p>
+            Explaining OAP waitlists, SSAH criteria and ACSD functional needs to
+            stressed, incoming families drains hours of your clinic
+            administration&rsquo;s time every single week.
+          </p>
+          <p>
+            <strong>Sunny by Megability</strong> acts as your clinic&rsquo;s 24/7 AI
+            Parent Navigator. By putting Sunny on your website and phone line, you can:
+          </p>
+
+          <ul className="fg-offer-list">
+            <li><strong>Instantly answer funding queries</strong> — explain regional funding timelines and documentation requirements to families in real time.</li>
+            <li><strong>Eliminate front-desk fatigue</strong> — stop answering the same ten administrative funding questions over and over.</li>
+            <li><strong>Capture inbound intake leaks</strong> — collect new-family enquiry details, answer waitlist questions, and book intake appointments while your staff focuses on clinical care.</li>
+          </ul>
+
+          <Link to="/demo" className="btn pr-cta pr-cta-primary fg-offer-btn">
+            Book a 15-minute demo →
+          </Link>
+          <span className="fg-offer-note">See how Sunny works for Ontario pediatric clinics. No pressure, no obligation.</span>
+        </aside>
 
         <p className="fg-disclaimer">
           General information only. Program rules and figures change. Confirm

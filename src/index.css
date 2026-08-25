@@ -1200,3 +1200,35 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
   border:1px solid rgba(123,108,240,0.18);border-radius:14px;padding:16px 20px;margin-top:18px}
 .fg-criteria-note strong{color:var(--deep);font-weight:800}
 .fg-criteria-note a{color:var(--purple-1);font-weight:700;text-decoration:underline}
+
+/* Closing B2B offer box on the funding guide. Deep-purple surface so it reads
+   as a distinct call to action against the white reference content above it. */
+.fg-offer{display:block;margin:56px 0 0;padding:40px 40px 36px;border-radius:26px;
+  background:linear-gradient(150deg,var(--deep) 0%,#2A1470 60%,#241160 100%);
+  color:#fff;box-shadow:0 36px 80px -40px rgba(58,29,150,.75);position:relative;overflow:hidden}
+.fg-offer::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;
+  border-radius:50%;background:var(--purple-1);opacity:.24;filter:blur(70px);pointer-events:none}
+.fg-offer>*{position:relative;z-index:1}
+.fg-offer-ic{display:flex;align-items:center;justify-content:center;width:48px;height:48px;
+  border-radius:15px;background:rgba(255,255,255,.14);color:#fff;margin-bottom:20px}
+.fg-offer-ic svg{width:26px;height:26px}
+.funding-page .fg-offer h2{font-size:clamp(1.35rem,2.7vw,1.85rem);font-weight:800;color:#fff;
+  line-height:1.22;letter-spacing:-.02em;text-align:left;margin-bottom:16px}
+.fg-offer p{font-size:1rem;line-height:1.68;color:rgba(255,255,255,.8);margin-bottom:14px}
+.fg-offer p strong{color:#fff;font-weight:800}
+.fg-offer-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin:20px 0 28px}
+.fg-offer-list li{position:relative;padding-left:24px;font-size:.98rem;line-height:1.6;
+  color:rgba(255,255,255,.82)}
+.fg-offer-list li::before{content:"";position:absolute;left:0;top:.55em;width:11px;height:11px;
+  border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(244,123,32,.22)}
+.fg-offer-list strong{color:#fff;font-weight:800}
+.fg-offer-btn{max-width:330px;margin:0}
+.fg-offer-note{display:block;margin-top:14px;font-size:.85rem;color:rgba(255,255,255,.6)}
+
+@media(max-width:560px){
+  .fg-offer{padding:28px 22px 26px;border-radius:20px;margin-top:42px}
+  .fg-offer-ic{width:42px;height:42px;border-radius:13px;margin-bottom:16px}
+  .fg-offer p{font-size:.96rem}
+  .fg-offer-list li{font-size:.94rem;padding-left:22px}
+  .fg-offer-btn{max-width:none}
+}
