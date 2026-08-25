@@ -23,7 +23,7 @@ export default function Footer() {
         <p className="disclaimer">Megability and Sunny provide general guidance and help families navigate publicly available Ontario programs and services. Sunny does not diagnose, screen, or provide medical advice, and does not store families' medical records. Always confirm details with the relevant program or a qualified professional. In an emergency, call 911.</p>
         <div className="foot-bottom">
           <span>© 2026 Megability</span>
-          <span><Link to="/pricing">Pricing</Link><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link><Link to="/demo">Book a Demo</Link></span>
+          <span><Link to="/pricing">Pricing</Link><Link to="/ontario-funding-guide">Funding Guide</Link><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link><Link to="/demo">Book a Demo</Link></span>
         </div>
       </div>
     </footer>

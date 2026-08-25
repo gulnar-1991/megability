@@ -74,6 +74,7 @@ const App = (await import('./src/App.tsx')).default;
 const PricingPage = (await import('./src/PricingPage.tsx')).default;
 const DemoPage = (await import('./src/DemoPage.tsx')).default;
 const LegalPage = (await import('./src/LegalPage.tsx')).default;
+const FundingGuidePage = (await import('./src/FundingGuidePage.tsx')).default;
 const Loader = (await import('./src/components/Loader.tsx')).default;
 
 const {SEO} = await import('./src/seo.ts');
@@ -84,6 +85,7 @@ const routes: Array<{out: string; Component: any; seo: RouteSeo; props?: any}> =
   {out: 'index.html', Component: App, seo: SEO.home},
   {out: 'pricing/index.html', Component: PricingPage, seo: SEO.pricing},
   {out: 'demo/index.html', Component: DemoPage, seo: SEO.demo},
+  {out: 'ontario-funding-guide/index.html', Component: FundingGuidePage, seo: SEO.funding},
   {out: 'privacy/index.html', Component: LegalPage, seo: SEO.privacy, props: {kind: 'privacy'}},
   {out: 'terms/index.html', Component: LegalPage, seo: SEO.terms, props: {kind: 'terms'}},
 ];

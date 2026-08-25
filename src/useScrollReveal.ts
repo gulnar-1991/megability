@@ -45,20 +45,26 @@ export function useScrollReveal() {
 
     // Fallback sweep — reveals anything already within the viewport that the
     // observer hasn't reported yet.
+    const sweepNow = () => {
+      pending.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          reveal(el);
+          pending.delete(el);
+          obs.unobserve(el);
+        }
+      });
+      if (!pending.size) teardown();
+    };
+
+    // Only the scroll-driven sweeps are rAF-throttled. The initial pass runs
+    // synchronously, because rAF is paused in background tabs and in embedded
+    // views that aren't compositing — and a stalled frame loop must not be able
+    // to leave the page permanently blank.
     let frame = 0;
     const sweep = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        pending.forEach((el) => {
-          const r = el.getBoundingClientRect();
-          if (r.top < window.innerHeight && r.bottom > 0) {
-            reveal(el);
-            pending.delete(el);
-            obs.unobserve(el);
-          }
-        });
-        if (!pending.size) teardown();
-      });
+      frame = requestAnimationFrame(sweepNow);
     };
 
     const teardown = () => {
@@ -68,7 +74,7 @@ export function useScrollReveal() {
 
     window.addEventListener("scroll", sweep, { passive: true });
     window.addEventListener("resize", sweep);
-    const initial = window.setTimeout(sweep, 1200);
+    const initial = window.setTimeout(sweepNow, 1200);
 
     return () => {
       obs.disconnect();

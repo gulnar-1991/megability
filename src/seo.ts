@@ -60,6 +60,12 @@ export const SEO = {
       "$750 setup, $400/month, first month free, 30-day guarantee. Sunny answers your clinic's phone and chat 24/7 and guides families through Ontario funding.",
     path: "/pricing",
   },
+  funding: {
+    title: "Ontario Pediatric Therapy Funding Guide | Megability",
+    description:
+      "How OAP, SSAH, ACSD, Passport and SmartStart funding work in Ontario, and why an ADHD diagnosis can still qualify for SSAH and ACSD. A reference for clinics.",
+    path: "/ontario-funding-guide",
+  },
   privacy: {
     title: "Privacy Policy | Megability",
     description:
