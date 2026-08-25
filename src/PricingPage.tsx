@@ -2,6 +2,7 @@ import Logo from "./components/Logo";
 import Footer from "./components/Footer";
 import { Link } from "./router";
 import { useSeo, SEO } from "./seo";
+import { ProgramsGrid, ProgramNotes } from "./components/Programs";
 
 // The site's own demo page — same target as the main nav and the chatbot, so
 // every "book" action across the site lands in one place.
@@ -12,7 +13,7 @@ const DEMO_URL = "/demo";
 const OUTCOMES: [string, string][] = [
   ["Save your receptionist hours each week", "the same questions stop reaching the front desk"],
   ["Never miss a new inquiry", "every after-hours call and chat is captured, not lost to voicemail"],
-  ["Answer parent questions 24/7", "including funding questions — OAP, SSAH and ACSD"],
+  ["Answer parent questions 24/7", "including funding questions across eight Ontario programs"],
   ["Reduce repetitive phone calls", "your team stops explaining the same thing twenty times a week"],
   ["Capture leads automatically", "new family details collected and sent straight to you"],
   ["Help families before and after hours", "nobody waits until Monday for an answer"],
@@ -56,7 +57,7 @@ const PLAN = {
     "30-day guarantee — if it's not working for your clinic in the first 30 days, we refund your setup fee.",
   list: [
     "Answers your phone line and website chat, 24/7",
-    "Explains funding programs — OAP, SSAH, ACSD, Passport, DSO",
+    "Knows eight Ontario pathways, from OAP and SSAH to SmartStart and IEPs",
     "Books appointments automatically",
     "Captures every new inquiry, including after hours",
     "Customized to your organization and your region",
@@ -138,6 +139,15 @@ export default function PricingPage() {
           <ul className="pr-trust-list">
             {TRUST.map((t, i) => <li key={i}>{t}</li>)}
           </ul>
+        </div>
+      </section>
+
+      {/* ── What Sunny knows ── */}
+      <section className="pr-prog" aria-labelledby="prog-h">
+        <div className="wrap">
+          <h2 id="prog-h">Every program she can guide a family through</h2>
+          <ProgramsGrid variant="plain" />
+          <ProgramNotes />
         </div>
       </section>
 

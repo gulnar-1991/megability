@@ -3,6 +3,7 @@ import Logo from "./components/Logo";
 import Footer from "./components/Footer";
 import PhoneAgent from "./components/PhoneAgent";
 import { FaqSection, FeaturesSection, CalculatorSection } from "./components/HomeSections";
+import { ProgramsGrid, ProgramNotes } from "./components/Programs";
 import { Link } from "./router";
 import { useSeo, SEO } from "./seo";
 
@@ -33,10 +34,10 @@ const CONVOS = [
   },
   {
     label: "Honest ADHD guidance",
-    desc: "Sunny is upfront when a diagnosis doesn't qualify for provincial funding — and always points families to trusted, free resources instead of leaving them stuck.",
+    desc: "Sunny knows which programs turn on a diagnosis and which turn on functional need — so an ADHD family hears what they can still apply for, not just 'no'.",
     msgs: [
       { from: "parent", text: "My son was just diagnosed with ADHD. Does that qualify for OAP or Passport?" },
-      { from: "sunny", text: "I want to be honest with you: ADHD on its own doesn't qualify for OAP, SSAH, ACSD, DSO or Passport — those need an autism or developmental-disability diagnosis. But you're not on your own. CADDAC, ConnexOntario's free 24/7 helpline, and AboutKidsHealth from SickKids are all trusted, no-cost places to start." },
+      { from: "sunny", text: "I want to be honest with you: ADHD on its own doesn't qualify for OAP or DSO/Passport. But SSAH and ACSD can — those look at documented functional limitations, not a specific diagnosis, so it's worth applying. CADDAC, ConnexOntario's free 24/7 helpline and AboutKidsHealth from SickKids are good places to start too." },
     ],
   },
   {
@@ -299,7 +300,7 @@ const WHY_RIGHT = [
   { q: "Is there help while we wait on the OAP list?", a: "Yes — interim one-time funding may be available, plus Passport, Special Services at Home, and free local programs. Let me show you what you can access right now while you wait." },
   { q: "My daughter is turning 18. What changes?", a: "At 18 she transitions to adult services — DSO registration and Passport funding become key. It's worth starting 6–12 months early. I can map out the timeline for you." },
   { q: "Can you help me prepare for an IEP meeting?", a: "Absolutely. I'll explain your rights, give you a checklist of questions to ask, and even draft an email to the school requesting the meeting. You won't walk in unprepared." },
-  { q: "My child has ADHD, not autism — is there help for us?", a: "Yes, and I'll be honest with you: ADHD doesn't qualify for OAP, SSAH, ACSD, DSO or Passport, since those need an autism or developmental-disability diagnosis. So I point families to three trusted, free resources instead — CADDAC for parent support, ConnexOntario's 24/7 helpline, and AboutKidsHealth from SickKids. I'll never send you to a private paid clinic from an ad." },
+  { q: "My child has ADHD, not autism — is there help for us?", a: "Yes. ADHD alone doesn't qualify for OAP or DSO/Passport — but SSAH and ACSD can, because those are assessed on documented functional limitations rather than a specific diagnosis. I'll also point you to CADDAC for parent support, ConnexOntario's free 24/7 helpline, and AboutKidsHealth from SickKids. I'll never send you to a private paid clinic from an ad." },
 ];
 
 function WhySection() {
@@ -554,12 +555,16 @@ export default function App() {
           <h2>Who is Sunny?</h2>
           <p className="ws-para">Sunny is an AI parent navigator — live on your clinic's website and phone line 24/7. She guides families through Ontario's special needs programs, explains waitlists in plain language, books appointments, and answers every repetitive question your front desk receives daily. Fully customized to your region, your clinic, and your families.</p>
           <div className="ws-features">
-            <span>Guides parents through OAP, IBI & provincial programs</span>
             <span>Explains waitlists clearly, without the confusion</span>
-            <span>Customized to your region & clinic</span>
-            <span>Works on phone & chat — simultaneously</span>
+            <span>Customized to your region &amp; organization</span>
+            <span>Works on phone &amp; chat — simultaneously</span>
             <span>Asks child ages and sends useful links for specific programs</span>
           </div>
+
+          {/* The programs themselves, rather than a vague "provincial programs" chip */}
+          <h3 className="ws-prog-h reveal">What Sunny actually knows</h3>
+          <ProgramsGrid />
+          <ProgramNotes />
         </div>
         <WhySection />
       </section>

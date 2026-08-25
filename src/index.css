@@ -1069,3 +1069,36 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
   .calc-inputs{padding:28px 22px;gap:26px}
   .calc-sub{grid-template-columns:1fr;gap:14px}
 }
+
+/* ============ SUNNY'S PROGRAM KNOWLEDGE ============ */
+.ws-prog-h{font-family:'Urbanist',sans-serif;font-size:1.22rem;font-weight:800;color:var(--deep);
+  text-align:center;margin:6px 0 24px}
+.pg-grid{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  max-width:900px;margin:0 auto}
+.pg-item{background:#fff;border:1px solid rgba(123,108,240,0.16);border-radius:14px;
+  padding:15px 18px;border-left:3px solid var(--orange)}
+.pg-plain .pg-item{background:#fff}
+.pg-item strong{display:block;font-family:'Urbanist',sans-serif;font-weight:800;font-size:.98rem;
+  color:var(--deep);margin-bottom:4px}
+.pg-item span{font-size:.88rem;line-height:1.5;color:#5A5478}
+
+.pg-notes{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:20px auto 0}
+.pg-note{background:linear-gradient(135deg,#efe9ff,#e7e2ff);border:1px solid rgba(123,108,240,0.2);
+  border-radius:16px;padding:20px 22px}
+.pg-note strong{display:block;font-family:'Urbanist',sans-serif;font-weight:800;font-size:1rem;
+  color:var(--deep);margin-bottom:7px}
+.pg-note p{font-size:.9rem;line-height:1.6;color:#4A4070;margin:0}
+
+/* Pricing page section wrapper */
+.pr-prog{padding:56px 0 8px}
+.pr-prog h2{font-size:clamp(1.6rem,2.9vw,2.05rem);font-weight:800;color:var(--deep);
+  text-align:center;margin-bottom:30px}
+
+@media(max-width:820px){
+  .pg-grid,.pg-notes{grid-template-columns:1fr;max-width:560px}
+}
+@media(max-width:560px){
+  .pg-item{padding:13px 15px}
+  .pg-note{padding:17px 18px}
+  .pr-prog{padding:42px 0 4px}
+}
