@@ -1195,3 +1195,8 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
   .fg-list li{font-size:.95rem}
   .fg-cta .pr-cta{max-width:none}
 }
+
+.fg-criteria-note{font-size:.9rem;line-height:1.65;color:#4A4070;background:#F7F5FF;
+  border:1px solid rgba(123,108,240,0.18);border-radius:14px;padding:16px 20px;margin-top:18px}
+.fg-criteria-note strong{color:var(--deep);font-weight:800}
+.fg-criteria-note a{color:var(--purple-1);font-weight:700;text-decoration:underline}

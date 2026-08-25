@@ -112,6 +112,37 @@ export default function FundingGuidePage() {
             <li><strong>Where Families Get Turned Away Wrongly:</strong> The most common front-desk error is applying the OAP diagnosis rule to every program. SSAH and ACSD do not share it.</li>
           </ul>
 
+          <h3>The functional-need threshold for ADHD under SSAH and ACSD</h3>
+          <p className="fg-answer">
+            An ADHD diagnosis on its own does not trigger approval for either
+            program. SSAH requires a developmental and/or physical disability;
+            ACSD requires a severe disability producing extraordinary costs and
+            applies a household income test. In both cases the application has to
+            evidence functional impact, not name a condition.
+          </p>
+          <p>
+            What a strong application demonstrates:
+          </p>
+          <ul className="fg-list">
+            <li><strong>Functional impact:</strong> Measurable deficits in activities of daily living, emotional regulation, or personal safety that go well beyond what is typical for the child&rsquo;s age.</li>
+            <li><strong>Extraordinary care:</strong> Supervision and support that is continuously greater than the care a same-age child without a disability would require.</li>
+            <li><strong>Clinical documentation:</strong> Reports from a regulated health professional — psychology, developmental pediatrics or a related discipline — setting out clinical impact, current therapeutic regimens, and any specialized equipment needs.</li>
+          </ul>
+          <p className="fg-criteria-note">
+            <strong>Published eligibility criteria.</strong> SSAH: child under 18,
+            living at home in Ontario, with a developmental and/or physical
+            disability, needing more support than parents can provide, evidenced by
+            a regulated health professional
+            (<a href="https://www.ontario.ca/page/special-services-home" target="_blank" rel="noopener noreferrer">Ontario.ca</a>).
+            ACSD: child under 18, living at home, with a severe disability causing
+            extraordinary costs, and household income of $77,640 or less as of
+            1 July 2026 — payments range roughly $25 to $678 per month based on
+            income, family size and disability-related costs
+            (<a href="https://www.ontario.ca/page/assistance-children-severe-disabilities-program" target="_blank" rel="noopener noreferrer">Ontario.ca</a>).
+            The three points above describe what an application must evidence; they
+            are not a published Ministry scoring framework.
+          </p>
+
           <h3>Choosing between them</h3>
           <p>
             They are not alternatives — a family may be eligible for both, and they are
