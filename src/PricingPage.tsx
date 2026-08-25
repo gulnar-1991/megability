@@ -18,9 +18,18 @@ const OUTCOMES: [string, string][] = [
   ["Help families before and after hours", "nobody waits until Monday for an answer"],
 ];
 
+/* Same four names as the "Who this helps" section on the homepage — Sunny is
+   not pediatric-clinic-only, and the pricing page shouldn't imply it is. */
+const AUDIENCES: string[] = [
+  "Autism & ABA clinics",
+  "Pediatric OT, PT & speech practices",
+  "Schools & educators",
+  "Family support organizations & charities",
+];
+
 const TRUST: string[] = [
   "Available 24/7",
-  "Customized to your clinic",
+  "Customized to your organization",
   "No diagnoses made — ever",
   "Monthly updates included",
   "Secure conversations",
@@ -50,7 +59,7 @@ const PLAN = {
     "Explains funding programs — OAP, SSAH, ACSD, Passport, DSO",
     "Books appointments automatically",
     "Captures every new inquiry, including after hours",
-    "Customized to your clinic and your region",
+    "Customized to your organization and your region",
     "Monthly improvements included",
   ],
   cta: "Book My Demo",
@@ -107,7 +116,7 @@ export default function PricingPage() {
       {/* ── Outcomes — one idea per line ── */}
       <section className="pr-out" aria-labelledby="out-h">
         <div className="wrap">
-          <h2 id="out-h">What your clinic gets back</h2>
+          <h2 id="out-h">What your team gets back</h2>
           <div className="pr-out-grid">
             {OUTCOMES.map(([t, d], i) => (
               <div key={i} className="pr-out-item">
@@ -122,7 +131,10 @@ export default function PricingPage() {
       {/* ── Trust ── */}
       <section className="pr-trust" aria-labelledby="trust-h">
         <div className="wrap">
-          <h2 id="trust-h">Designed for busy pediatric clinics</h2>
+          <h2 id="trust-h">Designed for busy teams</h2>
+          <ul className="pr-aud-list">
+            {AUDIENCES.map((a) => <li key={a}>{a}</li>)}
+          </ul>
           <ul className="pr-trust-list">
             {TRUST.map((t, i) => <li key={i}>{t}</li>)}
           </ul>
