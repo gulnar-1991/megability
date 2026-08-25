@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Logo from "./components/Logo";
 import Footer from "./components/Footer";
 import PhoneAgent from "./components/PhoneAgent";
+import { FaqSection, FeaturesSection, CalculatorSection } from "./components/HomeSections";
 import { Link } from "./router";
 import { useSeo, SEO } from "./seo";
 
@@ -459,9 +460,18 @@ export default function App() {
   }, [menuOpen]);
 
   useEffect(() => {
-    const els = document.querySelectorAll('.anim');
+    const els = document.querySelectorAll('.anim, .reveal, .calc-card');
+    // No observer support means no way to reveal on scroll — show everything
+    // rather than leaving the page permanently blank.
+    if (typeof IntersectionObserver === 'undefined') {
+      els.forEach(el => el.setAttribute('data-in', ''));
+      return;
+    }
     const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } }),
+      // Marks with an attribute, not a class: className on these elements is
+      // React-controlled, so a re-render (opening an FAQ item, typing in the
+      // calculator) would wipe a class added here and fade the section out.
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-in', ''); obs.unobserve(e.target); } }),
       { threshold: 0.12 }
     );
     els.forEach(el => obs.observe(el));
@@ -554,42 +564,8 @@ export default function App() {
         <WhySection />
       </section>
 
-      {/* ============ DEMO — BENTO: SUNNY AT WORK ============ */}
-      <section className="block demo" id="demo">
-        <div className="wrap">
-          <div className="db-centered-header">
-            <h2 className="db-headline">Sunny at work,<br/>around the clock</h2>
-            <p className="db-sub">From a parent's first question to a confirmed appointment — Sunny handles every step, 24/7.</p>
-          </div>
-        </div>
-        {/* Grid: orb zone left, chat card right */}
-        <div className="db-stage">
-          <div className="db-orb-zone">
-            <div className="db-orb db-orb-1"><div className="db-onum">24/7</div><span>Always on</span></div>
-            <div className="db-orb db-orb-2"><div className="db-otitle">Age-aware</div><span>Routes by the child's age</span></div>
-            <div className="db-orb db-orb-3"><div className="db-otitle">Warm first</div><span>Built for worried parents</span></div>
-            <div className="db-orb db-orb-4"><div className="db-otitle">PHIPA-aligned</div><span>Privacy you can trust</span></div>
-            <div className="db-orb db-orb-5"><div className="db-onum">No diagnosis</div><span>Ever. Not once.</span></div>
-            <div className="db-orb db-orb-6"><div className="db-otitle">Reminders</div><span>Email &amp; text, automatically</span></div>
-            <div className="db-orb db-orb-7"><div className="db-otitle">Book appointment</div><span>Straight from the chat</span></div>
-            <div className="db-orb db-orb-8"><div className="db-otitle">OAP · Passport · ODSP</div><span>Specialist program knowledge</span></div>
-            <div className="db-orb db-orb-9"><div className="db-otitle">EN · FR + more</div><span>Handles French natively</span></div>
-            <div className="db-orb db-orb-10"><div className="db-otitle">Works with</div><span>Calendly · Google Cal · Jane<br/>+ any system you already use</span></div>
-          </div>
-          <div className="db-chat-card">
-            <div className="db-chat-header">
-              <img src="/assets/mascot/mascot_still.png" alt="" className="db-avatar" />
-              <div><strong>Sunny</strong><span>Your clinic's AI navigator</span></div>
-            </div>
-            <div className="db-bubble db-sunny">Hi there! Is your child already enrolled in a program, or are you just starting to look?</div>
-            <div className="db-bubble db-parent">We're trying to understand the OAP waitlist…</div>
-            <div className="db-bubble db-sunny">The Ontario Autism Program has three streams — <strong>Core, Caregiver, and Skills</strong>. Based on your child's age, Core is likely the right fit. Want me to walk you through the first step?</div>
-            <div className="db-bubble db-parent">Yes please!</div>
-            <div className="db-bubble db-sunny">Great. I'll send you the direct link — what's the best number to text you?</div>
-            <div className="db-typing"><span/><span/><span/></div>
-          </div>
-        </div>
-      </section>
+      {/* ============ FEATURES GRID ============ */}
+      <FeaturesSection />
 
       {/* ============ CONVOS — STACKED CARDS: SUNNY IN ACTION ============ */}
       <ConvosSection />
@@ -640,6 +616,9 @@ export default function App() {
         </div>
       </section>
 
+      {/* ============ MISSED-CALL CALCULATOR ============ */}
+      <CalculatorSection />
+
       {/* ============ FOR YOUR WORLD — SPLIT: COPY + CLINIC ART ============ */}
       <section className="block fyw-s">
         <div className="fyw-bg" aria-hidden="true" />
@@ -675,6 +654,9 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* ============ FAQ ============ */}
+      <FaqSection />
 
       {/* ============ FINAL CTA ============ */}
       <section className="finalcta" id="book">

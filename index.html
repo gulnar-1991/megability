@@ -41,6 +41,11 @@
     <meta name="twitter:description" content="Sunny answers your clinic's phone and chat 24/7, guides Ontario families through OAP, SSAH and Passport, and books appointments. More provinces coming soon." />
     <meta name="twitter:image" content="https://www.megability.ca/og-image.jpg" />
 
+    <!-- Scroll-reveal only hides content when JS is running to un-hide it.
+         Set before paint so nothing flashes, and so a JS failure degrades to
+         "everything visible" rather than a blank page. -->
+    <script>document.documentElement.classList.add('js-reveal');</script>
+
     <!-- Google Analytics 4 — megability.ca web stream. -->
     <script>
       window.GA_ID = 'G-HBZPVSN13J';

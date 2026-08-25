@@ -470,8 +470,8 @@ h2{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.12;font-weight:700;letter-
 }
 
 /* ============ SCROLL ANIMATIONS ============ */
-.anim{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .72s ease}
-.anim.in{opacity:1;transform:translateY(0)}
+.js-reveal .anim{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .72s ease}
+.js-reveal .anim.in,.js-reveal .anim[data-in]{opacity:1;transform:translateY(0)}
 .anim-d1{transition-delay:.1s}
 .anim-d2{transition-delay:.2s}
 .anim-d3{transition-delay:.32s}
@@ -922,4 +922,145 @@ footer{background:var(--ink-2);color:#cbc8d6;padding:50px 0 38px}
   .lg-block{margin-bottom:28px}
   .lg-block h2{font-size:1.12rem}
   .lg-block p{font-size:.96rem}
+}
+
+/* ============ SCROLL REVEAL (shared by the newer sections) ============ */
+/* Same observer as .anim, but tuned to the shorter, calmer timing the newer
+   sections use. Delay classes cascade related items ~70ms apart. */
+.js-reveal .reveal{opacity:0;transform:translateY(20px);
+  transition:opacity .38s cubic-bezier(.22,.61,.36,1),transform .38s cubic-bezier(.22,.61,.36,1)}
+.js-reveal .reveal[data-in]{opacity:1;transform:none}
+.reveal-1{transition-delay:.07s}
+.reveal-2{transition-delay:.14s}
+.reveal-3{transition-delay:.21s}
+.reveal-4{transition-delay:.28s}
+.reveal-5{transition-delay:.35s}
+.reveal-6{transition-delay:.42s}
+
+/* One switch that turns off every entrance, hover lift and loop on the page. */
+@media(prefers-reduced-motion:reduce){
+  .anim,.reveal{opacity:1!important;transform:none!important;transition:none!important;transition-delay:0s!important}
+  .calc-card{opacity:1!important;transform:none!important;transition:none!important}
+  .feat-card,.faq-item,.feat-grid .feat-card,.faq-list .faq-item{transition:none!important}
+  .feat-card:hover{transform:none!important}
+  .feat-badge i{animation:none!important;opacity:1!important}
+  .faq-a-outer{transition:none!important}
+  .faq-a-inner>p{transition:none!important}
+  .faq-icon svg{transition:none!important}
+  .calc-slider::-webkit-slider-thumb{transition:none!important}
+  .calc-slider.is-dragging::-webkit-slider-thumb{transform:none!important}
+}
+
+/* ============ FAQ ============ */
+.faq-s{background:var(--bg)}
+.faq-s h2{margin-bottom:38px}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border:1px solid rgba(123,108,240,0.15);border-radius:18px;
+  box-shadow:0 14px 38px -32px rgba(60,40,150,0.4)}
+.faq-list .faq-item{transition:box-shadow .25s ease,border-color .25s ease}
+.faq-item.is-open{border-color:rgba(123,92,245,0.42);box-shadow:0 20px 48px -30px rgba(60,40,150,0.5)}
+.faq-item h3{margin:0;text-align:left;font-size:inherit;line-height:inherit;letter-spacing:normal}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  background:none;border:none;cursor:pointer;text-align:left;padding:20px 24px;
+  font-family:'Urbanist',sans-serif;font-weight:700;font-size:1.04rem;color:var(--deep)}
+.faq-q:focus-visible{outline:3px solid var(--purple-1);outline-offset:-3px;border-radius:18px}
+.faq-icon{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:30px;height:30px;
+  border-radius:50%;background:#F0EDFF;color:var(--purple-1)}
+.faq-icon svg{width:18px;height:18px;transition:transform .3s cubic-bezier(.22,.61,.36,1)}
+.faq-item.is-open .faq-icon{background:var(--purple-1);color:#fff}
+.faq-item.is-open .faq-icon svg{transform:rotate(45deg)}
+
+.faq-a-outer{height:0;overflow:hidden;visibility:hidden;
+  transition:height .34s cubic-bezier(.22,.61,.36,1),visibility 0s linear .34s}
+.faq-item.is-open .faq-a-outer{visibility:visible;
+  transition:height .34s cubic-bezier(.22,.61,.36,1),visibility 0s linear 0s}
+.faq-a-inner{overflow:hidden}
+.faq-a-inner>p{margin:0;padding:0 24px 22px;font-size:.99rem;line-height:1.68;color:#4A4070;
+  opacity:0;transition:opacity .28s ease .09s}
+.faq-item.is-open .faq-a-inner>p{opacity:1}
+
+/* ============ FEATURES GRID ============ */
+.feat-s{background:#fff}
+.feat-intro{margin-bottom:46px}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feat-card{position:relative;background:#fff;border:1px solid rgba(123,108,240,0.15);border-radius:22px;
+  padding:28px 26px 26px;box-shadow:0 18px 46px -34px rgba(60,40,150,0.4)}
+.feat-grid .feat-card{transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease,border-color .25s ease}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 28px 60px -32px rgba(60,40,150,0.5);
+  border-color:rgba(123,92,245,0.32)}
+.feat-ic{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;
+  background:#EDE9FF;color:var(--purple-1);margin-bottom:16px}
+.feat-ic svg{width:24px;height:24px}
+.feat-badge{display:inline-flex;align-items:center;gap:7px;font-family:'Urbanist',sans-serif;font-weight:700;
+  font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#1F7A4D;background:#E6F6EC;
+  border:1px solid rgba(31,122,77,0.18);padding:5px 11px;border-radius:999px;margin-bottom:13px}
+.feat-badge i{width:6px;height:6px;border-radius:50%;background:#28A867;display:block;
+  animation:featPulse 2.8s ease-in-out infinite}
+@keyframes featPulse{0%,100%{opacity:.45}50%{opacity:1}}
+.feat-card h3{font-family:'Urbanist',sans-serif;font-size:1.18rem;font-weight:800;color:var(--deep);margin-bottom:11px}
+.feat-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.feat-card li{position:relative;padding-left:17px;font-size:.93rem;line-height:1.5;color:#5A5478}
+.feat-card li::before{content:"";position:absolute;left:0;top:.58em;width:8px;height:2px;
+  background:var(--orange);border-radius:2px}
+
+/* ============ MISSED-CALL CALCULATOR ============ */
+.calc-s{background:linear-gradient(to bottom,var(--bg),#E9E4FF)}
+.calc-intro{margin-bottom:42px}
+.calc-card{max-width:940px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;
+  background:#fff;border:1px solid rgba(123,108,240,0.16);border-radius:26px;overflow:hidden;
+  box-shadow:0 34px 78px -38px rgba(60,40,150,0.48);
+  transition:opacity .42s ease,transform .42s cubic-bezier(.22,.61,.36,1)}
+.js-reveal .calc-card{opacity:0;transform:scale(.98)}
+.js-reveal .calc-card[data-in]{opacity:1;transform:none}
+.calc-inputs{padding:34px 32px;display:flex;flex-direction:column;gap:30px;justify-content:center}
+.calc-field{display:block}
+.calc-label{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  font-family:'Urbanist',sans-serif;font-weight:700;font-size:.94rem;color:var(--deep);margin-bottom:12px}
+.calc-count{font-size:1.15rem;color:var(--purple-1)}
+.calc-money{display:flex;align-items:center;gap:6px;background:#F6F4FF;border:1.5px solid rgba(123,108,240,0.22);
+  border-radius:13px;padding:11px 15px;font-family:'Urbanist',sans-serif;font-weight:800;
+  font-size:1.32rem;color:var(--ink);transition:border-color .2s ease}
+.calc-money:focus-within{border-color:var(--purple-1)}
+.calc-money input{width:100%;border:none;background:none;font:inherit;color:inherit;padding:0;outline:none;
+  -moz-appearance:textfield}
+.calc-money input::-webkit-outer-spin-button,.calc-money input::-webkit-inner-spin-button{
+  -webkit-appearance:none;margin:0}
+
+.calc-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;
+  background:linear-gradient(to right,var(--purple-1),var(--purple-2));outline:none;cursor:pointer}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;
+  border-radius:50%;background:#fff;border:3px solid var(--purple-1);cursor:grab;
+  box-shadow:0 4px 12px rgba(60,40,150,.28);transition:transform .18s cubic-bezier(.22,.61,.36,1),box-shadow .18s ease}
+.calc-slider::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;
+  border:3px solid var(--purple-1);cursor:grab;box-shadow:0 4px 12px rgba(60,40,150,.28)}
+.calc-slider:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(123,92,245,.32)}
+.calc-slider.is-dragging::-webkit-slider-thumb{transform:scale(1.18);box-shadow:0 6px 18px rgba(60,40,150,.4);cursor:grabbing}
+.calc-scale{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-top:8px}
+
+.calc-out{background:linear-gradient(150deg,var(--deep),#2A1470);color:#fff;padding:34px 32px;
+  display:flex;flex-direction:column;justify-content:center}
+.calc-out-label{font-family:'Urbanist',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.62);margin-bottom:10px}
+.calc-big{font-family:'Urbanist',sans-serif;font-weight:800;font-size:clamp(2.3rem,4.4vw,3.1rem);
+  line-height:1;letter-spacing:-.03em;margin-bottom:26px;font-variant-numeric:tabular-nums}
+.calc-sub{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.16)}
+.calc-sub-num{display:block;font-family:'Urbanist',sans-serif;font-weight:800;font-size:1.4rem;
+  margin-bottom:3px;font-variant-numeric:tabular-nums}
+.calc-sub-lbl{font-size:.8rem;line-height:1.35;color:rgba(255,255,255,.62)}
+.calc-note{max-width:620px;margin:22px auto 0;text-align:center;font-size:.85rem;line-height:1.55;color:#6A6191}
+
+@media(max-width:980px){
+  .feat-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .calc-card{grid-template-columns:1fr}
+  .calc-out{padding:30px 26px}
+}
+@media(max-width:640px){
+  .feat-grid{grid-template-columns:1fr;gap:16px}
+  .faq-q{padding:17px 18px;font-size:.98rem;gap:14px}
+  .faq-a-inner>p{padding:0 18px 19px;font-size:.95rem}
+  .calc-inputs{padding:28px 22px;gap:26px}
+  .calc-sub{grid-template-columns:1fr;gap:14px}
 }
