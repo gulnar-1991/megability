@@ -472,9 +472,9 @@ export default function App() {
         <div className="hero-fade" aria-hidden="true" />
         <div className={`hero-nav${menuOpen ? " menu-open" : ""}`} ref={navRef}>
           <div className="wrap">
-            <div className="brand">
+            <Link to="/" className="brand" aria-label="Megability home">
               <Logo variant="white" />
-            </div>
+            </Link>
             <div className="hero-nav-right">
               <div className="navpill">
                 <a href="#why">Why Sunny</a>

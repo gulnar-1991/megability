@@ -46,11 +46,14 @@ export function Link({
   className,
   children,
   onClick,
+  "aria-label": ariaLabel,
 }: {
   to: string;
   className?: string;
   children: ReactNode;
   onClick?: () => void;
+  /* Callers were already passing this and it was being dropped on the floor. */
+  "aria-label"?: string;
 }) {
   const handle = (e: MouseEvent<HTMLAnchorElement>) => {
     // Let modified clicks (new tab, etc.) behave natively.
@@ -60,7 +63,7 @@ export function Link({
     navigate(to);
   };
   return (
-    <a href={to} className={className} onClick={handle}>
+    <a href={to} className={className} aria-label={ariaLabel} onClick={handle}>
       {children}
     </a>
   );

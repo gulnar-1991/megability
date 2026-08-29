@@ -78,6 +78,14 @@ h1,h2,h3,.display{font-family:'Urbanist',sans-serif;letter-spacing:-0.02em}
 .hero-nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:26px 0}
 .hero-nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
 .brand{display:flex;align-items:center;gap:10px}
+/* The logo is the main way back home, so it needs a real hit area — the
+   mark itself is only 30px tall, under the 44px touch minimum. Negative
+   margins keep the visual position unchanged. */
+a.brand{padding:8px 10px;margin:-8px -10px;border-radius:12px;min-height:44px;cursor:pointer;
+  transition:background .18s ease,opacity .18s ease}
+a.brand:hover{background:rgba(255,255,255,0.10);opacity:.92}
+.pricing-page a.brand:hover,.legal-page a.brand:hover,.demo-page a.brand:hover{background:rgba(123,108,240,0.10)}
+a.brand:focus-visible{outline:3px solid var(--purple-1);outline-offset:2px}
 .brand .logo-svg{height:30px;width:auto;display:block}
 .hero-nav-right{display:flex;align-items:center;gap:14px}
 .navpill{background:rgba(255,255,255,0.16);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);border-radius:999px;display:flex;align-items:center;gap:4px;padding:7px 8px}
